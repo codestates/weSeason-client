@@ -10,26 +10,10 @@ import "./Mypage.css";
 //     nickname: "Hal-ang",
 // }
 class Mypage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isEdit: false,
-    };
-  }
-
-  handleEditResoponse() {
-    this.setState({
-      isEdit: true,
-    });
-  }
-
   render() {
     return (
       <div className="Mypage">
-        <BasicUserinfo
-          userinfo={this.props.userinfo}
-          handleEditResoponse={this.handleEditResoponse.bind(this)}
-        />
+        <BasicUserinfo userinfo={this.props.userinfo} />
       </div>
     );
   }

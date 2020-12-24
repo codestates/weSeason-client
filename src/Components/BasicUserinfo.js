@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./BasicUserinfo.css";
 import EditModal from "./EditModal";
 
-const BasicUserinfo = ({ userinfo, handleEditResoponse }) => {
+const BasicUserinfo = ({ userinfo }) => {
   const [isEditModal, setEditModal] = useState(false);
 
   const handleEditModal = () => {
