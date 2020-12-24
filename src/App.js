@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Mypage from "./Components/Mypage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Mypage
+        userinfo={{
+          id: "jpjgv05",
+          email: "jhrang0925@gmail.com",
+          name: "harang",
+          nickname: "Hal-ang",
+        }}
+      />
     </div>
   );
 }
 
 export default App;
+
+// /users get > response
+// props.userinfo =
+// {
+//   message: "OK",
+//   data: {
+//     id: "jpjgv05",
+//     email: "jhrang0925@gmail.com",
+//     name: "harang",
+//     nickname: "Hal-ang",
+//   },
+// }
