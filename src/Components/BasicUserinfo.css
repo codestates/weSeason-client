@@ -1,0 +1,62 @@
+h1 {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.BasicUserinfo__contain {
+  width: 748px;
+  height: 565px;
+  background-color: #f3f3f3;
+}
+
+.BasicUserinfo__edit-btn {
+  background-color: #f3f3f3;
+  border: 0;
+  font-size: 20px;
+  width: 45px;
+  height: 30px;
+  position: relative;
+  margin-top: 40px;
+  right: -300px;
+  color: #808080;
+}
+
+.BasicUserinfo__edit-btn:hover {
+  text-decoration: underline;
+}
+
+.BasicUserinfo__userinfo-contain {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.BasicUserinfo__userinfo--item {
+  margin-bottom: 60px;
+}
+
+.BasicUserinfo__item-title {
+  text-align: left;
+  width: 170px;
+  display: inline-block;
+  font-size: 23px;
+}
+
+.BasicUserinfo_item-info {
+  text-align: left;
+  width: 400px;
+  display: inline-block;
+  font-size: 23px;
+}
+
+.BasicUserinfo__Withdrawal-btn {
+  font-size: 20px;
+  background-color: #f3f3f3;
+  border: 0;
+  border-radius: 4px;
+  width: 123px;
+  height: 53px;
+  /* align-self: flex-end; */
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
