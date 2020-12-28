@@ -3,10 +3,11 @@ import "./EditModal.css";
 import axios from "axios";
 import ErrorPasswordModal from "./ErrorPasswordModal";
 
-const EditModal = ({ handleModalResponse }) => {
+const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
   const [isCloseModal, setCloseModal] = useState(false);
   const [isPassword, setPassword] = useState("");
   const [isFalsyPassword, setFalsyPassword] = useState(false);
+  const [isEdit, setEdit] = useState(false);
 
   const handleEditModalClose = () => {
     setCloseModal(true);
@@ -21,17 +22,35 @@ const EditModal = ({ handleModalResponse }) => {
   };
 
   const checkPassword = () => {
+    // 성공 ui 구현 위해 잠시 주석처리
+    // axios
+    //   .post("https://localhost:3000/auth/check", { password: isPassword })
+    //   .then((data) => {
+    //     // 성공시 활성화된 수정 페이지로 이동, 렌더링
+    //     setEdit(true);
+    //   })
+    //   .catch((err) => {
+    //     // 실패시 오류 모달 노출
+    //     setFalsyPassword(true);
+    //     setCloseModal(true);
+    //   });
     axios
       .post("https://localhost:3000/auth/check", { password: isPassword })
       .then((data) => {
         // 성공시 활성화된 수정 페이지로 이동, 렌더링
-      })
-      .catch((err) => {
         // 실패시 오류 모달 노출
         setFalsyPassword(true);
         setCloseModal(true);
+      })
+      .catch((err) => {
+        setEdit(true);
+        setCloseModal(true);
       });
   };
+
+  if (isEdit) {
+    handleChangeMypage();
+  }
 
   return (
     <>
