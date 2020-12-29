@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import "./OriginMypage.css";
 import EditModal from "./EditModal";
+import WithdrawalMember from "./WithdrawalMember";
+import WithdrawalModal from "./WithdrawalModal";
 
 const OriginMypage = ({ userinfo, handleChangeMypage }) => {
   const [isEditModal, setEditModal] = useState(false);
+  const [isWithdrawalModal, setWithdrawalModal] = useState(false);
+
+  const handleWithdrawalModal = () => {
+    setWithdrawalModal(true);
+  };
+
+  const handleWithdrawalModalResponse = () => {
+    setWithdrawalModal(false);
+  };
 
   const handleEditModal = () => {
     setEditModal(true);
@@ -60,7 +71,18 @@ const OriginMypage = ({ userinfo, handleChangeMypage }) => {
           </ul>
         </div>
       </div>
-      <button className="OriginMypage__Withdrawal-btn">회원 탈퇴</button>
+
+      <button
+        onClick={handleWithdrawalModal}
+        className="OriginMypage__Withdrawal-btn"
+      >
+        회원탈퇴
+      </button>
+      {isWithdrawalModal ? (
+        <WithdrawalModal
+          handleWithdrawalModalResponse={handleWithdrawalModalResponse}
+        />
+      ) : null}
     </>
   );
 };
