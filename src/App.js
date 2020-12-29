@@ -5,6 +5,7 @@ import SignIn from "./Component/SignIn";
 import Circle from "./Component/Circle";
 import Loading from "./Component/Loading";
 import Main from "./Component/Main";
+import Mypage from "./Components/Mypage";
 
 function App() {
   console.log(process.env);
@@ -21,11 +22,24 @@ function App() {
           <li>
             <Link to="/test">test</Link>
           </li>
+          <li>
+            <Link to="/Mypage">Mypage</Link>
+          </li>
         </ul>
       </nav>
       <Switch>
         <Route path="/SignIn">
           <SignIn />
+        </Route>
+        <Route path="/Mypage">
+          <Mypage
+            userinfo={{
+              id: "jpjgv05",
+              email: "jhrang0925@gmail.com",
+              name: "harang",
+              nickname: "Hal-ang",
+            }}
+          />
         </Route>
         <Route path="/SignUp">
           <SignUp />
@@ -39,7 +53,14 @@ function App() {
         </Route>
       </Switch>
     </BrowserRouter>
-
+    // <Mypage
+    //   userinfo={{
+    //     id: "jpjgv05",
+    //     email: "jhrang0925@gmail.com",
+    //     name: "harang",
+    //     nickname: "Hal-ang",
+    //   }}
+    // />
   );
 }
 
