@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 .mask--init {
   opacity: 0;
@@ -18,7 +18,7 @@
   background-color: #ffffff;
   border-radius: 14px;
   padding: 20px;
-  transition: transform 1s;
+  transition: transform 0.5s;
 }
 .modal--init {
   transform: translateY(30px);
