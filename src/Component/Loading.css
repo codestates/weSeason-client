@@ -1,5 +1,5 @@
 .loading {
-  position: relative;
+  position: absolute;
   width: 50px;
   height: 50px;
 }
@@ -25,10 +25,10 @@
 }
 
 .loading__fill-left {
-  animation: fill 4s linear forwards infinite;
+  animation: fill 1s linear forwards infinite;
 }
 .loading__fill-right {
-  animation: fill 4s linear 1s forwards infinite;
+  animation: fill 1s linear .25s forwards infinite;
 }
 @keyframes fill {
   25% {

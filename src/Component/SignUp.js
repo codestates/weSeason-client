@@ -1,6 +1,9 @@
+import axios from "axios";
 import { useState } from "react";
 import ErrModal from "./ErrModal";
+import Loading from "./Loading";
 import "./SignUp.css";
+import { API_URL } from "../const";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -8,19 +11,24 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const checkFields = () => {
     if (!email || !password || !passwordCheck || (!name && !nickname)) {
       setError("모든 정보를 입력해주세요");
     } else if (passwordCheck !== password) {
       setError("입력하신 비밀번호가 달라요");
     } else {
+      setLoading(true);
+      axios
+        .post(`${API_URL}/users`, { name, nickname, password, email })
+        .then(({ data }) => {
+          console.log(data);
+        });
     }
-  };
-  const closeModal = () => {
-    setError("");
   };
   return (
     <div className="sign-up">
+      {loading && <Loading />}
       {error && <ErrModal setError={setError} error={error} />}
       <h1>SignUp</h1>
       <div className="sign-up__form">
