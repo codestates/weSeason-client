@@ -1,35 +1,55 @@
 import axios from "axios";
 import { useState } from "react";
-import ErrModal from "./ErrModal";
-import Loading from "./Loading";
 import "./SignUp.css";
 import { API_URL } from "../const";
+import MessageModal from "./MessageModal";
+import { useHistory } from "react-router-dom";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const checkFields = () => {
-    if (!email || !password || !passwordCheck || (!name && !nickname)) {
-      setError("모든 정보를 입력해주세요");
-    } else if (passwordCheck !== password) {
-      setError("입력하신 비밀번호가 달라요");
+  const [message, setMessage] = useState("");
+  const [clicked, setClicked] = useState(false);
+  const history = useHistory();
+  const onClick = () => {
+    setClicked(true);
+    setTimeout(async () => {
+      let message;
+      if (!email || !password || !passwordCheck || !name || !nickname) {
+        message = "모든 정보를 입력해주세요";
+      } else if (passwordCheck !== password) {
+        message = "입력하신 비밀번호가 달라요";
+      } else {
+        try {
+          await axios.post(`${API_URL}/users`, {
+            name,
+            nickname,
+            password,
+            email,
+          });
+          message = "회원가입완료!";
+        } catch (error) {
+          message = "존재하는 이메일입니다.";
+        }
+      }
+      setMessage(message);
+    }, 250);
+  };
+  const closeModal = () => {
+    if (message === "회원가입완료!") {
+      history.push("/");
     } else {
-      setLoading(true);
-      axios
-        .post(`${API_URL}/users`, { name, nickname, password, email })
-        .then(({ data }) => {
-          console.log(data);
-        });
+      setTimeout(() => {
+        setClicked(false);
+        setMessage("");
+      }, 500);
     }
   };
   return (
     <div className="sign-up">
-      {loading && <Loading />}
-      {error && <ErrModal setError={setError} error={error} />}
+      {clicked && <MessageModal closeModal={closeModal} message={message} />}
       <h1>SignUp</h1>
       <div className="sign-up__form">
         <h2>userinfo</h2>
@@ -81,7 +101,7 @@ export default function SignUp() {
           />
         </div>
       </div>
-      <button className="sign-up__btn" onClick={checkFields}>
+      <button className="sign-up__btn" onClick={onClick}>
         SignUp
       </button>
     </div>

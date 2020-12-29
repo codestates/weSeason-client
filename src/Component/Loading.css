@@ -25,10 +25,10 @@
 }
 
 .loading__fill-left {
-  animation: fill 1s linear forwards infinite;
+  animation: fill 0.5s linear forwards infinite;
 }
 .loading__fill-right {
-  animation: fill 1s linear .25s forwards infinite;
+  animation: fill 0.5s linear 0.12s forwards infinite;
 }
 @keyframes fill {
   25% {
