@@ -1,0 +1,105 @@
+.EditMypage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.EditMypage__contain--basic {
+  width: 850px;
+  height: 565px;
+  background-color: #f3f3f3;
+}
+
+.EditMypage__contain--check {
+  width: 850px;
+  height: 650px;
+  background-color: #f3f3f3;
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.EditMypage__userinfo-contain {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+.EditMypage__ul {
+  height: 80px;
+}
+.EditMypage__userinfo--item {
+  margin-bottom: 40px;
+}
+
+.EditMypage__item-title {
+  text-align: left;
+  width: 170px;
+  display: inline-block;
+  font-size: 23px;
+  margin-left: 110px;
+}
+
+.nick-name {
+  margin-left: 78px;
+}
+
+.password {
+  margin-left: 78px;
+}
+
+.EditMypage_item-info {
+  text-align: left;
+  width: 400px;
+  display: inline-block;
+  font-size: 23px;
+}
+
+.EditMypage__checkbox {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  left: 5%;
+}
+
+.EditMypage__userinfo__underline {
+  width: 620px;
+  height: 2px;
+  background-color: #c0c0c0;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.EditMypage__Withdrawal-btn {
+  font-size: 20px;
+  background-color: #f3f3f3;
+  border: 0;
+  border-radius: 4px;
+  width: 123px;
+  height: 53px;
+  /* align-self: flex-end; */
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+
+.EditMypage__submit-btn {
+  width: 108px;
+  height: 58px;
+  font-size: 23px;
+  background-color: #ffda8e;
+  border: none;
+  border-radius: 7px;
+  margin-top: 30px;
+}
+
+.EditMypage__input {
+  width: 350px;
+  height: 35px;
+  border: 0px;
+  border-radius: 3px;
+}
