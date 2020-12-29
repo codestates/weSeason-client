@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./EditModal.css";
 import axios from "axios";
-import ErrorPasswordModal from "./ErrorPasswordModal";
+import ErrorModal from "./ErrorModal";
 
 const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
   const [isCloseModal, setCloseModal] = useState(false);
   const [isPassword, setPassword] = useState("");
   const [isFalsyPassword, setFalsyPassword] = useState(false);
   const [isEdit, setEdit] = useState(false);
+  const [isErrorMessage, setErrorMessage] = useState("");
 
   const handleEditModalClose = () => {
     setCloseModal(true);
@@ -32,6 +33,7 @@ const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
     //   .catch((err) => {
     //     // 실패시 오류 모달 노출
     //     setFalsyPassword(true);
+    //     setErrorMessage("비밀번호를 재확인해주세요")
     //     setCloseModal(true);
     //   });
     axios
@@ -41,6 +43,7 @@ const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
         // 실패시 오류 모달 노출
         setFalsyPassword(true);
         setCloseModal(true);
+        setErrorMessage("비밀번호를 재확인해주세요.");
       })
       .catch((err) => {
         setEdit(true);
@@ -77,7 +80,10 @@ const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
         </div>
       ) : null}
       {isFalsyPassword ? (
-        <ErrorPasswordModal handleModalResponse={handleModalResponse} />
+        <ErrorModal
+          handleModalResponse={handleModalResponse}
+          errorMessage={isErrorMessage}
+        />
       ) : null}
     </>
   );
