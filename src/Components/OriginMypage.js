@@ -22,7 +22,7 @@ const OriginMypage = ({ userinfo, handleChangeMypage, accessToken }) => {
   const handleModalResponse = () => {
     setEditModal(false);
   };
-  //탈퇴 라우터 연결 필요
+
   return (
     <>
       {isEditModal ? (
@@ -49,11 +49,6 @@ const OriginMypage = ({ userinfo, handleChangeMypage, accessToken }) => {
             <li className="OriginMypage__userinfo--item">
               <div className="OriginMypage__item-title">닉네임</div>
               <div className="OriginMypage_item-info">{userinfo.nickname}</div>
-              <div className="OriginMypage__userinfo__underline"></div>
-            </li>
-            <li className="OriginMypage__userinfo--item">
-              <div className="OriginMypage__item-title">아이디</div>
-              <div className="OriginMypage_item-info">{userinfo.id}</div>
               <div className="OriginMypage__userinfo__underline"></div>
             </li>
             <li className="OriginMypage__userinfo--item">

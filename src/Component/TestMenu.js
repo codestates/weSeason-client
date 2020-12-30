@@ -3,7 +3,6 @@ export default function TextMenu({ accessToken, logout }) {
   return (
     <nav>
       <ul>
-        {/* 하랑님 작업 하실때는 느낌표 빼주세여 */}
         <li>
           <Link className="link" to="/">
             Main

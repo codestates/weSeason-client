@@ -9,13 +9,14 @@ import Mypage from "./Components/Mypage";
 import { useCallback, useState } from "react";
 import axios from "axios";
 import { API_URL } from "./const";
-
 import TestMenu from "./Component/TestMenu";
 import MessageModal from "./Component/MessageModal";
+import WithdrawalMember from "./Components/WithdrawalMember";
 
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [isOpen, setIsOpen] = useState(true);
+
   const openModal = useCallback((setMessage, closeModal) => {
     axios
       .get(`${API_URL}/auth/signin`, { withCredentials: true })
@@ -39,6 +40,7 @@ function App() {
         }
       });
   }, []);
+
   const closeModal = useCallback(() => {
     setIsOpen(false);
   }, []);
@@ -83,6 +85,9 @@ function App() {
               <Circle />
               <Loading />
             </Route>
+            <Route path="/Withdrawal">
+              <WithdrawalMember accessToken={accessToken} logout={logout} />
+            </Route>
             <Route exact path="/">
               <Main />
             </Route>
@@ -91,27 +96,7 @@ function App() {
         </>
       )}
     </BrowserRouter>
-    // <Mypage
-    //   userinfo={{
-    //     id: "jpjgv05",
-    //     email: "jhrang0925@gmail.com",
-    //     name: "harang",
-    //     nickname: "Hal-ang",
-    //   }}
-    // />
   );
 }
 
 export default App;
-
-// /users get > response
-// props.userinfo =
-// {
-//   message: "OK",
-//   data: {
-//     id: "jpjgv05",
-//     email: "jhrang0925@gmail.com",
-//     name: "harang",
-//     nickname: "Hal-ang",
-//   },
-// }

@@ -12,7 +12,6 @@ const EditModal = ({
   const [isCloseModal, setCloseModal] = useState(false);
   const [isPassword, setPassword] = useState("");
   const [isFalsyPassword, setFalsyPassword] = useState(false);
-  const [isEdit, setEdit] = useState(false);
   const [isErrorMessage, setErrorMessage] = useState("");
 
   const handleEditModalClose = () => {
@@ -20,27 +19,11 @@ const EditModal = ({
     handleModalResponse();
   };
 
-  // POST /auth/check
-  // req > { password : '1234' }
-  // res > { message : 'ok' }
   const changePassword = (e) => {
     setPassword(e.target.value);
   };
 
   const checkPassword = () => {
-    // 성공 ui 구현 위해 잠시 주석처리
-    // axios
-    //   .post("https://localhost:3000/auth/check", { password: isPassword })
-    //   .then((data) => {
-    //     // 성공시 활성화된 수정 페이지로 이동, 렌더링
-    //     setEdit(true);
-    //   })
-    //   .catch((err) => {
-    //     // 실패시 오류 모달 노출
-    //     setFalsyPassword(true);
-    //     setErrorMessage("비밀번호를 재확인해주세요")
-    //     setCloseModal(true);
-    //   });
     axios
       .post(
         `${API_URL}/auth/check`,
@@ -49,23 +32,16 @@ const EditModal = ({
       )
       .then((data) => {
         // 성공시 활성화된 수정 페이지로 이동, 렌더링
+        setCloseModal(true);
+        handleChangeMypage();
+      })
+      .catch((err) => {
         // 실패시 오류 모달 노출
         setFalsyPassword(true);
         setCloseModal(true);
-        setErrorMessage("비밀번호를 재확인해주세요.");
-      })
-      .catch((err) => {
-        setEdit(true);
-        setCloseModal(true);
-        handleChangeMypage();
+        setErrorMessage("비밀번호를 재확인해주세요");
       });
   };
-
-  // useEffect(checkPassword, []);
-
-  if (isEdit) {
-    
-  }
 
   return (
     <>
@@ -94,7 +70,7 @@ const EditModal = ({
       {isFalsyPassword ? (
         <ErrorModal
           handleModalResponse={handleModalResponse}
-          errorMessage={isErrorMessage}
+          error={isErrorMessage}
         />
       ) : null}
     </>
