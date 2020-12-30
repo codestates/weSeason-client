@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./OriginMypage.css";
 import EditModal from "./EditModal";
-import WithdrawalMember from "./WithdrawalMember";
 import WithdrawalModal from "./WithdrawalModal";
 
 const OriginMypage = ({ userinfo, handleChangeMypage }) => {
