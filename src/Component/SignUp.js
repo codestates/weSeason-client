@@ -1,27 +1,52 @@
+import axios from "axios";
 import { useState } from "react";
-import ErrModal from "./ErrModal";
 import "./SignUp.css";
+import { API_URL } from "../const";
+import { useMessageModal } from "./MessageModal";
+import { useHistory } from "react-router-dom";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-  const [error, setError] = useState("");
-  const checkFields = () => {
-    if (!email || !password || !passwordCheck || (!name && !nickname)) {
-      setError("모든 정보를 입력해주세요");
-    } else if (passwordCheck !== password) {
-      setError("입력하신 비밀번호가 달라요");
-    } else {
+  const history = useHistory();
+  const [isOpen, setIsOpen, MessageModal] = useMessageModal(
+    (setMessage) => {
+      if (!email || !password || !passwordCheck || !name || !nickname) {
+        setMessage("모든 정보를 입력해주세요");
+      } else if (passwordCheck !== password) {
+        setMessage("입력하신 비밀번호가 달라요");
+      } else {
+        axios
+          .post(`${API_URL}/users`, {
+            name,
+            nickname,
+            password,
+            email,
+          })
+          .then(() => {
+            setMessage("회원가입완료!");
+          })
+          .catch(() => {
+            setMessage("존재하는 이메일입니다.");
+          });
+      }
+    },
+    (message) => {
+      if (message === "회원가입완료!") {
+        history.push("/");
+      } else {
+        setIsOpen(false);
+      }
     }
-  };
-  const closeModal = () => {
-    setError("");
+  );
+  const onClick = () => {
+    setIsOpen(true);
   };
   return (
     <div className="sign-up">
-      {error && <ErrModal setError={setError} error={error} />}
+      {isOpen && MessageModal}
       <h1>SignUp</h1>
       <div className="sign-up__form">
         <h2>userinfo</h2>
@@ -73,7 +98,7 @@ export default function SignUp() {
           />
         </div>
       </div>
-      <button className="sign-up__btn" onClick={checkFields}>
+      <button className="sign-up__btn" onClick={onClick}>
         SignUp
       </button>
     </div>

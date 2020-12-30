@@ -1,19 +1,47 @@
 import { useState } from "react";
-import ErrModal from "./ErrModal";
 import "./SignIn.css";
-export default function SignIn() {
+import { useMessageModal } from "./MessageModal";
+import axios from "axios";
+import { API_URL } from "../const";
+
+export default function SignIn({ setAccessToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const checkFields = () => {
-    if (!email || !password) {
-      setError("모든 정보를 입력해주세요");
-    } else {
+  const [isOpen, setIsOpen, MessageModal] = useMessageModal(
+    (setMessage) => {
+      if (!email || !password) {
+        setMessage("모든 정보를 입력해주세요");
+      } else {
+        axios
+          .post(
+            `${API_URL}/auth/signin`,
+            { email, password },
+            { withCredentials: true }
+          )
+          .then(
+            ({
+              data: {
+                data: { accessToken },
+              },
+            }) => {
+              setAccessToken(accessToken);
+            }
+          )
+          .catch(() => {
+            setMessage("입력정보를 확인해주세요.");
+          });
+      }
+    },
+    () => {
+      setIsOpen(false);
     }
+  );
+  const onClick = () => {
+    setIsOpen(true);
   };
   return (
     <div className="sign-in">
-      {error && <ErrModal setError={setError} error={error} />}
+      {isOpen && MessageModal}
       <h1 className="sign-in__logo">weSeason</h1>
       <div className="sign-in__form">
         <div>
@@ -36,7 +64,7 @@ export default function SignIn() {
             value={password}
           />
         </div>
-        <button className="sign-in__btn" onClick={checkFields}>
+        <button className="sign-in__btn" onClick={onClick}>
           Login
         </button>
       </div>
