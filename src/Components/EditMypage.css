@@ -7,20 +7,23 @@
 
 .EditMypage__contain--basic {
   width: 850px;
-  height: 565px;
-  background-color: #f3f3f3;
+  height: 500px;
+  background-color: white;
+  border-radius: 15px;
 }
 
 .EditMypage__contain--check {
   width: 850px;
-  height: 650px;
-  background-color: #f3f3f3;
+  height: 570px;
+  background-color: white;
+  border-radius: 15px;
 }
 
 h1 {
   font-size: 38px;
   font-weight: bold;
   text-align: center;
+  color: white;
 }
 
 .EditMypage__userinfo-contain {
@@ -28,6 +31,7 @@ h1 {
   padding: 0px;
   margin: 0px;
 }
+
 .EditMypage__ul {
   height: 80px;
 }
@@ -76,7 +80,7 @@ h1 {
 
 .EditMypage__Withdrawal-btn {
   font-size: 20px;
-  background-color: #f3f3f3;
+  background-color: white;
   border: 0;
   border-radius: 4px;
   width: 123px;
@@ -91,7 +95,7 @@ h1 {
   width: 108px;
   height: 58px;
   font-size: 23px;
-  background-color: #ffda8e;
+  background-color: white;
   border: none;
   border-radius: 7px;
   margin-top: 30px;

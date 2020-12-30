@@ -17,6 +17,7 @@ function Mypage({ accessToken, setAccessToken, logout }) {
   const [isMypage, setIsMyPage] = useState(false);
   const [userinfo, setUserinfo] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
     axios
       .get(`${API_URL}/users`, {
@@ -63,15 +64,18 @@ function Mypage({ accessToken, setAccessToken, logout }) {
           }
         }
       );
-  }, [accessToken, setAccessToken, logout]);
+  }, [accessToken, setAccessToken, logout, isMypage]);
+
   const openModal = useCallback((setMessage) => {
     setMessage("오랜시간 작업이 없어 로그아웃 되었습니다.");
   }, []);
+
   const closeModal = useCallback(() => {
     logout();
   }, [logout]);
+
   const handleChangeMypage = () => {
-    setIsMyPage(true);
+    setIsMyPage(!isMypage);
   };
 
   return (
@@ -79,7 +83,11 @@ function Mypage({ accessToken, setAccessToken, logout }) {
       {isOpen && <MessageModal openModal={openModal} closeModal={closeModal} />}
       <div className="Mypage">
         {isMypage ? (
-          <EditMypage userinfo={userinfo} />
+          <EditMypage
+            userinfo={userinfo}
+            accessToken={accessToken}
+            handleChangeMypage={handleChangeMypage}
+          />
         ) : (
           <OriginMypage
             userinfo={userinfo}
@@ -93,29 +101,3 @@ function Mypage({ accessToken, setAccessToken, logout }) {
 }
 
 export default Mypage;
-// import React, { useState } from "react";
-// import OriginMypage from "./OriginMypage";
-// import EditMypage from "./EditMypage";
-
-// const Mypage = ({ userinfo }) => {
-//   [isMypage, setMypage] = useState(false);
-
-//   handleChangeMypage = () => {
-//     setMypage(true);
-//   };
-
-//   return (
-//     <div className="Mypage">
-//       {isMypage ? (
-//         <EditMypage userinfo={userinfo} />
-//       ) : (
-//         <OriginMypage
-//           userinfo={userinfo}
-//           handleChangeMypage={handleChangeMypage}
-//         />
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Mypage;

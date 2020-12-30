@@ -94,7 +94,7 @@ export default function SignUp() {
         </div>
 
         <div className="sign-up__row">
-          <label htmlFor="password-check">비밀헌호 확인</label>
+          <label htmlFor="password-check">비밀번호 확인</label>
           <input
             type="password"
             id="password-check"

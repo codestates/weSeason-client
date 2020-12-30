@@ -1,7 +1,8 @@
 .OriginMypage__contain {
   width: 748px;
-  height: 565px;
-  background-color: #f3f3f3;
+  height: 500px;
+  background-color: white;
+  border-radius: 15px;
 }
 
 h1 {
@@ -11,7 +12,7 @@ h1 {
 }
 
 .OriginMypage__edit-btn {
-  background-color: #f3f3f3;
+  background-color: white;
   border: 0;
   font-size: 20px;
   width: 45px;
@@ -62,7 +63,7 @@ h1 {
 
 .OriginMypage__Withdrawal-btn {
   font-size: 20px;
-  background-color: #f3f3f3;
+  background-color: white;
   border: 0;
   border-radius: 4px;
   width: 123px;
