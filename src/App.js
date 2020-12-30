@@ -12,6 +12,8 @@ import { API_URL } from "./const";
 import { useMessageModal } from "./Component/MessageModal";
 import TestMenu from "./Component/TestMenu";
 
+import WithdrawalMember from "./Components/WithdrawalMember";
+
 function App() {
   const [accessToken, setAccessToken] = useState("");
   const [isOpen, setIsOpen, MessageModal] = useMessageModal(

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./EditModal.css";
 import axios from "axios";
 import ErrorModal from "./ErrorModal";
@@ -50,6 +50,8 @@ const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
         setCloseModal(true);
       });
   };
+
+  // useEffect(checkPassword, []);
 
   if (isEdit) {
     handleChangeMypage();
