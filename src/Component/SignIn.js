@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "./SignIn.css";
-import { useMessageModal } from "./MessageModal";
+import MessageModal from "./MessageModal";
 import axios from "axios";
 import { API_URL } from "../const";
 
 export default function SignIn({ setAccessToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isOpen, setIsOpen, MessageModal] = useMessageModal(
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = useCallback(
     (setMessage) => {
       if (!email || !password) {
         setMessage("모든 정보를 입력해주세요");
@@ -32,16 +33,17 @@ export default function SignIn({ setAccessToken }) {
           });
       }
     },
-    () => {
-      setIsOpen(false);
-    }
+    [email, password, setAccessToken]
   );
+  const closeModal = useCallback(() => {
+    setIsOpen(false);
+  }, []);
   const onClick = () => {
     setIsOpen(true);
   };
   return (
     <div className="sign-in">
-      {isOpen && MessageModal}
+      {isOpen && <MessageModal openModal={openModal} closeModal={closeModal} />}
       <h1 className="sign-in__logo">weSeason</h1>
       <div className="sign-in__form">
         <div>

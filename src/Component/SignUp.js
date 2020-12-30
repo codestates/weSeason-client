@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "./SignUp.css";
 import { API_URL } from "../const";
-import { useMessageModal } from "./MessageModal";
+import MessageModal from "./MessageModal";
 import { useHistory } from "react-router-dom";
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -11,7 +11,8 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
   const history = useHistory();
-  const [isOpen, setIsOpen, MessageModal] = useMessageModal(
+  const [isOpen, setIsOpen] = useState(false);
+  const openModal = useCallback(
     (setMessage) => {
       if (!email || !password || !passwordCheck || !name || !nickname) {
         setMessage("모든 정보를 입력해주세요");
@@ -33,20 +34,24 @@ export default function SignUp() {
           });
       }
     },
+    [email, name, nickname, password, passwordCheck]
+  );
+  const closeModal = useCallback(
     (message) => {
       if (message === "회원가입완료!") {
         history.push("/");
       } else {
         setIsOpen(false);
       }
-    }
+    },
+    [history]
   );
   const onClick = () => {
     setIsOpen(true);
   };
   return (
     <div className="sign-up">
-      {isOpen && MessageModal}
+      {isOpen && <MessageModal openModal={openModal} closeModal={closeModal} />}
       <h1>SignUp</h1>
       <div className="sign-up__form">
         <h2>userinfo</h2>

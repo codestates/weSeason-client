@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./EditModal.css";
 import axios from "axios";
 import ErrorModal from "./ErrorModal";
+import { API_URL } from "../const";
 
-const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
+const EditModal = ({
+  handleModalResponse,
+  handleChangeMypage,
+  accessToken,
+}) => {
   const [isCloseModal, setCloseModal] = useState(false);
   const [isPassword, setPassword] = useState("");
   const [isFalsyPassword, setFalsyPassword] = useState(false);
@@ -37,7 +42,11 @@ const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
     //     setCloseModal(true);
     //   });
     axios
-      .post("https://localhost:3000/auth/check", { password: isPassword })
+      .post(
+        `${API_URL}/auth/check`,
+        { password: isPassword },
+        { headers: { authorization: `Bearer ${accessToken}` } }
+      )
       .then((data) => {
         // 성공시 활성화된 수정 페이지로 이동, 렌더링
         // 실패시 오류 모달 노출
@@ -48,13 +57,14 @@ const EditModal = ({ handleModalResponse, handleChangeMypage }) => {
       .catch((err) => {
         setEdit(true);
         setCloseModal(true);
+        handleChangeMypage();
       });
   };
 
   // useEffect(checkPassword, []);
 
   if (isEdit) {
-    handleChangeMypage();
+    
   }
 
   return (
