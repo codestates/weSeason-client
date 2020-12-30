@@ -1,0 +1,65 @@
+.WithdrawalMember {
+  background-color: #fffff5;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.WithdrawalMember__main-contain {
+  width: 700px;
+  height: 344px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  font-size: 30px;
+}
+
+.WithdrawalMember__input-password {
+  width: 320px;
+  height: 45px;
+  background-color: white;
+  border: 0;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+.WithdrawalMember__submit-btn--origin {
+  width: 108px;
+  height: 58px;
+  background-color: #ffda8e;
+  border: 0;
+  border-radius: 5px;
+  font-size: 23px;
+  margin-top: 40px;
+}
+
+.WithdrawalMember__submit-btn--black {
+  width: 108px;
+  height: 58px;
+  background-color: #c4c4c4;
+  border: 0;
+  border-radius: 5px;
+  font-size: 23px;
+  margin-top: 40px;
+}
+
+.WithdrawalMember__out-btn {
+  position: absolute;
+  bottom: 10%;
+  width: 250px;
+  height: 74px;
+  font-size: 23px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #c4c4c4;
+}

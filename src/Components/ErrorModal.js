@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./ErrorPasswordModal.css";
+import "./ErrorModal.css";
 
-const ErrorPasswordModal = ({ handleModalResponse }) => {
+const ErrorModal = ({ error, handleModalResponse }) => {
   const [isErrorModalClose, setErrorModalClose] = useState(false);
 
   const handleChangeCloseErrorModal = () => {
@@ -14,7 +14,7 @@ const ErrorPasswordModal = ({ handleModalResponse }) => {
       {isErrorModalClose ? null : (
         <div className="EditModal__background">
           <div className="EditModal__contain">
-            <p>비밀번호를 재확인해주세요.</p>
+            <p>{error}</p>
             <div className="EditModal__btn-contain">
               <button
                 className="EditModal__btn"
@@ -30,4 +30,4 @@ const ErrorPasswordModal = ({ handleModalResponse }) => {
   );
 };
 
-export default ErrorPasswordModal;
+export default ErrorModal;

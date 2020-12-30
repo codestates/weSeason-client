@@ -1,7 +1,12 @@
 .loading {
-  position: relative;
+  position: absolute;
   width: 50px;
   height: 50px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
 }
 .loading__mask-left,
 .loading__mask-right {
@@ -25,10 +30,10 @@
 }
 
 .loading__fill-left {
-  animation: fill 4s linear forwards infinite;
+  animation: fill 0.5s linear forwards infinite;
 }
 .loading__fill-right {
-  animation: fill 4s linear 1s forwards infinite;
+  animation: fill 0.5s linear 0.12s forwards infinite;
 }
 @keyframes fill {
   25% {
