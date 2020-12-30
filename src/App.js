@@ -6,6 +6,7 @@ import Circle from "./Component/Circle";
 import Loading from "./Component/Loading";
 import Main from "./Component/Main";
 import Mypage from "./Components/Mypage";
+import WithdrawalMember from "./Components/WithdrawalMember";
 
 function App() {
   console.log(process.env);
@@ -24,6 +25,9 @@ function App() {
           </li>
           <li>
             <Link to="/Mypage">Mypage</Link>
+          </li>
+          <li>
+            <Link to="/Withdrawal">WithdrawalMember</Link>
           </li>
         </ul>
       </nav>
@@ -47,6 +51,9 @@ function App() {
         <Route path="/test">
           <Circle />
           <Loading />
+        </Route>
+        <Route path="/Withdrawal">
+          <WithdrawalMember />
         </Route>
         <Route path="/">
           <Main />
