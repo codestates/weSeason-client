@@ -3,7 +3,7 @@ import "./OriginMypage.css";
 import EditModal from "./EditModal";
 import WithdrawalModal from "./WithdrawalModal";
 
-const OriginMypage = ({ userinfo, handleChangeMypage }) => {
+const OriginMypage = ({ userinfo, handleChangeMypage, accessToken }) => {
   const [isEditModal, setEditModal] = useState(false);
   const [isWithdrawalModal, setWithdrawalModal] = useState(false);
 
@@ -27,6 +27,7 @@ const OriginMypage = ({ userinfo, handleChangeMypage }) => {
     <>
       {isEditModal ? (
         <EditModal
+          accessToken={accessToken}
           userinfo={userinfo}
           handleModalResponse={handleModalResponse}
           handleChangeMypage={handleChangeMypage}

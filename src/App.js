@@ -6,51 +6,43 @@ import Circle from "./Component/Circle";
 import Loading from "./Component/Loading";
 import Main from "./Component/Main";
 import Mypage from "./Components/Mypage";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import axios from "axios";
 import { API_URL } from "./const";
-import { useMessageModal } from "./Component/MessageModal";
-import TestMenu from "./Component/TestMenu";
 
-import WithdrawalMember from "./Components/WithdrawalMember";
+import TestMenu from "./Component/TestMenu";
+import MessageModal from "./Component/MessageModal";
 
 function App() {
   const [accessToken, setAccessToken] = useState("");
-  const [isOpen, setIsOpen, MessageModal] = useMessageModal(
-    (setMessage, closeModal) => {
-      axios
-        .get(`${API_URL}/auth/signin`, { withCredentials: true })
-        .then(
-          ({
-            data: {
-              data: { accessToken },
-            },
-          }) => {
-            setAccessToken(accessToken);
-            closeModal();
-          }
-        )
-        .catch(
-          ({
-            response: {
-              data: { message },
-            },
-          }) => {
-            if (message === "invalid refresh token") {
-              logout().then(() => {
-                setMessage("오랜시간 작업이 없어 로그아웃 되었습니다.");
-              });
-            } else {
-              closeModal();
-            }
-          }
-        );
-    },
-    () => {
-      setIsOpen(false);
-    },
-    true
-  );
+  const [isOpen, setIsOpen] = useState(true);
+  const openModal = useCallback((setMessage, closeModal) => {
+    axios
+      .get(`${API_URL}/auth/signin`, { withCredentials: true })
+      .then(
+        ({
+          data: {
+            data: { accessToken },
+          },
+        }) => {
+          setAccessToken(accessToken);
+          closeModal();
+        }
+      )
+      .catch(({ response: { data: { message } = {} } = {} } = {}) => {
+        if (message === "invalid refresh token") {
+          logout().then(() => {
+            setMessage("오랜시간 작업이 없어 로그아웃 되었습니다.");
+          });
+        } else {
+          closeModal();
+        }
+      });
+  }, []);
+  const closeModal = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   const logout = () => {
     return axios
       .post(`${API_URL}/auth/signout`, null, { withCredentials: true })
@@ -61,7 +53,7 @@ function App() {
   return (
     <BrowserRouter>
       {isOpen ? (
-        MessageModal
+        <MessageModal openModal={openModal} closeModal={closeModal} />
       ) : (
         <>
           <TestMenu accessToken={accessToken} logout={logout} />
