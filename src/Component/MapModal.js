@@ -1,36 +1,34 @@
 import { useEffect, useRef, useState } from "react";
 import "./MapModal.css";
-export default function MapModal({ setOpen }) {
-  const [init, setInit] = useState(true);
+export default function MapModal({ closeModal }) {
+  const [init, setInit] = useState(false);
   const map = useRef();
-  const doNothing = (e) => {
-    e.stopPropagation();
-  };
   useEffect(() => {
-    setInit(false);
-    const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
-    };
-    new window.kakao.maps.Map(map.current, options);
-  }, []);
-  const closeModal = () => {
-    setInit(true);
     setTimeout(() => {
-      setOpen(false);
-    }, 1000);
+      const options = {
+        center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+        level: 3,
+      };
+      new window.kakao.maps.Map(map.current, options);
+      setInit(true);
+    }, 250);
+  }, []);
+  const onClick = () => {
+    setInit(false);
+    setTimeout(() => {
+      closeModal();
+    }, 500);
   };
   return (
-    <div className={`mask${init ? " mask--init" : ""}`} onClick={closeModal}>
-      <div
-        className={`modal--map modal${init ? " modal--init" : ""}`}
-        onClick={doNothing}
-      >
-        <div id="map" ref={map}></div>
-        <button className="modal__close-btn" onClick={closeModal}>
-          X
-        </button>
+    <>
+      <div className={`mask${init ? "" : " mask--before"}`}>
+        <div className={`modal modal--map${init ? "" : " modal--before"}`}>
+          <div id="map" ref={map}></div>
+          <button className="modal__close-btn" onClick={onClick}>
+            X
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

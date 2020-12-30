@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import "./SignUp.css";
 import { API_URL } from "../const";
-import MessageModal from "./MessageModal";
+import { useMessageModal } from "./MessageModal";
 import { useHistory } from "react-router-dom";
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -10,46 +10,43 @@ export default function SignUp() {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
-  const [message, setMessage] = useState("");
-  const [clicked, setClicked] = useState(false);
   const history = useHistory();
-  const onClick = () => {
-    setClicked(true);
-    setTimeout(async () => {
-      let message;
+  const [isOpen, setIsOpen, MessageModal] = useMessageModal(
+    (setMessage) => {
       if (!email || !password || !passwordCheck || !name || !nickname) {
-        message = "모든 정보를 입력해주세요";
+        setMessage("모든 정보를 입력해주세요");
       } else if (passwordCheck !== password) {
-        message = "입력하신 비밀번호가 달라요";
+        setMessage("입력하신 비밀번호가 달라요");
       } else {
-        try {
-          await axios.post(`${API_URL}/users`, {
+        axios
+          .post(`${API_URL}/users`, {
             name,
             nickname,
             password,
             email,
+          })
+          .then(() => {
+            setMessage("회원가입완료!");
+          })
+          .catch(() => {
+            setMessage("존재하는 이메일입니다.");
           });
-          message = "회원가입완료!";
-        } catch (error) {
-          message = "존재하는 이메일입니다.";
-        }
       }
-      setMessage(message);
-    }, 250);
-  };
-  const closeModal = () => {
-    if (message === "회원가입완료!") {
-      history.push("/");
-    } else {
-      setTimeout(() => {
-        setClicked(false);
-        setMessage("");
-      }, 500);
+    },
+    (message) => {
+      if (message === "회원가입완료!") {
+        history.push("/");
+      } else {
+        setIsOpen(false);
+      }
     }
+  );
+  const onClick = () => {
+    setIsOpen(true);
   };
   return (
     <div className="sign-up">
-      {clicked && <MessageModal closeModal={closeModal} message={message} />}
+      {isOpen && MessageModal}
       <h1>SignUp</h1>
       <div className="sign-up__form">
         <h2>userinfo</h2>

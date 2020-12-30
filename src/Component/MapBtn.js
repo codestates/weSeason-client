@@ -1,14 +1,17 @@
 import { useState } from "react";
 import MapModal from "./MapModal";
 export default function MapBtn() {
-  const [open, setOpen] = useState(false);
-  const openModal = () => {
-    setOpen(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const onClick = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
   };
   return (
     <div>
-      {open && <MapModal setOpen={setOpen} />}
-      <button onClick={openModal}>동네 검색</button>
+      {isOpen && <MapModal closeModal={closeModal} />}
+      <button onClick={onClick}>동네 검색</button>
     </div>
   );
 }

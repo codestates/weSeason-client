@@ -1,16 +1,14 @@
 import { useState } from "react";
 import "./SignIn.css";
-import MessageModal from "./MessageModal";
+import { useMessageModal } from "./MessageModal";
 import axios from "axios";
 import { API_URL } from "../const";
-export default function SignIn() {
+
+export default function SignIn({ setAccessToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [clicked, setClicked] = useState(false);
-  const onClick = () => {
-    setClicked(true);
-    setTimeout(() => {
+  const [isOpen, setIsOpen, MessageModal] = useMessageModal(
+    (setMessage) => {
       if (!email || !password) {
         setMessage("모든 정보를 입력해주세요");
       } else {
@@ -20,24 +18,30 @@ export default function SignIn() {
             { email, password },
             { withCredentials: true }
           )
-          .then(() => {
-            setMessage("오늘도 너무 춥네요!");
-          })
+          .then(
+            ({
+              data: {
+                data: { accessToken },
+              },
+            }) => {
+              setAccessToken(accessToken);
+            }
+          )
           .catch(() => {
             setMessage("입력정보를 확인해주세요.");
           });
       }
-    }, 250);
-  };
-  const closeModal = () => {
-    setTimeout(() => {
-      setClicked(false);
-      setMessage("");
-    }, 500);
+    },
+    () => {
+      setIsOpen(false);
+    }
+  );
+  const onClick = () => {
+    setIsOpen(true);
   };
   return (
     <div className="sign-in">
-      {clicked && <MessageModal closeModal={closeModal} message={message} />}
+      {isOpen && MessageModal}
       <h1 className="sign-in__logo">weSeason</h1>
       <div className="sign-in__form">
         <div>
