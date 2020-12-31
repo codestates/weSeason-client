@@ -98,7 +98,7 @@ function App() {
               )}
             </Route>
             <Route exact path="/">
-              <Main />
+              <Main accessToken={accessToken} />
             </Route>
             <Route path="/">어디에 접속할려구요?</Route>
           </Switch>

@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "jalnan";
+  src: url("../fonts/Jalnan.ttf");
+}
+
+.WeatherBoxBasic__contain {
+  width: 680px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.WeatherBoxBasic__current {
+  font-family: "jalnan";
+  font-size: 40px;
+  color: white;
+  text-shadow: 5px 5px rgb(0, 0, 0, 0.44);
+  margin-bottom: 40px;
+}
+
+.WeatherBoxBasic__item-box {
+  width: 680px;
+  height: 168px;
+  background-color: rgb(106, 106, 106, 0.34);
+  border-radius: 20px;
+  white-space: nowrap;
+  overflow-y: scroll;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.WeatherBoxBasic__item-box::-webkit-scrollbar {
+  display: none;
+}
