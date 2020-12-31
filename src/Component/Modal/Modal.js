@@ -51,7 +51,9 @@ export default function Modal({ children, closeModal }) {
             className={`${isInit ? "modal__window--open " : ""}modal__window`}
           >
             {Children.map(children, (child) => {
-              return cloneElement(child, { close });
+              if (typeof child.type === "function")
+                return cloneElement(child, { close: close });
+              return cloneElement(child);
             })}
             <button className="modal__close-btn" onClick={close}>
               X
