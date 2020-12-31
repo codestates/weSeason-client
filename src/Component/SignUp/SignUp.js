@@ -16,42 +16,39 @@ export default function SignUp() {
   const [isSuccess, setIsSuccess] = useState(false);
   const history = useHistory();
   // signUp 버튼 클릭,엔터 시
-  const signUp = useCallback(
-    (e) => {
-      e.preventDefault();
-      //모달창이 없을때만 실행
-      if (!isSuccess && !isError) {
-        if (!email || !password || !passwordCheck || !name || !nickname) {
-          // 모두 입력 안됐을때 에러모달 오픈
-          setIsError(true);
-          setError("모든 정보를 입력해주세요");
-        } else if (passwordCheck !== password) {
-          // 비밀번호, 비밀번호 확인이 각각 다를때
-          setIsError(true);
-          setError("입력하신 비밀번호가 달라요");
-        } else {
-          // 회원가입 요청
-          axios
-            .post(`${API_URL}/users`, {
-              name,
-              nickname,
-              password,
-              email,
-            })
-            // 성공시 성공 모달 오픈
-            .then(() => {
-              setIsSuccess(true);
-            })
-            // 실패시 오류 모달 오픈
-            .catch(() => {
-              setIsError(true);
-              setError("존재하는 이메일입니다.");
-            });
-        }
+  const signUp = (e) => {
+    e.preventDefault();
+    //모달창이 없을때만 실행
+    if (!isSuccess && !isError) {
+      if (!email || !password || !passwordCheck || !name || !nickname) {
+        // 모두 입력 안됐을때 에러모달 오픈
+        setIsError(true);
+        setError("모든 정보를 입력해주세요");
+      } else if (passwordCheck !== password) {
+        // 비밀번호, 비밀번호 확인이 각각 다를때
+        setIsError(true);
+        setError("입력하신 비밀번호가 달라요");
+      } else {
+        // 회원가입 요청
+        axios
+          .post(`${API_URL}/users`, {
+            name,
+            nickname,
+            password,
+            email,
+          })
+          // 성공시 성공 모달 오픈
+          .then(() => {
+            setIsSuccess(true);
+          })
+          // 실패시 오류 모달 오픈
+          .catch(() => {
+            setIsError(true);
+            setError("존재하는 이메일입니다.");
+          });
       }
-    },
-    [email, password, passwordCheck, name, nickname, isError, isSuccess]
-  );
+    }
+  };
   //에러 모달 닫기 버튼
   const closeError = useCallback(() => {
     setIsError(false);
@@ -104,7 +101,7 @@ export default function SignUp() {
               <div className="sign-up__row">
                 <label htmlFor="email">이메일</label>
                 <input
-                  type="text"
+                  type="email"
                   id="email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}

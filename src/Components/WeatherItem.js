@@ -5,7 +5,7 @@ const WeatherItem = ({ hour, temp, icon, feelsLike }) => {
   const timestamp = hour * 1000;
   const transDate = new Date(timestamp);
   const hourDate = JSON.stringify(transDate).substring(12, 14); // ex) "11"
-  const weatherIcon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  const weatherIcon = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
   return (
     <>

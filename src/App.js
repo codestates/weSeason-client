@@ -17,13 +17,13 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   //로그아웃 하고 엑세스 토큰 비우기
-  const logout = useCallback(async () => {
+  const logout = () => {
     return axios
       .post(`${API_URL}/auth/signout`, null, { withCredentials: true })
       .then(() => {
         setAccessToken("");
       });
-  }, []);
+  };
   // 앱 실행시  로그인했는지 확인
   useEffect(() => {
     axios
@@ -54,7 +54,7 @@ function App() {
     // 모달 닫기 , 로그아웃
     setIsError(false);
     logout();
-  }, [logout]);
+  }, []);
   //앱 시작시 로딩 표시
   return (
     <>

@@ -1,11 +1,32 @@
-import React, { useState } from "react";
 import MapBtn from "./MapBtn";
 import "./Main.css";
-import WeatherBoxBasic from "../Components/WeatherBoxBasic";
+import WeatherBoxBasic from "../../Components/WeatherBoxBasic";
 import axios from "axios";
-import { API_URL } from "../const";
+import { API_URL } from "../../const";
+import { useEffect, useState } from "react";
 
-const Main = ({ accessToken }) => {
+export default function Main({ accessToken }) {
+  const [lat, setLat] = useState(37.566826);
+  const [lon, setLon] = useState(126.9786567);
+  useEffect(() => {
+    let id;
+    if (navigator.geolocation) {
+      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+      const success = (position) => {
+        const lat = position.coords.latitude; // 위도
+        const lon = position.coords.longitude; // 경도
+        setLat(lat);
+        setLon(lon);
+      };
+      id = navigator.geolocation.watchPosition(success);
+    }
+    return () => {
+      if (id) {
+        navigator.geolocation.clearWatch(id);
+      }
+    };
+  }, []);
+
   // html geolocation api 호출
 
   //  navigator.geolocation.getCurrentPosition((position) => {
@@ -187,10 +208,8 @@ const Main = ({ accessToken }) => {
           weatherData={isWeatherData}
           accessToken={accessToken}
         />
-        <MapBtn />
+        <MapBtn lat={lat} lon={lon} setLat={setLat} setLon={setLon} />
       </div>
     </>
   );
-};
-
-export default Main;
+}
