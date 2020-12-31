@@ -104,7 +104,7 @@ export default function SignUp() {
               <div className="sign-up__row">
                 <label htmlFor="email">이메일</label>
                 <input
-                  type="text"
+                  type="email"
                   id="email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}

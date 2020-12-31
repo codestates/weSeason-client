@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./EditMypage.css";
 import ErrorModal from "./ErrorModal";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 import { API_URL } from "../const";
 
 const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
@@ -12,8 +11,6 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
   const [isPassword, setPassword] = useState("");
   const [isdoublePassword, setDoublePassword] = useState("");
   const [isError, setError] = useState("");
-
-  let history = useHistory();
 
   // 유효성 검사?? 필요!
   const handleModalResponse = () => {

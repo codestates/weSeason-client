@@ -3,16 +3,14 @@ import React, {
   cloneElement,
   useCallback,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import Loading from "../Loading/Loading";
 import "./Modal.css";
 
-export default function Modal({ children, closeModal, make }) {
+export default function Modal({ children, closeModal }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isInit, setIsInit] = useState(true);
-  const ref = useRef();
   // 모달 창 끄기
   const close = useCallback(() => {
     // 애니메이션 시작
@@ -20,18 +18,16 @@ export default function Modal({ children, closeModal, make }) {
     // 0.5 초 후에 모달창 사라짐
     setTimeout(closeModal, 500);
   }, [closeModal]);
-  // 엔터키 눌렀을때 모달 창 닫기
+  // ESC 눌렀을때 모달 창 닫기
   const onKeyDown = useCallback(
     ({ keyCode }) => {
-      if (keyCode === 13) {
+      if (keyCode === 27) {
         close();
       }
     },
     [close]
   );
   useEffect(() => {
-    //만약 외부에서 접근해야 되는 dom 이 있는경우
-    make && make(ref);
     // 키보드 이벤트 리스닝
     window.addEventListener("keydown", onKeyDown);
     // 로딩 뜨고 0.3초 후에 모달창 표시
@@ -44,7 +40,7 @@ export default function Modal({ children, closeModal, make }) {
       window.removeEventListener("keydown", onKeyDown);
       clearTimeout(id);
     };
-  }, [onKeyDown, ref, make]);
+  }, [onKeyDown]);
   // 모달창 뜨기전에 무조건 로딩 표시
   return (
     <>
@@ -55,11 +51,12 @@ export default function Modal({ children, closeModal, make }) {
             className={`${isInit ? "modal__window--open " : ""}modal__window`}
           >
             {Children.map(children, (child) => {
-              return cloneElement(child, { ref });
+              return cloneElement(child, { close });
             })}
             <button className="modal__close-btn" onClick={close}>
               X
             </button>
+            <div className="modal__info">ESC를 눌러서 닫을 수 있습니다.</div>
           </div>
         </div>
       </div>

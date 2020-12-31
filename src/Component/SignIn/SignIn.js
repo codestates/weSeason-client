@@ -79,7 +79,7 @@ export default function SignIn({ setAccessToken }) {
               <label htmlFor="email">이메일</label>
               <input
                 className="sign-in__input"
-                type="text"
+                type="email"
                 id="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}

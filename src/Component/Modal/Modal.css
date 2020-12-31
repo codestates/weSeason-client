@@ -21,7 +21,7 @@
   transition: transform 0.5s;
 }
 .modal__window p {
-  margin: 10px 30px;
+  margin: 20px 30px;
 }
 .modal__window--open {
   transform: translateY(30px);
@@ -30,12 +30,13 @@
   background-color: #ffda8e;
   border: none;
   border-radius: 8px;
-  width: 63px;
-  height: 42px;
+  width: 20%;
+  height: 3.5vh;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  min-width: 80px;
 }
-
-#map {
-  width: 70vw;
-  height: 70vh;
-  margin: 20px;
+.modal__info {
+  color: gray;
+  font-size: 10px;
 }
