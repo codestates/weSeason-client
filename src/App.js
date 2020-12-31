@@ -81,15 +81,11 @@ function App() {
                 />
               )}
             </Route>
-            <Route path="/test">
-              <Circle />
-              <Loading />
-            </Route>
             <Route path="/Withdrawal">
               <WithdrawalMember accessToken={accessToken} logout={logout} />
             </Route>
             <Route exact path="/">
-              <Main />
+              <Main accessToken={accessToken} />
             </Route>
             <Route path="/">어디에 접속할려구요?</Route>
           </Switch>
