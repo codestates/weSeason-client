@@ -1,23 +1,32 @@
 import { Link } from "react-router-dom";
-export default function TextMenu({ accessToken, logout }) {
+import { useState } from "react";
+import "./Menu.css";
+
+export default function Menu({ accessToken, logout }) {
+  const [isMenu, setMenu] = useState(false);
+
+  const handleClickMenu = () => {
+    setMenu(!isMenu);
+  };
+
   return (
     <nav>
-      <ul>
+      <ul className={isMenu ? "Menu__ul--before" : ""}>
         <li>
           <Link className="link" to="/">
-            Main
+            main
           </Link>
         </li>
         {!accessToken ? (
           <>
             <li>
               <Link className="link" to="/signin">
-                SignIn
+                login
               </Link>
             </li>
             <li>
               <Link className="link" to="/signup">
-                SignUp
+                signup
               </Link>
             </li>
           </>
@@ -25,22 +34,20 @@ export default function TextMenu({ accessToken, logout }) {
           <>
             <li>
               <Link className="link" to="/mypage">
-                Mypage
+                mypage
               </Link>
             </li>
             <li>
               <button className="link" onClick={logout}>
-                SignOut
+                logout
               </button>
             </li>
           </>
         )}
-        <li>
-          <Link className="link" to="/test">
-            test
-          </Link>
-        </li>
       </ul>
+      <div className="Menu__btn" onClick={handleClickMenu}>
+        MENU
+      </div>
     </nav>
   );
 }

@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "appleGothicR";
+  src: url("../fonts/AppleSDGothicNeoR.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../fonts/AppleSDGothicNeoL.ttf");
+}
+
 .WithdrawalModal__background {
   position: absolute;
   content: "";
@@ -24,7 +34,8 @@
 }
 
 p {
-  font-size: 23px;
+  font-family: "appleGothicL";
+  font-size: 20px;
 }
 
 .WithdrawalModal__btn-contain {

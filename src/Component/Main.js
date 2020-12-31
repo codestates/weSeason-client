@@ -1,5 +1,12 @@
 import MapBtn from "./MapBtn";
+import "./Main.css";
 
 export default function Main() {
-  return <MapBtn />;
+  return (
+    <>
+      <div className="Main">
+        <MapBtn />
+      </div>
+    </>
+  );
 }

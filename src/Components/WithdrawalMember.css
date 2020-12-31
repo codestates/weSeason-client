@@ -1,5 +1,15 @@
+@font-face {
+  font-family: "appleGothicUL";
+  src: url("../fonts/AppleSDGothicNeoUL.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../fonts/AppleSDGothicNeoL.ttf");
+}
+
 .WithdrawalMember {
-  background-color: #fffff5;
+  background-color: #619fd0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -20,11 +30,12 @@
 }
 
 .message {
+  font-family: "appleGothicUL";
   font-size: 30px;
 }
 
 .WithdrawalMember__input-password {
-  width: 320px;
+  width: 450px;
   height: 45px;
   background-color: white;
   border: 0;
@@ -34,6 +45,7 @@
 }
 
 .WithdrawalMember__submit-btn--origin {
+  font-family: "appleGothicL";
   width: 108px;
   height: 58px;
   background-color: #ffda8e;
@@ -44,6 +56,7 @@
 }
 
 .WithdrawalMember__submit-btn--black {
+  font-family: "appleGothicL";
   width: 108px;
   height: 58px;
   background-color: #c4c4c4;
@@ -54,6 +67,7 @@
 }
 
 .WithdrawalMember__out-btn {
+  font-family: "appleGothicL";
   position: absolute;
   bottom: 10%;
   width: 250px;
