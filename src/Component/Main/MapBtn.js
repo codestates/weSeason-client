@@ -4,11 +4,10 @@ import Modal from "../Modal/Modal";
 import Map from "../Map/Map";
 export default function MapBtn(props) {
   const [isOpen, setIsOpen] = useState(false);
-
   //맵 모달 오픈
-  const clickButton = useCallback(() => {
+  const clickButton = () => {
     setIsOpen(true);
-  }, []);
+  };
   //맵 모달 클로스
   const close = useCallback(() => {
     setIsOpen(false);

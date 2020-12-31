@@ -45,7 +45,8 @@ nav {
   font-size: 23px;
   line-height: 60px;
   color: white;
-  text-shadow: 2px 2px 2px rgb(0, 0, 0, 0.7);
+
+  text-shadow: 3px 3px rgb(0, 0, 0, 0.5);
 }
 .Menu__ul--before {
   display: flex;

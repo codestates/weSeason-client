@@ -12,43 +12,40 @@ export default function SignIn({ setAccessToken }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [temp, setTemp] = useState("");
   // 로그인 버튼 클릭,엔터 시
-  const signIn = useCallback(
-    (e) => {
-      e.preventDefault();
-      //모달창이 없을때만 실행
-      if (!isError && !isSuccess) {
-        if (!email || !password) {
-          // 입력 안했을때
-          setIsError(true);
-          setError("모든 정보를 입력해주세요");
-        } else {
-          axios
-            .post(
-              `${API_URL}/auth/signin`,
-              { email, password },
-              { withCredentials: true }
-            )
-            .then(
-              ({
-                data: {
-                  data: { accessToken },
-                },
-              }) => {
-                //로그인 성공시 성공 모달, 토큰 임시저장
-                setIsSuccess(true);
-                setTemp(accessToken);
-              }
-            )
-            .catch(() => {
-              //실패시
-              setIsError(true);
-              setError("입력정보를 확인해주세요.");
-            });
-        }
+  const signIn = (e) => {
+    e.preventDefault();
+    //모달창이 없을때만 실행
+    if (!isError && !isSuccess) {
+      if (!email || !password) {
+        // 입력 안했을때
+        setIsError(true);
+        setError("모든 정보를 입력해주세요");
+      } else {
+        axios
+          .post(
+            `${API_URL}/auth/signin`,
+            { email, password },
+            { withCredentials: true }
+          )
+          .then(
+            ({
+              data: {
+                data: { accessToken },
+              },
+            }) => {
+              //로그인 성공시 성공 모달, 토큰 임시저장
+              setIsSuccess(true);
+              setTemp(accessToken);
+            }
+          )
+          .catch(() => {
+            //실패시
+            setIsError(true);
+            setError("입력정보를 확인해주세요.");
+          });
       }
-    },
-    [email, password, isError, isSuccess]
-  );
+    }
+  };
 
   //에러 모달 닫기 버튼
   const closeError = useCallback(() => {
