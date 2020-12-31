@@ -1,25 +1,34 @@
 import "./App.css";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import SignUp from "./Component/SignUp";
-import SignIn from "./Component/SignIn";
-import Circle from "./Component/Circle";
-import Loading from "./Component/Loading";
-import Main from "./Component/Main";
-import Mypage from "./Components/Mypage";
-import { useCallback, useState } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "./const";
+import SignUp from "./Component/SignUp/SignUp";
+import SignIn from "./Component/SignIn/SignIn";
+import Main from "./Component/Main/Main";
+import Mypage from "./Components/Mypage";
 import TestMenu from "./Component/TestMenu";
-import MessageModal from "./Component/MessageModal";
 import WithdrawalMember from "./Components/WithdrawalMember";
+import Loading from "./Component/Loading/Loading";
+import Modal from "./Component/Modal/Modal";
 
 function App() {
   const [accessToken, setAccessToken] = useState("");
-  const [isOpen, setIsOpen] = useState(true);
-
-  const openModal = useCallback((setMessage, closeModal) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  //로그아웃 하고 엑세스 토큰 비우기
+  const logout = useCallback(async () => {
+    return axios
+      .post(`${API_URL}/auth/signout`, null, { withCredentials: true })
+      .then(() => {
+        setAccessToken("");
+      });
+  }, []);
+  // 앱 실행시  로그인했는지 확인
+  useEffect(() => {
     axios
       .get(`${API_URL}/auth/signin`, { withCredentials: true })
+      //로그인 유지시 엑세스 토큰 세팅 및 로딩 끝.
       .then(
         ({
           data: {
@@ -27,35 +36,35 @@ function App() {
           },
         }) => {
           setAccessToken(accessToken);
-          closeModal();
+          setIsLoading(false);
         }
       )
       .catch(({ response: { data: { message } = {} } = {} } = {}) => {
+        //로딩 끝내기
+        setIsLoading(false);
         if (message === "invalid refresh token") {
-          logout().then(() => {
-            setMessage("오랜시간 작업이 없어 로그아웃 되었습니다.");
-          });
-        } else {
-          closeModal();
+          // 리플레쉬 토큰 만료 되면 강제 로그아웃 모달 표시
+          // 메뉴나 유저정보는 분기처리로 인해 저절로 로그아웃 된거 처럼 보임
+          setIsError(true);
         }
       });
   }, []);
-
-  const closeModal = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
-  const logout = () => {
-    return axios
-      .post(`${API_URL}/auth/signout`, null, { withCredentials: true })
-      .then(() => {
-        setAccessToken("");
-      });
-  };
+  //에러 모달 닫기 버튼
+  const closeError = useCallback(() => {
+    // 모달 닫기 엔드 로그아웃
+    setIsError(false);
+    logout();
+  }, [logout]);
+  //앱 시작시 로딩 표시
   return (
-    <BrowserRouter>
-      {isOpen ? (
-        <MessageModal openModal={openModal} closeModal={closeModal} />
+    <>
+      {isError && (
+        <Modal closeModal={closeError}>
+          <p>오랜시간 작업이 없어서 로그 아웃 되었습니다.</p>
+        </Modal>
+      )}
+      {isLoading ? (
+        <Loading />
       ) : (
         <>
           <TestMenu accessToken={accessToken} logout={logout} />
@@ -81,10 +90,6 @@ function App() {
                 />
               )}
             </Route>
-            <Route path="/test">
-              <Circle />
-              <Loading />
-            </Route>
             <Route path="/Withdrawal">
               <WithdrawalMember accessToken={accessToken} logout={logout} />
             </Route>
@@ -95,7 +100,7 @@ function App() {
           </Switch>
         </>
       )}
-    </BrowserRouter>
+    </>
   );
 }
 

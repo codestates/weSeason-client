@@ -1,4 +1,4 @@
-.mask {
+.modal__mask {
   background-color: rgba(196, 196, 196, 0.42);
   position: absolute;
   top: 0;
@@ -10,18 +10,20 @@
   align-items: center;
   transition: opacity 0.5s;
 }
-.mask--before {
+.modal__mask--open {
   opacity: 0;
 }
-.modal {
+.modal__window {
   text-align: center;
-  width: 500px;
   background-color: #ffffff;
   border-radius: 14px;
   padding: 20px;
   transition: transform 0.5s;
 }
-.modal--before {
+.modal__window p {
+  margin: 10px 30px;
+}
+.modal__window--open {
   transform: translateY(30px);
 }
 .modal__close-btn {
@@ -30,4 +32,10 @@
   border-radius: 8px;
   width: 63px;
   height: 42px;
+}
+
+#map {
+  width: 70vw;
+  height: 70vh;
+  margin: 20px;
 }

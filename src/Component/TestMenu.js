@@ -35,11 +35,6 @@ export default function TextMenu({ accessToken, logout }) {
             </li>
           </>
         )}
-        <li>
-          <Link className="link" to="/test">
-            test
-          </Link>
-        </li>
       </ul>
     </nav>
   );
