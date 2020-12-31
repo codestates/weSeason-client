@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../fonts/AppleSDGothicNeoL.ttf");
+}
+
 .EditModal__background {
   position: absolute;
   content: "";
@@ -10,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.5s;
 }
 
 .EditModal__contain {
@@ -21,10 +27,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform: translateY(30px);
+  transition: all 0.5s;
 }
 
 p {
-  font-size: 23px;
+  font-family: "appleGothicL";
+  font-size: 20px;
 }
 
 .EditModal__input-password {

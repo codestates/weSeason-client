@@ -7,10 +7,10 @@ import SignUp from "./Component/SignUp/SignUp";
 import SignIn from "./Component/SignIn/SignIn";
 import Main from "./Component/Main/Main";
 import Mypage from "./Components/Mypage";
-import TestMenu from "./Component/TestMenu";
 import WithdrawalMember from "./Components/WithdrawalMember";
 import Loading from "./Component/Loading/Loading";
 import Modal from "./Component/Modal/Modal";
+import Menu from "./Component/Menu/Menu";
 
 function App() {
   const [accessToken, setAccessToken] = useState("");
@@ -67,7 +67,7 @@ function App() {
         <Loading />
       ) : (
         <>
-          <TestMenu accessToken={accessToken} logout={logout} />
+          <Menu accessToken={accessToken} logout={logout} />
           <Switch>
             <Route path="/signin">
               {accessToken ? (

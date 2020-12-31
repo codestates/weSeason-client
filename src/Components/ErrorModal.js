@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ErrorModal.css";
 
-const ErrorModal = ({ error, handleModalResponse, accessToken }) => {
+const ErrorModal = ({ error, handleModalResponse }) => {
   const [isErrorModalClose, setErrorModalClose] = useState(false);
 
   const handleChangeCloseErrorModal = () => {

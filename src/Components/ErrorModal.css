@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "appleGothicM";
+  src: url("../fonts/AppleSDGothicNeoM.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../fonts/AppleSDGothicNeoL.ttf");
+}
+
 .EditModal__background {
   position: absolute;
   content: "";
@@ -24,7 +34,8 @@
 }
 
 p {
-  font-size: 23px;
+  font-family: "appleGothicL";
+  font-size: 20px;
 }
 
 .EditModal__btn-contain {
