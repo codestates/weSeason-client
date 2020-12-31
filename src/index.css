@@ -17,3 +17,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.logo {
+  font-family: appleGothicL00;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 2px solid black;
+  padding: 10px;
+  position: absolute;
+  left: 23px;
+  top: 18px;
+}
