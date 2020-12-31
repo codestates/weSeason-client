@@ -51,7 +51,7 @@ function App() {
   }, []);
   //에러 모달 닫기 버튼
   const closeError = useCallback(() => {
-    // 모달 닫기 엔드 로그아웃
+    // 모달 닫기 , 로그아웃
     setIsError(false);
     logout();
   }, [logout]);
@@ -91,7 +91,11 @@ function App() {
               )}
             </Route>
             <Route path="/Withdrawal">
-              <WithdrawalMember accessToken={accessToken} logout={logout} />
+              {!accessToken ? (
+                <Redirect to="/" />
+              ) : (
+                <WithdrawalMember accessToken={accessToken} logout={logout} />
+              )}
             </Route>
             <Route exact path="/">
               <Main />
