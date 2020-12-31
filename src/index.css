@@ -2,8 +2,12 @@
   font-family: "appleGothicL00";
   src: url("./fonts/AppleSDGothicNeoL.ttf");
 }
-
+html,
+#root {
+  height: 100%;
+}
 body {
+  height: 100%;
   margin: 0;
   -webkit-font-smoothing: "appleGothicL00";
   -moz-osx-font-smoothing: "appleGothicL00";

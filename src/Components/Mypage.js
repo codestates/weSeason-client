@@ -1,21 +1,19 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import OriginMypage from "./OriginMypage";
 import EditMypage from "./EditMypage";
 import "./Mypage.css";
 import axios from "axios";
 import { API_URL } from "../const";
-import MessageModal from "../Component/MessageModal";
-
-function Mypage({ accessToken, setAccessToken, logout }) {
+function Mypage({ accessToken, setAccessToken }) {
   const [isMypage, setIsMyPage] = useState(false);
   const [userinfo, setUserinfo] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
-
+  //유저정보 불러오기
   useEffect(() => {
     axios
       .get(`${API_URL}/users`, {
         headers: { authorization: `Bearer ${accessToken}` },
       })
+      //성공시 유저정보 저장
       .then(
         ({
           data: {
@@ -25,55 +23,34 @@ function Mypage({ accessToken, setAccessToken, logout }) {
           setUserinfo(userInfo);
         }
       )
+      //실패시
       .catch(
         ({
           response: {
             data: { message },
           },
         }) => {
+          //토큰이 만료되면 다시요청
           if (message === "expired token") {
-            axios
-              .get(`${API_URL}/auth/signin`, { withCredentials: true })
-              .then(
-                ({
-                  data: {
-                    data: { accessToken },
-                  },
-                }) => {
-                  setAccessToken(accessToken);
-                }
-              )
-              .catch(
-                ({
-                  response: {
-                    data: { message },
-                  },
-                }) => {
-                  if (message === "invalid refresh token") {
-                    setIsOpen(true);
-                  }
-                }
-              );
+            axios.get(`${API_URL}/auth/signin`, { withCredentials: true }).then(
+              ({
+                data: {
+                  data: { accessToken },
+                },
+              }) => {
+                setAccessToken(accessToken);
+              }
+            );
           }
         }
       );
-  }, [accessToken, setAccessToken, logout, isMypage]);
-
-  const openModal = useCallback((setMessage) => {
-    setMessage("오랜시간 작업이 없어 로그아웃 되었습니다.");
-  }, []);
-
-  const closeModal = useCallback(() => {
-    logout();
-  }, [logout]);
+  }, [accessToken, setAccessToken, isMypage]);
 
   const handleChangeMypage = () => {
     setIsMyPage(!isMypage);
   };
-
   return (
     <>
-      {isOpen && <MessageModal openModal={openModal} closeModal={closeModal} />}
       <div className="Mypage">
         {isMypage ? (
           <EditMypage
