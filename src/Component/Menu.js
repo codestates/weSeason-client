@@ -11,20 +11,20 @@ export default function Menu({ accessToken, logout }) {
 
   return (
     <nav>
-      <ul className={isMenu ? "Menu__ul--before" : ""}>
-        <li>
+      <ul className={isMenu ? "Menu__ul--before" : "Menu__ul--after"}>
+        <li className="Menu__li">
           <Link className="link" to="/">
             main
           </Link>
         </li>
         {!accessToken ? (
           <>
-            <li>
+            <li className="Menu__li">
               <Link className="link" to="/signin">
                 login
               </Link>
             </li>
-            <li>
+            <li className="Menu__li">
               <Link className="link" to="/signup">
                 signup
               </Link>
@@ -32,12 +32,12 @@ export default function Menu({ accessToken, logout }) {
           </>
         ) : (
           <>
-            <li>
+            <li className="Menu__li">
               <Link className="link" to="/mypage">
                 mypage
               </Link>
             </li>
-            <li>
+            <li className="Menu__li">
               <button className="link" onClick={logout}>
                 logout
               </button>
