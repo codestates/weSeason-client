@@ -18,14 +18,14 @@ export default function Modal({ children, closeModal }) {
     // 0.5 초 후에 모달창 사라짐
     setTimeout(closeModal, 500);
   }, [closeModal]);
-  // ESC 눌렀을때 모달 창 닫기
   useEffect(() => {
-    // 키보드 이벤트 리스닝
+    // ESC 눌렀을때 모달 창 닫기
     const onKeyDown = ({ keyCode }) => {
       if (keyCode === 27) {
         close();
       }
     };
+    // 키보드 이벤트 리스닝
     window.addEventListener("keydown", onKeyDown);
     // 로딩 뜨고 0.3초 후에 모달창 표시
     const id = setTimeout(() => {

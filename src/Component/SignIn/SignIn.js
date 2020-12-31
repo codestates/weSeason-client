@@ -27,19 +27,19 @@ export default function SignIn({ setAccessToken }) {
             { email, password },
             { withCredentials: true }
           )
+          //로그인 성공시 성공 모달, 토큰 임시저장
           .then(
             ({
               data: {
                 data: { accessToken },
               },
             }) => {
-              //로그인 성공시 성공 모달, 토큰 임시저장
               setIsSuccess(true);
               setTemp(accessToken);
             }
           )
+          //실패시
           .catch(() => {
-            //실패시
             setIsError(true);
             setError("입력정보를 확인해주세요.");
           });
