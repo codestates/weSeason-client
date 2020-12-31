@@ -21,8 +21,6 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 40px auto;
-  /* border-bottom: solid black;
-  border-bottom-width: 400px; */
 }
 .sign-up__row label {
   display: inline-block;

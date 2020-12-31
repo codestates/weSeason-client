@@ -5,14 +5,7 @@ import "./Mypage.css";
 import axios from "axios";
 import { API_URL } from "../const";
 import MessageModal from "../Component/MessageModal";
-// // /users get > response
-// // props.userinfo =
-// // {
-// //     id: "jpjgv05",
-// //     email: "jhrang0925@gmail.com",
-// //     name: "harang",
-// //     nickname: "Hal-ang",
-// // }
+
 function Mypage({ accessToken, setAccessToken, logout }) {
   const [isMypage, setIsMyPage] = useState(false);
   const [userinfo, setUserinfo] = useState({});

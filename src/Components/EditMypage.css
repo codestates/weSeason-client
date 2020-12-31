@@ -1,3 +1,18 @@
+@font-face {
+  font-family: "appleGothicM";
+  src: url("../fonts/AppleSDGothicNeoM.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicUL";
+  src: url("../fonts/AppleSDGothicNeoUL.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../fonts/AppleSDGothicNeoL.ttf");
+}
+
 .EditMypage {
   display: flex;
   flex-direction: column;
@@ -6,24 +21,26 @@
 }
 
 .EditMypage__contain--basic {
-  width: 850px;
-  height: 500px;
+  width: 750px;
+  height: 400px;
   background-color: white;
   border-radius: 15px;
 }
 
 .EditMypage__contain--check {
-  width: 850px;
-  height: 570px;
+  width: 750px;
+  height: 500px;
   background-color: white;
   border-radius: 15px;
 }
 
 h1 {
-  font-size: 38px;
+  font-family: "appleGothicM";
+  font-size: 50px;
   font-weight: bold;
   text-align: center;
   color: white;
+  margin-bottom: 70px;
 }
 
 .EditMypage__userinfo-contain {
@@ -33,17 +50,18 @@ h1 {
 }
 
 .EditMypage__ul {
-  height: 80px;
+  height: 70px;
 }
 .EditMypage__userinfo--item {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .EditMypage__item-title {
+  font-family: "appleGothicL";
   text-align: left;
   width: 170px;
   display: inline-block;
-  font-size: 23px;
+  font-size: 18px;
   margin-left: 110px;
 }
 
@@ -56,21 +74,22 @@ h1 {
 }
 
 .EditMypage_item-info {
+  font-family: "appleGothicL";
   text-align: left;
   width: 400px;
   display: inline-block;
-  font-size: 23px;
+  font-size: 18px;
 }
 
 .EditMypage__checkbox {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   position: relative;
   left: 5%;
 }
 
 .EditMypage__userinfo__underline {
-  width: 620px;
+  width: 570px;
   height: 2px;
   background-color: #c0c0c0;
   margin-top: 15px;
@@ -92,6 +111,7 @@ h1 {
 }
 
 .EditMypage__submit-btn {
+  font-family: "appleGothicL";
   width: 108px;
   height: 58px;
   font-size: 23px;
@@ -106,4 +126,5 @@ h1 {
   height: 35px;
   border: 0px;
   border-radius: 3px;
+  background-color: #e1e1e1;
 }

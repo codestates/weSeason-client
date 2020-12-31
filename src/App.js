@@ -9,7 +9,7 @@ import Mypage from "./Components/Mypage";
 import { useCallback, useState } from "react";
 import axios from "axios";
 import { API_URL } from "./const";
-import TestMenu from "./Component/TestMenu";
+import Menu from "./Component/Menu";
 import MessageModal from "./Component/MessageModal";
 import WithdrawalMember from "./Components/WithdrawalMember";
 
@@ -58,7 +58,7 @@ function App() {
         <MessageModal openModal={openModal} closeModal={closeModal} />
       ) : (
         <>
-          <TestMenu accessToken={accessToken} logout={logout} />
+          <Menu accessToken={accessToken} logout={logout} />
           <Switch>
             <Route path="/signin">
               {accessToken ? (

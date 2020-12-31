@@ -92,7 +92,7 @@ const WithdrawalMember = ({ accessToken, logout }) => {
           name="out-btn"
           onClick={handleDeleteUser}
         >
-          탈퇴하기
+          회원 탈퇴 완료
         </button>
       ) : null}
       {isErrorPassword ? (

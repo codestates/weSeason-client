@@ -1,0 +1,68 @@
+@font-face {
+  font-family: "appleGothicR";
+  src: url("../fonts/AppleSDGothicNeoR.ttf");
+}
+
+nav {
+  font-family: "appleGothicR";
+  display: flex;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  align-items: center;
+}
+
+.Menu__btn {
+  font-family: "appleGothicR";
+  font-size: 25px;
+  color: black;
+  width: 113px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Menu__btn:hover {
+  background-color: rgb(0, 0, 0, 0.2);
+  color: white;
+}
+
+ul {
+  display: none;
+  padding: 0;
+}
+
+li {
+  width: 100px;
+  height: 60px;
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+li:hover {
+  background-color: rgb(0, 0, 0, 0.2);
+}
+
+.link {
+  font-family: "appleGothicR";
+  font-size: 23px;
+  line-height: 60px;
+  color: white;
+
+  text-shadow: 2px 2px 2px rgb(0, 0, 0, 0.7);
+}
+
+.Menu__ul--before {
+  display: flex;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}

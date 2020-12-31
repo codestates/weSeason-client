@@ -1,17 +1,29 @@
+@font-face {
+  font-family: "appleGothicM";
+  src: url("../fonts/AppleSDGothicNeoM.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../fonts/AppleSDGothicNeoL.ttf");
+}
+
 .OriginMypage__contain {
-  width: 748px;
-  height: 500px;
+  width: 750px;
+  height: 470px;
   background-color: white;
   border-radius: 15px;
 }
 
 h1 {
-  font-size: 38px;
+  font-family: "appleGothicM";
+  font-size: 50px;
   font-weight: bold;
-  text-align: center;
+  margin-bottom: 70px;
 }
 
 .OriginMypage__edit-btn {
+  font-family: "appleGothicL";
   background-color: white;
   border: 0;
   font-size: 20px;
@@ -38,18 +50,20 @@ h1 {
 }
 
 .OriginMypage__item-title {
+  font-family: "appleGothicL";
   text-align: left;
   width: 170px;
   display: inline-block;
-  font-size: 23px;
+  font-size: 18px;
   margin-left: 70px;
 }
 
 .OriginMypage_item-info {
+  font-family: "appleGothicL";
   text-align: left;
   width: 400px;
   display: inline-block;
-  font-size: 23px;
+  font-size: 18px;
 }
 
 .OriginMypage__userinfo__underline {
@@ -62,13 +76,13 @@ h1 {
 }
 
 .OriginMypage__Withdrawal-btn {
+  font-family: "appleGothicL";
   font-size: 20px;
   background-color: white;
   border: 0;
   border-radius: 4px;
   width: 123px;
   height: 53px;
-  /* align-self: flex-end; */
   position: absolute;
   bottom: 5%;
   right: 5%;
