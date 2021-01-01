@@ -35,6 +35,17 @@
   margin: 0 10px;
   margin-bottom: 10px;
   min-width: 80px;
+  cursor: pointer;
+  transition: color 0.5s, background-color 0.5s;
+}
+.modal__close-btn:hover {
+  background-color: #619fd0;
+  color: white;
+}
+.modal__close-btn--disabled:hover {
+  background-color: #ffda8e;
+  color: rgba(16, 16, 16, 0.3);
+  cursor: not-allowed;
 }
 .modal__info {
   color: gray;

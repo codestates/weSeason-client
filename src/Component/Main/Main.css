@@ -11,3 +11,7 @@
   justify-content: center;
   align-items: center;
 }
+.main__info {
+  margin-top: 10px;
+  color: rgb(72, 92, 109);
+}

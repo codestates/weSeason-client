@@ -13,6 +13,7 @@
   height: 77px;
   font-size: 25px;
   color: white;
+  cursor: pointer;
 }
 
 .map-btn:hover {

@@ -119,7 +119,9 @@ export default function Map({ lat, lon, setLat, setLon, close }) {
         <div id="map" ref={mapEl} />
       </div>
       <button
-        className="modal__close-btn"
+        className={`modal__close-btn ${
+          (tempLat === lat || tempLon === lon) && "modal__close-btn--disabled"
+        }`}
         onClick={recomend}
         disabled={tempLat === lat || tempLon === lon}
       >

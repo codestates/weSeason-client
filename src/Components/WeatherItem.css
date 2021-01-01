@@ -8,6 +8,7 @@
   margin-top: 10px;
   display: inline-block;
   margin-right: 50px;
+  cursor: pointer;
 }
 
 .WeatherItem__contain:hover {
