@@ -67,3 +67,14 @@
   background-color: #619fd0;
   border-radius: 10px;
 }
+
+.WeatherBoxBasic__item-box--extend::-webkit-scrollbar {
+  background-color: rgb(255, 255, 255, 0.8);
+  border-radius: 10px;
+  height: 10px;
+}
+
+.WeatherBoxBasic__item-box--extend::-webkit-scrollbar-thumb {
+  background-color: #619fd0;
+  border-radius: 10px;
+}

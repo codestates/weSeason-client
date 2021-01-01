@@ -18,15 +18,14 @@ code {
     monospace;
 }
 .logo {
-  font-family: appleGothicL00;
+  font-family: "appleGothicL";
   font-style: normal;
   font-weight: normal;
-  font-size: 30px;
-  line-height: 38px;
+  font-size: 25px;
   text-align: center;
   box-sizing: border-box;
-  border: 2px solid black;
-  padding: 10px;
+  border: 3px solid rgb(0, 0, 0);
+  padding: 8px 24px;
   position: absolute;
   left: 23px;
   top: 18px;

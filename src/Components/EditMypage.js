@@ -71,7 +71,6 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
             : "EditMypage__contain--basic"
         }
       >
-        <div className="EditMypage__ul"></div>
         <ul className="EditMypage__userinfo-contain">
           <li className="EditMypage__userinfo--item">
             <div className="EditMypage__item-title">이름</div>
@@ -126,7 +125,7 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
                 onChange={handleChangeUserinfo}
               ></input>
             ) : (
-              <div className="EditMypage_item-info">
+              <div className="EditMypage_item-info info-password">
                 ⚫️ ⚫️ ⚫️ ⚫️ ⚫️ ⚫️ ⚫️
               </div>
             )}
