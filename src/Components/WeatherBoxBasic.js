@@ -59,13 +59,27 @@ const WeatherBoxBasic = ({ accessToken, lat, lon, clickWeather }) => {
 
   return (
     <>
-      <div className="WeatherBoxBasic__contain">
+      <div
+        className={
+          !accessToken
+            ? "WeatherBoxBasic__contain--basic"
+            : "WeatherBoxBasic__contain--extend"
+        }
+      >
         {weatherData[0] ? (
           <div className="WeatherBoxBasic__current">
             현재 기온 {parseInt(weatherData[0].temp)}°C
           </div>
         ) : null}
-        <div className="WeatherBoxBasic__item-box">{weatherList}</div>
+        <div
+          className={
+            !accessToken
+              ? "WeatherBoxBasic__item-box--basic"
+              : "WeatherBoxBasic__item-box--extend"
+          }
+        >
+          {weatherList}
+        </div>
       </div>
     </>
   );

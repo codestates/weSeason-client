@@ -3,9 +3,8 @@
   src: url("../fonts/Jalnan.ttf");
 }
 
-.WeatherBoxBasic__contain {
-  width: 680px;
-  height: 280px;
+.WeatherBoxBasic__contain--basic {
+  width: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,17 +19,51 @@
   margin-bottom: 40px;
 }
 
-.WeatherBoxBasic__item-box {
+.WeatherBoxBasic__item-box--basic {
   width: 680px;
-  height: 250px;
+  height: 195px;
   background-color: rgb(106, 106, 106, 0.34);
   border-radius: 20px;
   white-space: nowrap;
-  overflow-y: scroll;
+  overflow-x: scroll;
   padding-left: 60px;
   padding-right: 60px;
 }
 
-.WeatherBoxBasic__item-box::-webkit-scrollbar {
+/* .WeatherBoxBasic__item-box--basic::-webkit-scrollbar {
   display: none;
+} */
+
+.WeatherBoxBasic__contain--extend {
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.WeatherBoxBasic__item-box--extend {
+  width: 680px;
+  height: 220px;
+  background-color: rgb(106, 106, 106, 0.34);
+  border-radius: 20px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.WeatherItem__icon {
+  filter: drop-shadow(5px 5px 5px #383838);
+}
+
+.WeatherBoxBasic__item-box--basic::-webkit-scrollbar {
+  background-color: rgb(255, 255, 255, 0.8);
+  border-radius: 10px;
+  height: 10px;
+}
+
+.WeatherBoxBasic__item-box--basic::-webkit-scrollbar-thumb {
+  background-color: #619fd0;
+  border-radius: 10px;
 }

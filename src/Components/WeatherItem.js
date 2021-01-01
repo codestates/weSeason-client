@@ -8,7 +8,10 @@ const WeatherItem = ({ hour, temp, icon, feelsLike, clickWeather }) => {
   const weatherIcon = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
   const handleClickTemp = () => {
-    clickWeather(temp);
+    if (clickWeather) {
+      clickWeather(temp);
+    }
+    return;
   };
 
   return (
