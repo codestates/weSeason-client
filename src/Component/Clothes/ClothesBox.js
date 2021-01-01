@@ -40,19 +40,21 @@ export default function ClothesBox({ temperature }) {
   const [clothesList, setClothesList] = useState([]);
   useEffect(() => {
     const source = axios.CancelToken.source();
-    axios
-      .get(`${API_URL}/clothes?temp=${temperature}`, {
-        cancelToken: source.token,
-      })
-      .then(
-        ({
-          data: {
-            data: { cloth },
-          },
-        }) => {
-          setClothesList(cloth);
-        }
-      );
+    if (temperature) {
+      axios
+        .get(`${API_URL}/clothes?temp=${temperature}`, {
+          cancelToken: source.token,
+        })
+        .then(
+          ({
+            data: {
+              data: { cloth },
+            },
+          }) => {
+            setClothesList(cloth);
+          }
+        );
+    }
     return () => {
       source.cancel("Component got unmounted");
     };
