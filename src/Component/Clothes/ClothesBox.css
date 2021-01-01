@@ -1,0 +1,19 @@
+.clothes-box {
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 400px;
+}
+
+.clothes-box__icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  margin-bottom: 50px;
+}
+.clothes-box__else {
+  margin: 0 10px;
+}

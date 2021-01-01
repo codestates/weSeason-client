@@ -6,7 +6,7 @@ const { kakao } = window;
 export default function Map({ lat, lon, setLat, setLon, close }) {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("어디에 가고 싶으세요?");
   const [tempLat, setTempLat] = useState(lat);
   const [tempLon, setTempLon] = useState(lon);
   const mapEl = useRef();
@@ -41,7 +41,7 @@ export default function Map({ lat, lon, setLat, setLon, close }) {
   // 키워드 검색 완료 시 호출되는 콜백함수 입니다
   const placesSearchCB = (data, status, pagination) => {
     if (status === kakao.maps.services.Status.OK) {
-      setMessage("");
+      setMessage("어디에 가고 싶으세요?");
       setIsLoading(false);
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
       // LatLngBounds 객체에 좌표를 추가합니다
@@ -53,7 +53,7 @@ export default function Map({ lat, lon, setLat, setLon, close }) {
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
       map.current.setBounds(bounds);
     } else {
-      setMessage("보다 명확한 검색어를 입력해주세요.");
+      setMessage("보다 명확한 검색어를 입력해주세요.(인천,은평구,서울역 등)");
     }
   };
 
@@ -110,10 +110,16 @@ export default function Map({ lat, lon, setLat, setLon, close }) {
           </button>
         </form>
         <div className="map__message">{message}</div>
-        <div className="map__message">원하시는 장소를 click해 주세요.</div>
+        <div className="map__message">
+          원하시는 장소를 "지도"에서 click해 주세요.
+        </div>
         <div id="map" ref={mapEl} />
       </div>
-      <button className="modal__close-btn" onClick={recomend}>
+      <button
+        className="modal__close-btn"
+        onClick={recomend}
+        disabled={tempLat === lat || tempLon === lon}
+      >
         옷 추천 받기
       </button>
     </>

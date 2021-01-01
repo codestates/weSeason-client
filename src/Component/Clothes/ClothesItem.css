@@ -1,0 +1,177 @@
+.clothes-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.clothes-item__circle {
+  width: 90px;
+  height: 90px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* opacity: 0; */
+}
+.clothes-item__icon {
+  width: 65px;
+  height: 65px;
+  filter: drop-shadow(0px 2px 3px #000000);
+}
+.clothes-item__text {
+  margin-top: 10px;
+}
+.clothes-item__shorts {
+  background-image: url(../../images/clothes-icons/7부바지.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__pants {
+  background-image: url(../../images/clothes-icons/긴바지.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__pullover {
+  background-image: url(../../images/clothes-icons/니트.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__jacket-1 {
+  background-image: url(../../images/clothes-icons/두꺼운코트.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__shirt-3 {
+  background-image: url(../../images/clothes-icons/린넨옷.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__scarf {
+  background-image: url(../../images/clothes-icons/목도리.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__basketball-jersey {
+  background-image: url(../../images/clothes-icons/민소매.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__jacket-3 {
+  background-image: url(../../images/clothes-icons/바람막이.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__shorts-1 {
+  background-image: url(../../images/clothes-icons/반바지.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__polo {
+  background-image: url(../../images/clothes-icons/반팔.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__vest {
+  background-image: url(../../images/clothes-icons/발열내의.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__blouse {
+  background-image: url(../../images/clothes-icons/블라우스.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.clothes-item__shirt-1 {
+  background-image: url(../../images/clothes-icons/셔츠.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__jacket-2 {
+  background-image: url(../../images/clothes-icons/얇은재킷.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__dress-1 {
+  background-image: url(../../images/clothes-icons/원피스.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__gloves {
+  background-image: url(../../images/clothes-icons/장갑.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__jacket {
+  background-image: url(../../images/clothes-icons/재킷.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.clothes-item__skirt {
+  background-image: url(../../images/clothes-icons/짧은치마.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__jeans {
+  background-image: url(../../images/clothes-icons/청바지.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__jacket-6 {
+  background-image: url(../../images/clothes-icons/청자켓.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__coat {
+  background-image: url(../../images/clothes-icons/캐시미어코트.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__trench-coat {
+  background-image: url(../../images/clothes-icons/트렌치코트.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__jacket-4 {
+  background-image: url(../../images/clothes-icons/패딩.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__jacket-5 {
+  background-image: url(../../images/clothes-icons/항공점퍼.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.clothes-item__hoodie {
+  background-image: url(../../images/clothes-icons/후드.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
