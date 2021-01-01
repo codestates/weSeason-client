@@ -13,7 +13,7 @@ const WeatherItem = ({ hour, temp, icon, feelsLike }) => {
         <div className="WeatherItem__flex-form">
           <div className="WeatherItem__date">{hourDate}시</div>
           <img className="WeatherItem__icon" alt="icon" src={weatherIcon}></img>
-          <div className="WeatherItem__temp">{parseInt(temp - 273.15)}°C</div>
+          {/* <div className="WeatherItem__temp">{parseInt(temp - 273.15)}°C</div> */}
           {feelsLike ? (
             <div className="WeatherItem__feelsLike">
               체감 {parseInt(feelsLike - 273.15)}°C

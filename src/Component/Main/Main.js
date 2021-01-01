@@ -33,23 +33,6 @@ export default function Main({ accessToken }) {
     setTemperature(temp);
   }, []);
 
-  // html geolocation api 호출
-
-  //  navigator.geolocation.getCurrentPosition((position) => {
-  // doSomething(position.coords.latitude, position.coords.longitude);
-  // }); 이런 느낌
-
-  // const test = () => {
-  //   axios.get(`${API_URL}/weather`);
-  // };
-  // const a = ;
-
-  // let data = JSON.parse(a);
-
-  // const [isWeatherData, setWeatherData] = useState(
-
-  // );
-
   return (
     <>
       <div className="logo">weSeason</div>

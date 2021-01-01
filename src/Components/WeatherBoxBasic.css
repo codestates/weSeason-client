@@ -5,7 +5,7 @@
 
 .WeatherBoxBasic__contain {
   width: 680px;
-  height: 250px;
+  height: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,7 @@
 
 .WeatherBoxBasic__item-box {
   width: 680px;
-  height: 168px;
+  height: 250px;
   background-color: rgb(106, 106, 106, 0.34);
   border-radius: 20px;
   white-space: nowrap;

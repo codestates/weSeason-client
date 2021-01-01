@@ -1,0 +1,51 @@
+.loading {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+.loading__mask-left,
+.loading__mask-right {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  clip-path: inset(0 0 0 50%);
+}
+.loading__mask-right {
+  transform: rotate(180deg);
+}
+.loading__fill-left,
+.loading__fill-right {
+  border-radius: 50%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(0 50% 0 0);
+  box-shadow: inset 0 0 0 10px orange;
+}
+
+.loading__fill-left {
+  animation: fill 0.5s linear forwards infinite;
+}
+.loading__fill-right {
+  animation: fill 0.5s linear 0.12s forwards infinite;
+}
+@keyframes fill {
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
