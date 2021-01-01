@@ -24,6 +24,7 @@ export default function Main({ accessToken }) {
   }, []);
   useEffect(() => {
     let id;
+
     if (navigator.geolocation) {
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       id = navigator.geolocation.watchPosition(success, error);

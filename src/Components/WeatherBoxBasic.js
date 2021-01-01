@@ -24,11 +24,6 @@ const WeatherBoxBasic = ({ accessToken, lat, lon, clickWeather }) => {
       });
     }
   }, [lat, lon, accessToken]);
-
-  // 스크롤바 이동 버튼
-  // 버튼 클릭시 현재시간 기준 3시간 후로 스크롤바 이동 구현 (state)
-  // 마지막에 도착할 경우 다시 처음으로 이동한다 버튼 두개? 음
-
   let weatherList;
   if (accessToken) {
     weatherList = weatherData.map((weather) => {
@@ -48,7 +43,6 @@ const WeatherBoxBasic = ({ accessToken, lat, lon, clickWeather }) => {
       return (
         <WeatherItem
           // 유저가 각각의 날씨아이템을 클리하면 메인에 클릭한 해당 온도 상태저장 되게 해주세요.
-          clickWeather={clickWeather}
           key={weather.dt.toString()}
           hour={weather.dt}
           temp={weather.temp}
@@ -60,13 +54,27 @@ const WeatherBoxBasic = ({ accessToken, lat, lon, clickWeather }) => {
 
   return (
     <>
-      <div className="WeatherBoxBasic__contain">
+      <div
+        className={
+          !accessToken
+            ? "WeatherBoxBasic__contain--basic"
+            : "WeatherBoxBasic__contain--extend"
+        }
+      >
         {weatherData[0] ? (
           <div className="WeatherBoxBasic__current">
             현재 기온 {parseInt(weatherData[0].temp)}°C
           </div>
         ) : null}
-        <div className="WeatherBoxBasic__item-box">{weatherList}</div>
+        <div
+          className={
+            !accessToken
+              ? "WeatherBoxBasic__item-box--basic"
+              : "WeatherBoxBasic__item-box--extend"
+          }
+        >
+          {weatherList}
+        </div>
       </div>
     </>
   );

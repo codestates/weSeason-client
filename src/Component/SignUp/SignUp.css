@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "appleGothicM";
+  src: url("../../fonts/AppleSDGothicNeoM.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../../fonts/AppleSDGothicNeoL.ttf");
+}
+
+.sign-up h1 {
+  font-family: "appleGothicM";
+  font-size: 40px;
+  color: white;
+  font-weight: normal;
+}
 .sign-up {
   box-sizing: border-box;
   min-width: 700px;
@@ -14,18 +30,29 @@
   flex-direction: column;
   align-items: center;
 }
+
 .sign-up__box {
+  font-family: "appleGothicL";
   box-sizing: border-box;
   background-color: #ffffff;
   border-radius: 25px;
   width: 491px;
   padding: 10px 60px 30px;
 }
+
+.sign-up__box h2 {
+  font-size: 25px;
+  font-weight: normal;
+  color: #666666;
+}
+
 .sign-up__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 40px auto;
+  margin: 25px auto;
+  border-bottom: 1px solid #bcbcbc;
+  padding: 8px;
 }
 .sign-up__row label {
   display: inline-block;
@@ -33,6 +60,7 @@
   margin-right: 20px;
   cursor: pointer;
 }
+
 .sign-up__row input {
   background-color: #ececec;
   border: none;
@@ -43,11 +71,17 @@
   border-radius: 5px;
 }
 .sign-up__btn {
+  font-family: "appleGothicL";
+  font-size: 20px;
   cursor: pointer;
   background-color: #ffffff;
   border: none;
   margin: 50px;
   width: 491px;
-  padding: 20px;
+  padding: 15px;
   border-radius: 11px;
+}
+
+.sign-up__btn:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }

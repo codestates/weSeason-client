@@ -5,9 +5,14 @@
 
 .WeatherItem__contain {
   width: 120px;
-  margin-top: 4px;
+  margin-top: 10px;
   display: inline-block;
   margin-right: 50px;
+}
+
+.WeatherItem__contain:hover {
+  background-color: rgb(255, 255, 255, 0.4);
+  border-radius: 10px;
 }
 
 .WeatherItem__flex-form {
