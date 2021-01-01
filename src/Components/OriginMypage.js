@@ -58,7 +58,7 @@ const OriginMypage = ({ userinfo, handleChangeMypage, accessToken }) => {
             </li>
             <li className="OriginMypage__userinfo--item">
               <div className="OriginMypage__item-title">비밀번호</div>
-              <div className="OriginMypage_item-info">
+              <div className="OriginMypage_item-info info-password">
                 ⚫️ ⚫️ ⚫️ ⚫️ ⚫️ ⚫️ ⚫️
               </div>
               <div className="OriginMypage__userinfo__underline"></div>
@@ -71,7 +71,7 @@ const OriginMypage = ({ userinfo, handleChangeMypage, accessToken }) => {
         onClick={handleWithdrawalModal}
         className="OriginMypage__Withdrawal-btn"
       >
-        회원탈퇴
+        회원 탈퇴
       </button>
       {isWithdrawalModal ? (
         <WithdrawalModal

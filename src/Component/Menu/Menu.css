@@ -2,6 +2,12 @@
   font-family: "appleGothicR";
   src: url("../../fonts/AppleSDGothicNeoR.ttf");
 }
+
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../../fonts/AppleSDGothicNeoL.ttf");
+}
+
 nav {
   font-family: "appleGothicR";
   display: flex;
@@ -13,7 +19,7 @@ nav {
 .Menu__btn {
   font-family: "appleGothicR";
   font-size: 25px;
-  color: black;
+  color: #6b6b6b;
   width: 113px;
   height: 60px;
   border-radius: 5px;
@@ -41,12 +47,12 @@ nav {
   background-color: rgb(0, 0, 0, 0.2);
 }
 .link {
-  font-family: "appleGothicR";
+  font-family: "appleGothicL";
   font-size: 23px;
   line-height: 60px;
   color: white;
-
-  text-shadow: 3px 3px rgb(0, 0, 0, 0.5);
+  filter: drop-shadow(2px 2px 2px #383838);
+  /* text-shadow: 3px 3px rgb(0, 0, 0, 0.5); */
 }
 .Menu__ul--before {
   display: flex;

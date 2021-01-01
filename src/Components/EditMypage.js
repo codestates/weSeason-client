@@ -12,7 +12,6 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
   const [isdoublePassword, setDoublePassword] = useState("");
   const [isError, setError] = useState("");
 
-  // 유효성 검사?? 필요!
   const handleModalResponse = () => {
     setError("");
   };
@@ -32,7 +31,6 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
   };
 
   const handleSubmitUserinfo = () => {
-    //유효성 통과했다고 가정
     // 1. 입력 비밀번호, 비밀번호 재확인 값이 동일해야 함
     // 1-1. 같지 않다면 또 모달창으로 알려줌
     // 2. 빈 문자열이면 안됨
@@ -55,7 +53,6 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
         .then(() => {
           //성공시 마이페이지 리디렉션
           handleChangeMypage();
-          // history.push("/Mypage");
         })
         .catch((err) => {
           //실패시 EditMypage 초기화면 리디렉션
@@ -74,7 +71,6 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
             : "EditMypage__contain--basic"
         }
       >
-        <div className="EditMypage__ul"></div>
         <ul className="EditMypage__userinfo-contain">
           <li className="EditMypage__userinfo--item">
             <div className="EditMypage__item-title">이름</div>
@@ -129,7 +125,7 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
                 onChange={handleChangeUserinfo}
               ></input>
             ) : (
-              <div className="EditMypage_item-info">
+              <div className="EditMypage_item-info info-password">
                 ⚫️ ⚫️ ⚫️ ⚫️ ⚫️ ⚫️ ⚫️
               </div>
             )}
