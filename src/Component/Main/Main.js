@@ -28,7 +28,7 @@ export default function Main({ accessToken }) {
       }
     };
   }, []);
-  // 각가의 날씨아이템 클릭하면 온도상태 변경 됩니다.
+  // 각각의 날씨아이템 클릭하면 온도상태 변경 됩니다.
   const clickWeather = useCallback((temp) => {
     setTemperature(temp);
   }, []);

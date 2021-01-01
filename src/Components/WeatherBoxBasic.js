@@ -26,10 +26,6 @@ const WeatherBoxBasic = ({ accessToken, lat, lon, clickWeather }) => {
     }
   }, [lat, lon, accessToken]);
 
-  // 스크롤바 이동 버튼
-  // 버튼 클릭시 현재시간 기준 3시간 후로 스크롤바 이동 구현 (state)
-  // 마지막에 도착할 경우 다시 처음으로 이동한다 버튼 두개? 음
-
   if (accessToken) {
     weatherList = weatherData.map((weather) => {
       return (

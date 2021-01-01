@@ -30,12 +30,12 @@ const EditModal = ({
         { password: isPassword },
         { headers: { authorization: `Bearer ${accessToken}` } }
       )
-      .then((data) => {
+      .then(() => {
         // 성공시 활성화된 수정 페이지로 이동, 렌더링
         setCloseModal(true);
         handleChangeMypage();
       })
-      .catch((err) => {
+      .catch(() => {
         // 실패시 오류 모달 노출
         setFalsyPassword(true);
         setCloseModal(true);
