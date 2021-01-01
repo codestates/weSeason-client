@@ -8,6 +8,12 @@
   bottom: 0;
   right: 0;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading__message {
+  font-size: 1vw;
 }
 .loading__mask-left,
 .loading__mask-right {

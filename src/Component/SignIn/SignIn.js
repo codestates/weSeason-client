@@ -59,14 +59,10 @@ export default function SignIn({ setAccessToken }) {
   //에러시 에러 모달,성공시 성공모달
   return (
     <>
-      {isError && (
-        <Modal closeModal={closeError}>
-          <p>{error}</p>
-        </Modal>
-      )}
+      {isError && <Modal closeModal={closeError}>{error}</Modal>}
       {isSuccess && (
         <Modal closeModal={closeSuccess}>
-          <p>안녕하세요! 날씨가 많이 쌀쌀하네요.</p>
+          안녕하세요! 날씨가 많이 쌀쌀하네요.
         </Modal>
       )}
       <div className="sign-in">

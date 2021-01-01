@@ -28,7 +28,9 @@ const EditModal = ({
       .post(
         `${API_URL}/auth/check`,
         { password: isPassword },
-        { headers: { authorization: `Bearer ${accessToken}` } }
+        {
+          headers: { authorization: `Bearer ${accessToken}` },
+        }
       )
       .then(() => {
         // 성공시 활성화된 수정 페이지로 이동, 렌더링

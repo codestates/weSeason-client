@@ -20,11 +20,11 @@
   padding: 20px;
   transition: transform 0.5s;
 }
-.modal__window p {
-  margin: 20px 30px;
-}
 .modal__window--open {
   transform: translateY(30px);
+}
+.modal__contents {
+  margin: 20px 30px;
 }
 .modal__close-btn {
   background-color: #ffda8e;

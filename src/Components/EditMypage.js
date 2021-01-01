@@ -35,7 +35,6 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
     // 1-1. 같지 않다면 또 모달창으로 알려줌
     // 2. 빈 문자열이면 안됨
     // 3. 서버로 고객 정보 전달 PATCH
-
     if (isNicknameChecked && !isNickname) {
       setError("닉네임을 입력해주세요.");
     } else if (isPasswordChecked && (!isPasswordChecked || !isdoublePassword)) {
@@ -48,7 +47,9 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
             nickname: isNickname,
             password: isPassword,
           },
-          { headers: { authorization: `Bearer ${accessToken}` } }
+          {
+            headers: { authorization: `Bearer ${accessToken}` },
+          }
         )
         .then(() => {
           //성공시 마이페이지 리디렉션
