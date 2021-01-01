@@ -9,21 +9,32 @@ const WeatherBoxBasic = ({ accessToken, lat, lon, clickWeather }) => {
 
   //lat or lon 바뀔 때마다 실행합니다.
   useEffect(() => {
+    const source = axios.CancelToken.source();
     if (accessToken) {
       axios
         .get(`${API_URL}/weather`, {
           params: { lat, lon },
+          cancelToken: source.token,
           headers: { authorization: `Bearer ${accessToken}` },
         })
         .then((data) => {
           setWeatherData(data.data.data);
         });
     } else {
-      axios.get(`${API_URL}/weather`, { params: { lat, lon } }).then((data) => {
-        setWeatherData(data.data.data);
-      });
+      axios
+        .get(`${API_URL}/weather`, {
+          cancelToken: source.token,
+          params: { lat, lon },
+        })
+        .then((data) => {
+          setWeatherData(data.data.data);
+          clickWeather(data.data.data[0].temp);
+        });
     }
-  }, [lat, lon, accessToken]);
+    return () => {
+      source.cancel("Component got unmounted");
+    };
+  }, [lat, lon, accessToken, clickWeather]);
   let weatherList;
   if (accessToken) {
     weatherList = weatherData.map((weather) => {
@@ -43,6 +54,7 @@ const WeatherBoxBasic = ({ accessToken, lat, lon, clickWeather }) => {
       return (
         <WeatherItem
           // 유저가 각각의 날씨아이템을 클리하면 메인에 클릭한 해당 온도 상태저장 되게 해주세요.
+          clickWeather={clickWeather}
           key={weather.dt.toString()}
           hour={weather.dt}
           temp={weather.temp}

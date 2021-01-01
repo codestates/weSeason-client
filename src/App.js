@@ -18,8 +18,12 @@ function App() {
   const [isError, setIsError] = useState(false);
   // 앱 실행시  로그인했는지 확인
   useEffect(() => {
+    const source = axios.CancelToken.source();
     axios
-      .get(`${API_URL}/auth/signin`, { withCredentials: true })
+      .get(`${API_URL}/auth/signin`, {
+        withCredentials: true,
+        cancelToken: source.token,
+      })
       //로그인 유지시 엑세스 토큰 세팅 및 로딩 끝.
       .then(
         ({
@@ -40,6 +44,9 @@ function App() {
           setIsError(true);
         }
       });
+    return () => {
+      source.cancel("Component got unmounted");
+    };
   }, []);
   //로그아웃 하고 엑세스 토큰 비우기
   const logout = useCallback(async () => {

@@ -51,7 +51,7 @@ export default function Main({ accessToken }) {
               lon={lon}
               clickWeather={clickWeather}
             />
-            <ClothesBox temperature={10} />
+            <ClothesBox temperature={temperature} />
             <MapBtn lat={lat} lon={lon} setLat={setLat} setLon={setLon} />
           </>
         )}

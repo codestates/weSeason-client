@@ -9,9 +9,11 @@ function Mypage({ accessToken, setAccessToken }) {
   const [userinfo, setUserinfo] = useState({});
   //유저정보 불러오기
   useEffect(() => {
+    const source = axios.CancelToken.source();
     axios
       .get(`${API_URL}/users`, {
         headers: { authorization: `Bearer ${accessToken}` },
+        cancelToken: source.token,
       })
       //성공시 유저정보 저장
       .then(
@@ -32,18 +34,26 @@ function Mypage({ accessToken, setAccessToken }) {
         }) => {
           //토큰이 만료되면 다시요청
           if (message === "expired token") {
-            axios.get(`${API_URL}/auth/signin`, { withCredentials: true }).then(
-              ({
-                data: {
-                  data: { accessToken },
-                },
-              }) => {
-                setAccessToken(accessToken);
-              }
-            );
+            axios
+              .get(`${API_URL}/auth/signin`, {
+                cancelToken: source.token,
+                withCredentials: true,
+              })
+              .then(
+                ({
+                  data: {
+                    data: { accessToken },
+                  },
+                }) => {
+                  setAccessToken(accessToken);
+                }
+              );
           }
         }
       );
+    return () => {
+      source.cancel("Component got unmounted");
+    };
   }, [accessToken, setAccessToken, isMypage]);
 
   const handleChangeMypage = () => {

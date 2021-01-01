@@ -27,7 +27,9 @@ const WithdrawalMember = ({ accessToken, logout }) => {
         .post(
           `${API_URL}/auth/check`,
           { password: isPassword },
-          { headers: { authorization: `Bearer ${accessToken}` } }
+          {
+            headers: { authorization: `Bearer ${accessToken}` },
+          }
         )
         .then(() => {
           // 인증이 완료된 경우 탈퇴 버튼 노출
