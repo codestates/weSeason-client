@@ -13,17 +13,9 @@ import Modal from "./Component/Modal/Modal";
 import Menu from "./Component/Menu/Menu";
 
 function App() {
-  const [accessToken, setAccessToken] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [accessToken, setAccessToken] = useState("");
   const [isError, setIsError] = useState(false);
-  //로그아웃 하고 엑세스 토큰 비우기
-  const logout = useCallback(() => {
-    return axios
-      .post(`${API_URL}/auth/signout`, null, { withCredentials: true })
-      .then(() => {
-        setAccessToken("");
-      });
-  }, []);
   // 앱 실행시  로그인했는지 확인
   useEffect(() => {
     axios
@@ -49,6 +41,14 @@ function App() {
         }
       });
   }, []);
+  //로그아웃 하고 엑세스 토큰 비우기
+  const logout = useCallback(async () => {
+    return axios
+      .post(`${API_URL}/auth/signout`, null, { withCredentials: true })
+      .then(() => {
+        setAccessToken("");
+      });
+  }, []);
   //에러 모달 닫기 버튼
   const closeError = useCallback(() => {
     // 모달 닫기 , 로그아웃
@@ -58,11 +58,6 @@ function App() {
   //앱 시작시 로딩 표시
   return (
     <>
-      {isError && (
-        <Modal closeModal={closeError}>
-          <p>오랜시간 작업이 없어서 로그 아웃 되었습니다.</p>
-        </Modal>
-      )}
       {isLoading ? (
         <Loading />
       ) : (
@@ -103,6 +98,11 @@ function App() {
             <Route path="/">어디에 접속할려구요?</Route>
           </Switch>
         </>
+      )}
+      {isError && (
+        <Modal closeModal={closeError}>
+          오랜시간 작업이 없어서 로그 아웃 되었습니다.
+        </Modal>
       )}
     </>
   );

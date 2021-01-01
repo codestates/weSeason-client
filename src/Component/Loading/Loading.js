@@ -1,8 +1,9 @@
 import "./Loading.css";
-export default function Loading() {
+export default function Loading({ children }) {
   return (
     <>
       <div className="loading">
+        <div className="loading__message">{children}</div>
         <div className="loading__mask-left">
           <div className="loading__fill-left" />
         </div>

@@ -60,16 +60,8 @@ export default function SignUp() {
   //에러시 에러 모달,성공시 성공모달
   return (
     <>
-      {isError && (
-        <Modal closeModal={closeError}>
-          <p>{error}</p>
-        </Modal>
-      )}
-      {isSuccess && (
-        <Modal closeModal={closeSuccess}>
-          <p>회원가입 완료!</p>
-        </Modal>
-      )}
+      {isError && <Modal closeModal={closeError}>{error}</Modal>}
+      {isSuccess && <Modal closeModal={closeSuccess}>회원가입 완료!</Modal>}
       <div className="sign-up">
         <h1>SignUp</h1>
         <form className="sign-up__form">

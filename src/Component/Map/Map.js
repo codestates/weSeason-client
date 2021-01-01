@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRef } from "react";
 import Loading from "../Loading/Loading";
 import "./Map.css";
@@ -21,7 +21,7 @@ export default function Map({ lat, lon, setLat, setLon, close }) {
   // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
   const infowindow = useRef(new kakao.maps.InfoWindow({ zIndex: 1 }));
   // 지도에 마커를 표시하는 함수입니다
-  const displayMarker = (place) => {
+  const displayMarker = useCallback((place) => {
     // 마커를 생성하고 지도에 표시합니다
     const marker = new kakao.maps.Marker({
       map: map.current,
@@ -37,25 +37,28 @@ export default function Map({ lat, lon, setLat, setLon, close }) {
       );
       infowindow.current.open(map.current, marker);
     });
-  };
+  }, []);
   // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-  const placesSearchCB = (data, status, pagination) => {
-    if (status === kakao.maps.services.Status.OK) {
-      setMessage("어디에 가고 싶으세요?");
-      setIsLoading(false);
-      // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-      // LatLngBounds 객체에 좌표를 추가합니다
-      const bounds = new kakao.maps.LatLngBounds();
-      for (let i = 0; i < data.length; i++) {
-        displayMarker(data[i]);
-        bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+  const placesSearchCB = useCallback(
+    (data, status, pagination) => {
+      if (status === kakao.maps.services.Status.OK) {
+        setMessage("어디에 가고 싶으세요?");
+        setIsLoading(false);
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        const bounds = new kakao.maps.LatLngBounds();
+        for (let i = 0; i < data.length; i++) {
+          displayMarker(data[i]);
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.current.setBounds(bounds);
+      } else {
+        setMessage("보다 명확한 검색어를 입력해주세요.(인천,은평구,서울역 등)");
       }
-      // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-      map.current.setBounds(bounds);
-    } else {
-      setMessage("보다 명확한 검색어를 입력해주세요.(인천,은평구,서울역 등)");
-    }
-  };
+    },
+    [displayMarker]
+  );
 
   useEffect(() => {
     // 지도를 생성합니다

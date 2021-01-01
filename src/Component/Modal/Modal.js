@@ -18,16 +18,19 @@ export default function Modal({ children, closeModal }) {
     // 0.5 초 후에 모달창 사라짐
     setTimeout(closeModal, 500);
   }, [closeModal]);
-  useEffect(() => {
-    // ESC 눌렀을때 모달 창 닫기
-    const onKeyDown = ({ keyCode }) => {
+  // ESC 눌렀을때 모달 창 닫기
+  const onKeyDown = useCallback(
+    ({ keyCode }) => {
       if (keyCode === 27) {
         close();
       }
-    };
+    },
+    [close]
+  );
+  useEffect(() => {
     // 키보드 이벤트 리스닝
     window.addEventListener("keydown", onKeyDown);
-    // 로딩 뜨고 0.3초 후에 모달창 표시
+    // 로딩 뜨고 0.3초 후에 애니메이션 실행
     const id = setTimeout(() => {
       setIsLoading(false);
       setIsInit(false);
@@ -37,7 +40,8 @@ export default function Modal({ children, closeModal }) {
       window.removeEventListener("keydown", onKeyDown);
       clearTimeout(id);
     };
-  }, [close]);
+  }, [onKeyDown]);
+
   // 모달창 뜨기전에 무조건 로딩 표시
   return (
     <>
@@ -47,11 +51,13 @@ export default function Modal({ children, closeModal }) {
           <div
             className={`${isInit ? "modal__window--open " : ""}modal__window`}
           >
-            {Children.map(children, (child) => {
-              if (typeof child.type === "function")
-                return cloneElement(child, { close: close });
-              return cloneElement(child);
-            })}
+            <div className="modal__contents">
+              {Children.map(children, (child) => {
+                if (typeof child.type === "function")
+                  return cloneElement(child, { close: close });
+                return child;
+              })}
+            </div>
             <button className="modal__close-btn" onClick={close}>
               X
             </button>

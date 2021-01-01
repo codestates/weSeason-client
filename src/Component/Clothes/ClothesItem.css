@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* opacity: 0; */
+  opacity: 0;
 }
 .clothes-item__icon {
   width: 65px;
@@ -22,7 +22,9 @@
 }
 .clothes-item__text {
   margin-top: 10px;
+  opacity: 0;
 }
+
 .clothes-item__shorts {
   background-image: url(../../images/clothes-icons/7부바지.png);
   background-position: center;
