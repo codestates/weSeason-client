@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../../const";
 import Modal from "../Modal/Modal";
+import { Link } from "react-router-dom";
 
 export default function SignIn({ setAccessToken }) {
   const [email, setEmail] = useState("");
@@ -97,6 +98,9 @@ export default function SignIn({ setAccessToken }) {
             </button>
           </div>
         </form>
+        <Link to="/signup">
+          <div className="sign-in__sign-up-btn">계정이 없으신가요?</div>
+        </Link>
       </div>
     </>
   );
