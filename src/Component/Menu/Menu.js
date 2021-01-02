@@ -10,7 +10,7 @@ export default function Menu({ accessToken, logout }) {
   };
 
   return (
-    <nav>
+    <nav className="menu">
       <ul className={isMenu ? "Menu__ul--before" : "Menu__ul--after"}>
         <li className="Menu__li">
           <Link className="link" to="/">

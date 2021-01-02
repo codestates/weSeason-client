@@ -8,12 +8,6 @@
   src: url("../../fonts/AppleSDGothicNeoL.ttf");
 }
 
-.sign-up h1 {
-  font-family: "appleGothicM";
-  font-size: 40px;
-  color: white;
-  font-weight: normal;
-}
 .sign-up {
   box-sizing: border-box;
   min-width: 700px;
@@ -24,6 +18,12 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.sign-up h1 {
+  font-family: "appleGothicM";
+  font-size: 40px;
+  color: white;
+  font-weight: normal;
 }
 .sign-up__form {
   display: flex;

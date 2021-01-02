@@ -1,10 +1,9 @@
 .clothes-box {
-  margin: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 400px;
+  height: 350px;
 }
 
 .clothes-box__icons {
