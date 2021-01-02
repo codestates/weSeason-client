@@ -45,14 +45,23 @@ export default function Main({ accessToken }) {
           <Loading>위치정보 불러오는중...</Loading>
         ) : (
           <>
-            <WeatherBoxBasic
-              accessToken={accessToken}
-              lat={lat}
-              lon={lon}
-              clickWeather={clickWeather}
-            />
-            <ClothesBox temperature={temperature} />
-            <MapBtn lat={lat} lon={lon} setLat={setLat} setLon={setLon} />
+            <div className="main__contents">
+              <div className="main__weather">
+                <WeatherBoxBasic
+                  accessToken={accessToken}
+                  lat={lat}
+                  lon={lon}
+                  clickWeather={clickWeather}
+                />
+              </div>
+              <div className="main__info">오늘은?</div>
+              <div className="main__clothes">
+                <ClothesBox temperature={temperature} />
+              </div>
+            </div>
+            <div className="main__map">
+              <MapBtn lat={lat} lon={lon} setLat={setLat} setLon={setLon} />
+            </div>
           </>
         )}
       </div>

@@ -19,6 +19,7 @@ const WeatherBoxBasic = ({ accessToken, lat, lon, clickWeather }) => {
         })
         .then((data) => {
           setWeatherData(data.data.data);
+          clickWeather(data.data.data[0].temp);
         });
     } else {
       axios

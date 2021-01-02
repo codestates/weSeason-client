@@ -2,7 +2,18 @@
   font-family: "jalnan";
   src: url("../fonts/Jalnan.ttf");
 }
-
+@font-face {
+  font-family: "neoM";
+  src: url("../fonts/AppleSDGothicNeoM.ttf");
+}
+@font-face {
+  font-family: "noeSB";
+  src: url("../fonts/AppleSDGothicNeoSB.ttf");
+}
+@font-face {
+  font-family: "neoEB";
+  src: url("../fonts/AppleSDGothicNeoEB.ttf");
+}
 .WeatherBoxBasic__contain--basic {
   width: 800px;
   display: flex;
@@ -12,11 +23,11 @@
 }
 
 .WeatherBoxBasic__current {
-  font-family: "jalnan";
-  font-size: 40px;
+  font-family: "noeSB";
+  font-size: 25px;
   color: white;
   text-shadow: 5px 5px rgb(0, 0, 0, 0.44);
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .WeatherBoxBasic__item-box--basic {
