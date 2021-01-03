@@ -11,16 +11,18 @@ import WithdrawalMember from "./Components/WithdrawalMember";
 import Loading from "./Component/Loading/Loading";
 import Modal from "./Component/Modal/Modal";
 import Menu from "./Component/Menu/Menu";
-
+import Auth from "./Component/Auth/Auth";
+import Error from "./Component/Error/Error";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [accessToken, setAccessToken] = useState("");
+  const [auth, setAuth] = useState("");
   const [isError, setIsError] = useState(false);
   // 앱 실행시  로그인했는지 확인
   useEffect(() => {
     const source = axios.CancelToken.source();
     axios
-      .get(`${API_URL}/auth/signin`, {
+      .get(`${API_URL}/auth/check`, {
         withCredentials: true,
         cancelToken: source.token,
       })
@@ -28,10 +30,11 @@ function App() {
       .then(
         ({
           data: {
-            data: { accessToken },
+            data: { accessToken, auth },
           },
         }) => {
           setAccessToken(accessToken);
+          setAuth(auth);
           setIsLoading(false);
         }
       )
@@ -48,6 +51,7 @@ function App() {
       source.cancel("Component got unmounted");
     };
   }, []);
+
   //로그아웃 하고 엑세스 토큰 비우기
   const logout = useCallback(async () => {
     return axios
@@ -75,11 +79,18 @@ function App() {
               {accessToken ? (
                 <Redirect to="/" />
               ) : (
-                <SignIn setAccessToken={setAccessToken} />
+                <SignIn setAccessToken={setAccessToken} setAuth={setAuth} />
               )}
             </Route>
             <Route path="/signup">
               {accessToken ? <Redirect to="/" /> : <SignUp />}
+            </Route>
+            <Route path="/auth">
+              {accessToken ? (
+                <Redirect to="/" />
+              ) : (
+                <Auth setAccessToken={setAccessToken} setAuth={setAuth} />
+              )}
             </Route>
             <Route path="/mypage">
               {!accessToken ? (
@@ -89,6 +100,7 @@ function App() {
                   setAccessToken={setAccessToken}
                   accessToken={accessToken}
                   logout={logout}
+                  auth={auth}
                 />
               )}
             </Route>
@@ -102,7 +114,9 @@ function App() {
             <Route exact path="/">
               <Main accessToken={accessToken} />
             </Route>
-            <Route path="/">어디에 접속할려구요?</Route>
+            <Route path="/">
+              <Error />
+            </Route>
           </Switch>
         </>
       )}

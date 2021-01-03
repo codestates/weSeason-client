@@ -13,10 +13,6 @@ export default function ClothesItem({ clothes, i }) {
   const circle = useRef();
   const text = useRef();
   useEffect(() => {
-    circle.current.style.opacity = "0";
-    circle.current.style.transform = "translate(0) rotate(0)";
-    circle.current.style.boxShadow = "none";
-    text.current.style.opacity = "0";
     let transformId;
     let shadowId;
     const opacityId = setTimeout(() => {

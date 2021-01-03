@@ -39,6 +39,7 @@ export const icons = {
 export default function ClothesBox({ temperature }) {
   const [clothesList, setClothesList] = useState([]);
   useEffect(() => {
+    setClothesList([]);
     const source = axios.CancelToken.source();
     if (temperature) {
       axios
@@ -55,6 +56,7 @@ export default function ClothesBox({ temperature }) {
           }
         );
     }
+
     return () => {
       source.cancel("Component got unmounted");
     };
@@ -65,14 +67,16 @@ export default function ClothesBox({ temperature }) {
     <>
       <div className="clothes-box">
         <div className="clothes-box__icons">
-          {clothesIcons.map((clothes, i) => (
-            <ClothesItem clothes={clothes} key={clothes} i={i} />
-          ))}
+          {clothesIcons.length > 0 &&
+            clothesIcons.map((clothes, i) => (
+              <ClothesItem clothes={clothes} key={clothes} i={i} />
+            ))}
         </div>
         <div className="clothes-box__else">
-          {clothesTexts.map((clothes, i) => (
-            <ClothesText clothes={clothes} key={clothes} i={i} />
-          ))}
+          {clothesTexts.length > 0 &&
+            clothesTexts.map((clothes, i) => (
+              <ClothesText clothes={clothes} key={clothes} i={i} />
+            ))}
         </div>
       </div>
     </>
