@@ -5,13 +5,13 @@ import { API_URL } from "../../const";
 import Modal from "../Modal/Modal";
 import { Link } from "react-router-dom";
 
-export default function SignIn({ setAccessToken }) {
+export default function SignIn({ setAccessToken, setAuth }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const [temp, setTemp] = useState("");
+  const [temp, setTemp] = useState();
   // 로그인 버튼 클릭,엔터 시
   const signIn = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ export default function SignIn({ setAccessToken }) {
       } else {
         axios
           .post(
-            `${API_URL}/auth/signin`,
+            `${API_URL}/auth/local`,
             { email, password },
             { withCredentials: true }
           )
@@ -32,11 +32,11 @@ export default function SignIn({ setAccessToken }) {
           .then(
             ({
               data: {
-                data: { accessToken },
+                data: { accessToken, auth },
               },
             }) => {
               setIsSuccess(true);
-              setTemp(accessToken);
+              setTemp({ accessToken, auth });
             }
           )
           //실패시
@@ -54,8 +54,9 @@ export default function SignIn({ setAccessToken }) {
   }, []);
   //성공 모달 닫기 버튼, 메인화면으로 이동
   const closeSuccess = useCallback(() => {
-    setAccessToken(temp);
-  }, [setAccessToken, temp]);
+    setAccessToken(temp.accessToken);
+    setAuth(temp.auth);
+  }, [setAccessToken, temp, setAuth]);
   //에러시 에러 모달,성공시 성공모달
   return (
     <>
@@ -92,6 +93,20 @@ export default function SignIn({ setAccessToken }) {
             <button className="sign-in__btn" onClick={signIn}>
               Login
             </button>
+            <div className="sign-in__oauth">
+              <a
+                className="sign-in__btn sign-in__btn--google sign-in__btn__oauth"
+                href={`https://accounts.google.com/o/oauth2/v2/auth?client_id=753726601122-kv6c6c3gihku2mv2dsqvi4fldv5mnpsh.apps.googleusercontent.com&redirect_uri=https://localhost:3000/auth/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile&access_type=offline`}
+              >
+                Google Login
+              </a>
+              <a
+                className="sign-in__btn sign-in__btn--github sign-in__btn__oauth"
+                href="https://github.com/login/oauth/authorize?client_id=8de2fdaa38d52d7dfe8c"
+              >
+                GitHub Login
+              </a>
+            </div>
           </div>
         </form>
         <Link to="/signup">

@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import OriginMypage from "./OriginMypage";
 import EditMypage from "./EditMypage";
 import "./Mypage.css";
 import axios from "axios";
 import { API_URL } from "../const";
-function Mypage({ accessToken, setAccessToken }) {
+import Modal from "../Component/Modal/Modal";
+import { useHistory } from "react-router-dom";
+function Mypage({ accessToken, setAccessToken, auth }) {
   const [isMypage, setIsMyPage] = useState(false);
   const [userinfo, setUserinfo] = useState({});
+  const history = useHistory();
   //유저정보 불러오기
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -59,8 +62,14 @@ function Mypage({ accessToken, setAccessToken }) {
   const handleChangeMypage = () => {
     setIsMyPage(!isMypage);
   };
+  const closeModal = useCallback(() => {
+    history.push("/");
+  }, [history]);
   return (
     <>
+      {auth !== "local" && (
+        <Modal closeModal={closeModal}>{auth}로 로그인 하셨습니다.</Modal>
+      )}
       <div className="Mypage">
         {isMypage ? (
           <EditMypage

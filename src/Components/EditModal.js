@@ -26,7 +26,7 @@ const EditModal = ({
   const checkPassword = () => {
     axios
       .post(
-        `${API_URL}/auth/check`,
+        `${API_URL}/auth/checkpassword`,
         { password: isPassword },
         {
           headers: { authorization: `Bearer ${accessToken}` },

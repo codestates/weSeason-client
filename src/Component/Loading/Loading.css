@@ -14,6 +14,7 @@
 }
 .loading__message {
   font-size: 1vw;
+  font-family: jalnan;
 }
 .loading__mask-left,
 .loading__mask-right {
