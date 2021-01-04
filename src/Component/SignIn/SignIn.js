@@ -2,6 +2,7 @@ import "./SignIn.css";
 import { useCallback, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../../const";
+import { REDIRECT_URL } from "../../const";
 import Modal from "../Modal/Modal";
 import { Link } from "react-router-dom";
 
@@ -96,7 +97,7 @@ export default function SignIn({ setAccessToken, setAuth }) {
             <div className="sign-in__oauth">
               <a
                 className="sign-in__btn sign-in__btn--google sign-in__btn__oauth"
-                href={`https://accounts.google.com/o/oauth2/v2/auth?client_id=753726601122-kv6c6c3gihku2mv2dsqvi4fldv5mnpsh.apps.googleusercontent.com&redirect_uri=https://localhost:3000/auth/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile&access_type=offline`}
+                href={`https://accounts.google.com/o/oauth2/v2/auth?client_id=753726601122-kv6c6c3gihku2mv2dsqvi4fldv5mnpsh.apps.googleusercontent.com&redirect_uri=${REDIRECT_URL}/auth/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile`}
               >
                 Google Login
               </a>

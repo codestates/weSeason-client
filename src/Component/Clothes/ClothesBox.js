@@ -41,9 +41,9 @@ export default function ClothesBox({ temperature }) {
   useEffect(() => {
     setClothesList([]);
     const source = axios.CancelToken.source();
-    if (temperature) {
+    if (temperature !== undefined) {
       axios
-        .get(`${API_URL}/clothes?temp=${temperature}`, {
+        .get(`${API_URL}/clothes?temp=${parseInt(temperature)}`, {
           cancelToken: source.token,
         })
         .then(
