@@ -37,7 +37,7 @@ const EditMypage = ({ userinfo, accessToken, handleChangeMypage }) => {
     // 3. 서버로 고객 정보 전달 PATCH
     if (isNicknameChecked && !isNickname) {
       setError("닉네임을 입력해주세요.");
-    } else if (isPasswordChecked && (!isPasswordChecked || !isdoublePassword)) {
+    } else if (isPasswordChecked && isPassword !== isdoublePassword) {
       setError("비밀번호 또는 재확인 비밀번호가 일치하지 않습니다.");
     } else {
       axios
