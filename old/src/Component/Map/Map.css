@@ -1,0 +1,48 @@
+#map {
+  width: 50vw;
+  min-width: 563px;
+  height: 481px;
+  margin: 5vh 10vw;
+  border-radius: 10px;
+}
+.map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.map__form {
+  margin-top: 20px;
+  display: flex;
+  padding: 0px 30px;
+  width: 694px;
+}
+.map__input {
+  flex: 80;
+  height: 40px;
+  border: none;
+  border-radius: 10px 0px 0px 10px;
+  padding-left: 20px;
+  font-size: 20px;
+  background-color: #dfdfdf;
+}
+.map__input {
+  outline: none;
+}
+.map__button {
+  flex: 20;
+  background-color: #ffda8e;
+  border: none;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+  transition: color 0.5s, background-color 0.5s;
+}
+.map__button:hover {
+  background-color: #619fd0;
+  color: white;
+}
+.map__message {
+  margin-top: 10px;
+  font-size: 13px;
+  color: gray;
+}

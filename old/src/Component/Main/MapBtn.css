@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "appleGothicSB";
+  src: url("../../fonts/AppleSDGothicNeoSB.ttf");
+}
+
+.map-btn {
+  font-family: "appleGothicSB";
+  background-color: #619fd0;
+  border-radius: 11px;
+  border: none;
+  width: 169px;
+  height: 77px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+.map-btn:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
