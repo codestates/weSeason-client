@@ -1,0 +1,141 @@
+@font-face {
+  font-family: "appleGothicM";
+  src: url("../fonts/AppleSDGothicNeoM.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicUL";
+  src: url("../fonts/AppleSDGothicNeoUL.ttf");
+}
+
+@font-face {
+  font-family: "appleGothicL";
+  src: url("../fonts/AppleSDGothicNeoL.ttf");
+}
+
+.EditMypage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.EditMypage__contain--basic {
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.EditMypage__contain--check {
+  width: 600px;
+  height: 460px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.EditMypage h1 {
+  font-family: "appleGothicM";
+  font-size: 50px;
+  font-weight: normal;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  color: white;
+  text-align: center;
+}
+
+.EditMypage__userinfo-contain {
+  width: 600px;
+  list-style-type: none;
+  padding: 0px;
+  margin-top: 60px;
+}
+
+.EditMypage__userinfo--item {
+  margin-bottom: 30px;
+}
+
+.EditMypage__item-title {
+  font-family: "appleGothicL";
+  text-align: left;
+  width: 140px;
+  display: inline-block;
+  font-size: 18px;
+  margin-left: 70px;
+  color: #6b6b6b;
+}
+
+.nick-name,
+.password {
+  margin-left: 42px;
+}
+
+.EditMypage_item-info {
+  font-family: "appleGothicL";
+  text-align: left;
+  width: 300px;
+  display: inline-block;
+  font-size: 18px;
+  color: #6b6b6b;
+}
+
+.EditMypage__checkbox {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  left: 3%;
+}
+
+.EditMypage__userinfo__underline {
+  width: 470px;
+  height: 2px;
+  background-color: #c0c0c0;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.EditMypage__Withdrawal-btn {
+  font-size: 20px;
+  background-color: white;
+  border: 0;
+  border-radius: 4px;
+  width: 123px;
+  height: 53px;
+  /* align-self: flex-end; */
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+
+.EditMypage__submit-btn {
+  font-family: "appleGothicL";
+  width: 108px;
+  height: 58px;
+  font-size: 20px;
+  background-color: white;
+  border: none;
+  border-radius: 7px;
+  margin-top: 30px;
+  color: #6b6b6b;
+}
+
+.EditMypage__submit-btn:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.EditMypage__input {
+  width: 250px;
+  height: 30px;
+  border: 0px;
+  border-radius: 3px;
+  background-color: #e1e1e1;
+  padding-left: 20px;
+}
+
+.info-password {
+  font-size: 10px;
+}
