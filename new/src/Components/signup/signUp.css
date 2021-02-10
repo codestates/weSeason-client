@@ -1,0 +1,233 @@
+@font-face {
+  font-family: jalnan;
+  src: url("../../fonts/Jalnan.ttf");
+}
+
+@font-face {
+  font-family: neoL;
+  src: url("../../fonts/AppleSDGothicNeoL.ttf");
+}
+
+@font-face {
+  font-family: neoB;
+  src: url("../../fonts/AppleSDGothicNeoB.ttf");
+}
+
+@font-face {
+  font-family: neoM;
+  src: url("../../fonts/AppleSDGothicNeoM.ttf");
+}
+
+#signUpPage {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media all and (min-width: 1024px) {
+  #signUpPage {
+    background-color: #619fd0;
+  }
+
+  #signUp__ment {
+    font-family: jalnan;
+    font-size: 40px;
+    color: white;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 40px;
+  }
+
+  #signUp__userInfo {
+    width: 491px;
+    height: 356px;
+    background-color: white;
+    border-radius: 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .userInfo__contain {
+    width: 405px;
+    height: 54px;
+  }
+
+  .userInfo__title {
+    font-family: neoL;
+    font-size: 15px;
+    color: #6b6b6b;
+    display: inline-block;
+    width: 117px;
+    text-align: center;
+  }
+
+  .userInfo__input {
+    width: 209px;
+    height: 39px;
+    background-color: white;
+    font-family: neoL;
+    font-size: 15px;
+    border: none;
+    border-bottom: thin solid #e2e2e2;
+    padding-left: 8px;
+    margin-left: 50px;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #c0c0c0;
+  }
+  input:-moz-placeholder {
+    color: black;
+  }
+
+  #signUp__joinBtn {
+    width: 491px;
+    height: 59px;
+    font-family: neoM;
+    font-size: 20px;
+    color: gray;
+    border-radius: 15px;
+    background-color: white;
+    border: none;
+    margin-top: 73px;
+  }
+
+  #signUp__joinBtn:hover {
+    color: black;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  #signUp__ment {
+    font-family: neoB;
+    font-size: 30px;
+    color: #8b8b8b;
+    margin: 0px;
+    position: absolute;
+    top: 2%;
+    font-weight: normal;
+  }
+
+  #signUp__userInfo {
+    width: 613px;
+    height: 762px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .userInfo__contain {
+    width: 538px;
+    height: 124px;
+    /* margin-bottom: px; */
+  }
+
+  .userInfo__title {
+    font-family: neoL;
+    font-size: 17px;
+    color: #5b5b5b;
+    margin-bottom: 5px;
+  }
+
+  .userInfo__input {
+    width: 514px;
+    height: 63px;
+    font-family: neoL;
+    font-size: 20px;
+    border: none;
+    border-bottom: thin solid #575757;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #c0c0c0;
+  }
+
+  #signUp__joinBtn {
+    width: 100vw;
+    height: 100px;
+    position: absolute;
+    bottom: 0px;
+    font-family: neoB;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    /* 모두 입력된 상태, 활성화 */
+    color: white;
+    background-color: #619fd0;
+
+    /* 모두 미입력 상태인 경우 비활성화 */
+    /* color: gray; */
+    /* background-color: #C4C4C4; */
+  }
+}
+
+@media all and (max-width: 768px) {
+  #signUp__ment {
+    font-family: neoB;
+    font-size: 20px;
+    color: #8b8b8b;
+    margin: 0px;
+    position: absolute;
+    top: 2%;
+    font-weight: normal;
+  }
+
+  #signUp__userInfo {
+    width: 271px;
+    height: 398px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 13%;
+  }
+
+  .userInfo__contain {
+    width: 271px;
+    height: 66px;
+    margin-bottom: 15px;
+  }
+
+  .userInfo__title {
+    font-family: neoL;
+    font-size: 13px;
+    color: #5b5b5b;
+    margin-bottom: 5px;
+  }
+
+  .userInfo__input {
+    width: 265px;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    border-bottom: thin solid #575757;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #c0c0c0;
+  }
+
+  #signUp__joinBtn {
+    width: 100vw;
+    height: 50px;
+    position: absolute;
+    bottom: 0px;
+    font-family: neoB;
+    font-size: 17px;
+    color: white;
+    border: none;
+    /* 모두 입력된 상태, 활성화 */
+    background-color: #619fd0;
+
+    /* 모두 미입력 상태인 경우 비활성화 */
+    /* color: gray; */
+    /* background-color: #C4C4C4; */
+  }
+}
