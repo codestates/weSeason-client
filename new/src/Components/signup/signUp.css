@@ -57,7 +57,7 @@
     height: 54px;
   }
 
-  .userInfo__title {
+  .userInfo__title-basic {
     font-family: neoL;
     font-size: 15px;
     color: #6b6b6b;
@@ -66,7 +66,16 @@
     text-align: center;
   }
 
-  .userInfo__input {
+  .userInfo__title-extend {
+    font-family: neoL;
+    font-size: 15px;
+    color: #619fd0;
+    display: inline-block;
+    width: 117px;
+    text-align: center;
+  }
+
+  .userInfo__input-basic {
     width: 209px;
     height: 39px;
     background-color: white;
@@ -78,6 +87,18 @@
     margin-left: 50px;
   }
 
+  .userInfo__input-extend {
+    width: 209px;
+    height: 39px;
+    background-color: white;
+    font-family: neoL;
+    font-size: 15px;
+    border: none;
+    border-bottom: thin solid #619fd0;
+    padding-left: 8px;
+    margin-left: 50px;
+  }
+
   input::-webkit-input-placeholder {
     color: #c0c0c0;
   }
@@ -85,7 +106,7 @@
     color: black;
   }
 
-  #signUp__joinBtn {
+  #signUp__joinBtn-basic {
     width: 491px;
     height: 59px;
     font-family: neoM;
@@ -97,7 +118,23 @@
     margin-top: 73px;
   }
 
-  #signUp__joinBtn:hover {
+  #signUp__joinBtn-extend {
+    width: 491px;
+    height: 59px;
+    font-family: neoM;
+    font-size: 20px;
+    color: gray;
+    border-radius: 15px;
+    background-color: white;
+    border: none;
+    margin-top: 73px;
+  }
+
+  #signUp__joinBtn-basic:hover {
+    color: black;
+  }
+
+  #signUp__joinBtn-extend:hover {
     color: black;
   }
 }
@@ -115,27 +152,36 @@
 
   #signUp__userInfo {
     width: 613px;
-    height: 762px;
+    height: 771px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 3%;
   }
 
   .userInfo__contain {
     width: 538px;
-    height: 124px;
+    height: 105px;
     /* margin-bottom: px; */
   }
 
-  .userInfo__title {
+  .userInfo__title-basic {
     font-family: neoL;
     font-size: 17px;
     color: #5b5b5b;
-    margin-bottom: 5px;
+    margin: 0;
   }
 
-  .userInfo__input {
+  .userInfo__title-extend {
+    font-family: neoL;
+    font-size: 17px;
+    color: #619fd0;
+    margin: 0;
+  }
+
+  .userInfo__input-basic {
     width: 514px;
     height: 63px;
     font-family: neoL;
@@ -144,26 +190,49 @@
     border-bottom: thin solid #575757;
   }
 
+  .userInfo__input-extend {
+    width: 514px;
+    height: 63px;
+    font-family: neoL;
+    font-size: 20px;
+    border: none;
+    border-bottom: thin solid #619fd0;
+  }
+
   input::-webkit-input-placeholder {
     color: #c0c0c0;
   }
 
-  #signUp__joinBtn {
+  #signUp__joinBtn-basic {
     width: 100vw;
-    height: 100px;
+    height: 80px;
     position: absolute;
     bottom: 0px;
     font-family: neoB;
     font-size: 30px;
     border: none;
     cursor: pointer;
-    /* 모두 입력된 상태, 활성화 */
+    color: white;
+    background-color: #c4c4c4;
+  }
+
+  #signUp__joinBtn-extend {
+    width: 100vw;
+    height: 80px;
+    position: absolute;
+    bottom: 0px;
+    font-family: neoB;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
     color: white;
     background-color: #619fd0;
+  }
 
-    /* 모두 미입력 상태인 경우 비활성화 */
-    /* color: gray; */
-    /* background-color: #C4C4C4; */
+  #userInfo__errorView {
+    font-family: neoB;
+    font-size: 17px;
+    color: #f45757;
   }
 }
 
@@ -180,13 +249,13 @@
 
   #signUp__userInfo {
     width: 271px;
-    height: 398px;
+    height: 441px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 13%;
+    top: 7%;
   }
 
   .userInfo__contain {
@@ -195,14 +264,21 @@
     margin-bottom: 15px;
   }
 
-  .userInfo__title {
+  .userInfo__title-basic {
     font-family: neoL;
     font-size: 13px;
     color: #5b5b5b;
     margin-bottom: 5px;
   }
 
-  .userInfo__input {
+  .userInfo__title-extend {
+    font-family: neoL;
+    font-size: 13px;
+    color: #619fd0;
+    margin-bottom: 5px;
+  }
+
+  .userInfo__input-basic {
     width: 265px;
     height: 30px;
     font-size: 15px;
@@ -210,11 +286,19 @@
     border-bottom: thin solid #575757;
   }
 
+  .userInfo__input-extend {
+    width: 265px;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    border-bottom: thin solid #619fd0;
+  }
+
   input::-webkit-input-placeholder {
     color: #c0c0c0;
   }
 
-  #signUp__joinBtn {
+  #signUp__joinBtn-basic {
     width: 100vw;
     height: 50px;
     position: absolute;
@@ -223,11 +307,26 @@
     font-size: 17px;
     color: white;
     border: none;
-    /* 모두 입력된 상태, 활성화 */
-    background-color: #619fd0;
+    background-color: #c4c4c4;
+  }
 
-    /* 모두 미입력 상태인 경우 비활성화 */
-    /* color: gray; */
-    /* background-color: #C4C4C4; */
+  #signUp__joinBtn-extend {
+    width: 100vw;
+    height: 50px;
+    position: absolute;
+    bottom: 0px;
+    font-family: neoB;
+    font-size: 17px;
+    color: white;
+    border: none;
+    background-color: #619fd0;
+  }
+
+  #userInfo__errorView {
+    font-family: neoB;
+    font-size: 12px;
+    color: #f45757;
+    position: absolute;
+    bottom: 0.5%;
   }
 }

@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { Provider } from "react-redux"
+import { Provider } from "react-redux";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { appReducer } from "./reducers/appReducer";
+import { userInfoReducer } from "./reducers/userInfoReducer";
 
 const RootReducer = combineReducers({
-  appReducer
-  
+  userInfo: userInfoReducer,
 });
 
 const store = configureStore({
