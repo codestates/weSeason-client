@@ -28,6 +28,14 @@
   align-items: center;
 }
 
+.onbtnModal__info {
+  font-family: neoL;
+  font-size: 15px;
+  color: #6b6b6b;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
 @media all and (min-width: 1024px) {
   #signUpPage {
     background-color: #619fd0;
@@ -137,9 +145,16 @@
   #signUp__joinBtn-extend:hover {
     color: black;
   }
+
+  #userInfo__errorView {
+    display: none;
+  }
 }
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
+  .onebtnModal__background {
+    display: none;
+  }
   #signUp__ment {
     font-family: neoB;
     font-size: 30px;
@@ -164,7 +179,6 @@
   .userInfo__contain {
     width: 538px;
     height: 105px;
-    /* margin-bottom: px; */
   }
 
   .userInfo__title-basic {
@@ -234,6 +248,9 @@
     font-size: 17px;
     color: #f45757;
   }
+  /* .onebtnModal__background {
+    display: none;
+  } */
 }
 
 @media all and (max-width: 768px) {
