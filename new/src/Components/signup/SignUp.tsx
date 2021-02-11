@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import UserInfo from "./UserInfo";
 import "./signUp.css";
 import { infoFormData } from "./infoData";
 import { connect } from "react-redux";
 import axios from "axios";
 import { API_URL } from "../../const";
+import {
+  changeName,
+  changeNickName,
+  changeEmail,
+  changePassword,
+  changePasswordCheck,
+} from "../../reducers/userInfoReducer";
+import { changeCurrentPageWidth } from "../../reducers/pageWidthReducer";
+import OneBtnModal from "../modal/OneBtnModal";
 
 interface InfoDataType {
   title: string;
@@ -14,17 +24,28 @@ interface InfoDataType {
   id: number;
 }
 
-const SignUp = ({ userInfo }: any) => {
-  const name = userInfo.userInfo.name;
-  const nickName = userInfo.userInfo.nickName;
-  const email = userInfo.userInfo.email;
-  const password = userInfo.userInfo.password;
-  const passwordCheck = userInfo.userInfo.passwordCheck;
+const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
+  const name = userInfo.name;
+  const nickName = userInfo.nickName;
+  const email = userInfo.email;
+  const password = userInfo.password;
+  const passwordCheck = userInfo.passwordCheck;
 
-  const infoForm: InfoDataType[] = infoFormData;
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [resError, setResError] = useState<boolean>(false);
+  const [webError, setWebError] = useState<boolean>(false);
+  const [webJoin, setWebJoin] = useState<boolean>(false);
   const [defaultBtnColor, setDefaultBtnColor] = useState<boolean>(true);
+  const [resMessage, setResMessage] = useState<string>("");
+
+  const history = useHistory();
+  const infoForm: InfoDataType[] = infoFormData;
+
+  let searchPageWidthLoop = () => {
+    rest.modifyCilentWidth(document.documentElement.clientWidth);
+  };
+
+  let searchPageWidth = window.setInterval(searchPageWidthLoop, 400);
 
   useEffect(() => {
     if (
@@ -75,30 +96,67 @@ const SignUp = ({ userInfo }: any) => {
       })
       .then(() => {
         // 성공할 경우 모달 or 모바일 안내
-        // 로그인 페이지로 이동
+        // 스테이트 초기화
+        formatUserInfo();
+
+        if (pageWidth >= 1024) {
+          setErrorMessage("회원가입 완료");
+          setResMessage("확인을 누르면 로그인 페이지로 이동합니다");
+          setWebJoin(true);
+        } else {
+          history.push("/signin");
+        }
       })
       .catch(() => {
         // 존재하는 이메일 오류 모달 or 모바일 안내
+        setErrorMessage("이미 존재하는 이메일입니다");
+        if (pageWidth < 1024) {
+          setResError(true);
+        } else if (pageWidth >= 1024) {
+          setWebError(true);
+        }
       });
   };
 
-  const checkPageWidthErrorConcepts = () => {
-    const pageWidth = document.documentElement.clientWidth;
+  const formatUserInfo = () => {
+    rest.modifyName("");
+    rest.modifyNickName("");
+    rest.modifyEmail("");
+    rest.modifyPassword("");
+    rest.modifyPasswordCheck("");
+  };
 
+  const checkPageWidthErrorConcepts = () => {
     if (pageWidth < 1024 && errorMessage) {
       setResError(true);
     } else if (pageWidth >= 1024 && errorMessage) {
       // 웹 에러 모달
-    } else if (!errorMessage) {
+      console.log(errorMessage, "에러메세지");
+      setWebError(true);
+    } else if (!errorMessage && !defaultBtnColor) {
       // ajax 호출
       joinUserOrCheckEqualUser();
-      // redux 유저 인포 전부 초기화 필요
     }
   };
 
   const handleClickJoinBtn = async () => {
     await checkEmptyOrFaultPassword();
     await checkPageWidthErrorConcepts();
+  };
+
+  const handleFindModalClose = () => {
+    setWebError(false);
+    if (errorMessage === "이미 존재하는 이메일입니다") {
+      setErrorMessage("");
+    }
+    if (resError) {
+      setResError(false);
+    }
+
+    if (resMessage) {
+      setResMessage("");
+      history.push("/login");
+    }
   };
 
   return (
@@ -116,12 +174,38 @@ const SignUp = ({ userInfo }: any) => {
       >
         가입하기
       </button>
+      {webError ? (
+        <OneBtnModal
+          message={errorMessage}
+          info=""
+          handleFindModalClose={handleFindModalClose}
+        />
+      ) : null}
+      {webJoin ? (
+        <OneBtnModal
+          message={errorMessage}
+          info={resMessage}
+          handleFindModalClose={handleFindModalClose}
+        />
+      ) : null}
     </div>
   );
 };
 
 const mapStateToProps = (state: any) => {
-  return { userInfo: state };
+  return { userInfo: state.userInfo, pageWidth: state.pageWidth.width };
 };
 
-export default connect(mapStateToProps)(SignUp);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    modifyName: (name: string) => dispatch(changeName(name)),
+    modifyNickName: (nickName: string) => dispatch(changeNickName(nickName)),
+    modifyEmail: (email: string) => dispatch(changeEmail(email)),
+    modifyPassword: (pw: string) => dispatch(changePassword(pw)),
+    modifyPasswordCheck: (pw: string) => dispatch(changePasswordCheck(pw)),
+    modifyCilentWidth: (width: number) =>
+      dispatch(changeCurrentPageWidth(width)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
