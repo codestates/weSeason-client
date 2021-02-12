@@ -40,7 +40,6 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
 
   const history = useHistory();
   const infoForm: InfoDataType[] = infoFormData;
-
   let searchPageWidthLoop = () => {
     rest.modifyCilentWidth(document.documentElement.clientWidth);
   };
