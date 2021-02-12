@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { checkPassword } from "../../api";
 import { RootState } from "../../reducers";
-import { clickClose, setError } from "../../reducers/mypageReducer";
+import {
+  clickClose,
+  goToEditPage,
+  setError,
+} from "../../reducers/mypageReducer";
 
 export default function CheckPasswordContent() {
   const accessToken = useSelector(
@@ -28,6 +32,7 @@ export default function CheckPasswordContent() {
           onClick={async () => {
             try {
               await checkPassword(password, accessToken);
+              dispatch(goToEditPage());
             } catch (error) {
               if (error.response.status === 400) {
                 dispatch(setError("비밀번호를 재확인해주세요."));

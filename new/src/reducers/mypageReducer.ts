@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
+  isEditPage: false,
   isEditClick: false,
   isWithdrawalClick: false,
   error: "",
@@ -24,10 +25,15 @@ const mypageSlice = createSlice({
     clickWithdrawal(state) {
       state.isWithdrawalClick = true;
     },
+    goToEditPage(state) {
+      state.isEditPage = true;
+      state.isEditClick = false;
+    },
   },
 });
 
 export const {
+  goToEditPage,
   clickEdit,
   clickClose,
   setError,
