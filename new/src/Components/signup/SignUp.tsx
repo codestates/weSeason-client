@@ -58,6 +58,10 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
     } else {
       setDefaultBtnColor(true);
     }
+
+    if (pageWidth < 1024 && webError) {
+      setWebError(false);
+    }
   });
 
   const userInfoListItem = infoForm.map((item) => {
