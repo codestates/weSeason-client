@@ -17,7 +17,14 @@ function App() {
       const accessToken = await checkIsLogined();
       dispatch(setAccessToken(accessToken));
     })();
-  }, [dispatch]);
+
+    const resizeListener = () => {
+      modifyCilentWidth(getWidth());
+    };
+    window.addEventListener("resize", resizeListener);
+  });
+
+  const getWidth = () => window.innerWidth;
 
   return (
     <BrowserRouter>

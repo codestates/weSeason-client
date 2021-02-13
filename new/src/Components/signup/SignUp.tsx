@@ -16,13 +16,13 @@ import {
 import { changeCurrentPageWidth } from "../../reducers/pageWidthReducer";
 import OneBtnModal from "../modal/OneBtnModal";
 
-interface InfoDataType {
+type InfoDataType = {
   title: string;
   name: string;
   type: string;
   placeholder: string;
   id: number;
-}
+};
 const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
   const name = userInfo.name;
   const nickName = userInfo.nickName;
@@ -55,7 +55,15 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
     if (pageWidth < 1024 && webError) {
       setWebError(false);
     }
-  });
+  }, [
+    name,
+    nickName,
+    email,
+    password,
+    passwordCheck.length,
+    pageWidth,
+    webError,
+  ]);
 
   const userInfoListItem = infoForm.map((item) => {
     return (
@@ -83,35 +91,32 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
   };
 
   const joinUserOrCheckEqualUser = async () => {
-    axios
-      .post(`${API_URL}/users`, {
+    try {
+      await axios.post(`${API_URL}/users`, {
         name,
         nickname: nickName,
         password,
         email,
-      })
-      .then(() => {
-        // 성공할 경우 모달 or 모바일 안내
-        // 스테이트 초기화
-        formatUserInfo();
-
-        if (pageWidth >= 1024) {
-          setErrorMessage("회원가입 완료");
-          setResMessage("확인을 누르면 로그인 페이지로 이동합니다");
-          setWebJoin(true);
-        } else {
-          history.push("/signin");
-        }
-      })
-      .catch(() => {
-        // 존재하는 이메일 오류 모달 or 모바일 안내
-        setErrorMessage("이미 존재하는 이메일입니다");
-        if (pageWidth < 1024) {
-          setResError(true);
-        } else if (pageWidth >= 1024) {
-          setWebError(true);
-        }
       });
+      // 성공할 경우 모달 or 모바일 안내
+      // 스테이트 초기화
+      formatUserInfo();
+
+      if (pageWidth >= 1024) {
+        setErrorMessage("회원가입 완료");
+        setResMessage("확인을 누르면 로그인 페이지로 이동합니다");
+        setWebJoin(true);
+      } else {
+        history.push("/signin");
+      }
+    } catch {
+      setErrorMessage("이미 존재하는 이메일입니다");
+      if (pageWidth < 1024) {
+        setResError(true);
+      } else if (pageWidth >= 1024) {
+        setWebError(true);
+      }
+    }
   };
 
   const formatUserInfo = () => {

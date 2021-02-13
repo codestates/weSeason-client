@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  width: document.documentElement.clientWidth + 15,
+  width: document.documentElement.clientWidth,
 };
 
 const pageWidthSlice = createSlice({
@@ -10,7 +10,7 @@ const pageWidthSlice = createSlice({
   reducers: {
     changeCurrentPageWidth(state, action) {
       const clientWidth = action.payload;
-      state.width = clientWidth + 15;
+      state.width = clientWidth;
     },
   },
 });

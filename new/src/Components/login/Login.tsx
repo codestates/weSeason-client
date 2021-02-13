@@ -6,8 +6,14 @@ import { API_URL } from "../../const";
 import OneBtnModal from "../modal/OneBtnModal";
 import "./login.css";
 import { setAccessToken } from "../../reducers/appReducer";
+import { isAssertionExpression } from "typescript";
 
-const Login = ({ pageWidth, modifyAccessToken }: any) => {
+type LoginProps = {
+  pageWidth: number;
+  modifyAccessToken(token: string): void;
+};
+
+const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
   const [resPage, setResPage] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -38,7 +44,7 @@ const Login = ({ pageWidth, modifyAccessToken }: any) => {
     } else if (webError && pageWidth < 1024) {
       setWebError(false);
     }
-  });
+  }, [pageWidth, email, password, resError, webError]);
 
   const handleChangeLoginData = (e: any) => {
     const targetName = e.target.name;
@@ -65,32 +71,33 @@ const Login = ({ pageWidth, modifyAccessToken }: any) => {
     }
   };
 
-  const handleFindLoginUser = () => {
-    axios
-      .post(`${API_URL}/auth/local`, { email, password })
-      .then((data) => {
-        const accessToken = data.data.data.accessToken;
-
-        modifyAccessToken(accessToken);
-
-        if (pageWidth > 1024) {
-          setErrorMessage("로그인 성공");
-          setResMessage("메인 페이지로 이동합니다");
-          setWebSuccess(true);
-        } else {
-          history.push("/");
-        }
-      })
-      .catch(() => {
-        setErrorMessage("일치하는 정보가 확인되지 않습니다");
-
-        if (pageWidth > 1024) {
-          setWebSuccess(false);
-          setWebError(true);
-        } else {
-          setResError(true);
-        }
+  const handleFindLoginUser = async () => {
+    try {
+      const data = await axios.post(`${API_URL}/auth/local`, {
+        email,
+        password,
       });
+      const accessToken = data.data.data.accessToken;
+
+      modifyAccessToken(accessToken);
+
+      if (pageWidth > 1024) {
+        setErrorMessage("로그인 성공");
+        setResMessage("메인 페이지로 이동합니다");
+        setWebSuccess(true);
+      } else {
+        history.push("/");
+      }
+    } catch {
+      setErrorMessage("일치하는 정보가 확인되지 않습니다");
+
+      if (pageWidth > 1024) {
+        setWebSuccess(false);
+        setWebError(true);
+      } else {
+        setResError(true);
+      }
+    }
   };
 
   const checkPageWidthErrorConcepts = () => {
