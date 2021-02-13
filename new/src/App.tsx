@@ -11,18 +11,20 @@ import { connect } from "react-redux";
 
 function App({ modifyCilentWidth }: any) {
   const dispatch = useDispatch();
-  let searchPageWidthLoop = () => {
-    modifyCilentWidth(document.documentElement.clientWidth);
-  };
-
-  let searchPageWidth = window.setInterval(searchPageWidthLoop, 400);
 
   useEffect(() => {
     (async () => {
       const accessToken = await checkIsLogined();
       dispatch(setAccessToken(accessToken));
     })();
-  }, [dispatch]);
+
+    const resizeListener = () => {
+      modifyCilentWidth(getWidth());
+    };
+    window.addEventListener("resize", resizeListener);
+  });
+
+  const getWidth = () => window.innerWidth;
 
   return (
     <BrowserRouter>
