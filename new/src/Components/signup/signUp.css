@@ -36,6 +36,10 @@
   margin-bottom: 5px;
 }
 
+nav {
+  display: none;
+}
+
 @media all and (min-width: 1024px) {
   #signUpPage {
     background-color: #619fd0;
