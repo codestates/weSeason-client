@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { API_URL } from "../../const";
 import OneBtnModal from "../modal/OneBtnModal";
 import "./login.css";
-import { importAccessToken } from "../../reducers/accessTokenReducer";
+import { setAccessToken } from "../../reducers/appReducer";
 
 const Login = ({ pageWidth, modifyAccessToken }: any) => {
   const [resPage, setResPage] = useState<boolean>(false);
@@ -223,7 +223,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    modifyAccessToken: (token: string) => dispatch(importAccessToken(token)),
+    modifyAccessToken: (token: string) => dispatch(setAccessToken(token)),
   };
 };
 
