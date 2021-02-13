@@ -152,9 +152,6 @@
 }
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
-  /* .onebtnModal__background {
-    display: none;
-  } */
   #signUp__ment {
     font-family: neoB;
     font-size: 30px;
@@ -248,9 +245,6 @@
     font-size: 17px;
     color: #f45757;
   }
-  /* .onebtnModal__background {
-    display: none;
-  } */
 }
 
 @media all and (max-width: 768px) {
