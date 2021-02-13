@@ -6,15 +6,24 @@ import Login from "./Components/login/Login";
 import Mypage from "./Components/mypage/MyPage";
 import SignUp from "./Components/signup/SignUp";
 import { setAccessToken } from "./reducers/appReducer";
+import { changeCurrentPageWidth } from "../src/reducers/pageWidthReducer";
+import { connect } from "react-redux";
 
-function App() {
+function App({ modifyCilentWidth }: any) {
   const dispatch = useDispatch();
+  let searchPageWidthLoop = () => {
+    modifyCilentWidth(document.documentElement.clientWidth);
+  };
+
+  let searchPageWidth = window.setInterval(searchPageWidthLoop, 400);
+
   useEffect(() => {
     (async () => {
       const accessToken = await checkIsLogined();
       dispatch(setAccessToken(accessToken));
     })();
   }, [dispatch]);
+
   return (
     <BrowserRouter>
       <nav>
@@ -49,4 +58,11 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    modifyCilentWidth: (width: number) =>
+      dispatch(changeCurrentPageWidth(width)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

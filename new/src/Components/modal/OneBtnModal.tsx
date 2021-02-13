@@ -30,8 +30,4 @@ const OneBtnModal = ({ message, info, handleFindModalClose }: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return { pageWidth: state };
-};
-
-export default connect(mapStateToProps)(OneBtnModal);
+export default OneBtnModal;

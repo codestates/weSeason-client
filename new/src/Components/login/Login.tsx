@@ -1,41 +1,230 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { API_URL } from "../../const";
+import OneBtnModal from "../modal/OneBtnModal";
 import "./login.css";
+import { setAccessToken } from "../../reducers/appReducer";
 
-const Login = () => {
+const Login = ({ pageWidth, modifyAccessToken }: any) => {
+  const [resPage, setResPage] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [resError, setResError] = useState<boolean>(false);
+  const [webError, setWebError] = useState<boolean>(false);
+  const [defaultBtnColor, setDefaultBtnColor] = useState<boolean>(true);
+  const [resMessage, setResMessage] = useState<string>("");
+  const [webSuccess, setWebSuccess] = useState<boolean>(false);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (pageWidth < 1024) {
+      setResPage(true);
+    } else {
+      setResPage(false);
+    }
+
+    if (email && password && password.length >= 6) {
+      setDefaultBtnColor(false);
+    } else {
+      setDefaultBtnColor(true);
+    }
+
+    if (resError && pageWidth >= 1024) {
+      setResError(false);
+    } else if (webError && pageWidth < 1024) {
+      setWebError(false);
+    }
+  });
+
+  const handleChangeLoginData = (e: any) => {
+    const targetName = e.target.name;
+    const targetValue = e.target.value;
+
+    if (targetName === "email") {
+      setEmail(targetValue);
+    } else {
+      setPassword(targetValue);
+    }
+  };
+
+  const checkEmptyInputOrFaultPassword = () => {
+    if (!email && !password) {
+      setErrorMessage("모든 정보를 입력해주세요");
+    } else if (!email) {
+      setErrorMessage("이메일을 입력해주세요");
+    } else if (!password) {
+      setErrorMessage("비밀번호를 입력해주세요");
+    } else if (password.length < 6) {
+      setErrorMessage("6자리 이상의 비밀번호를 입력해주세요");
+    } else {
+      setErrorMessage("");
+    }
+  };
+
+  const handleFindLoginUser = () => {
+    axios
+      .post(`${API_URL}/auth/local`, { email, password })
+      .then((data) => {
+        const accessToken = data.data.data.accessToken;
+
+        modifyAccessToken(accessToken);
+
+        if (pageWidth > 1024) {
+          setErrorMessage("로그인 성공");
+          setResMessage("메인 페이지로 이동합니다");
+          setWebSuccess(true);
+        } else {
+          history.push("/");
+        }
+      })
+      .catch(() => {
+        setErrorMessage("일치하는 정보가 확인되지 않습니다");
+
+        if (pageWidth > 1024) {
+          setWebSuccess(false);
+          setWebError(true);
+        } else {
+          setResError(true);
+        }
+      });
+  };
+
+  const checkPageWidthErrorConcepts = () => {
+    if (pageWidth < 1024 && errorMessage) {
+      setResError(true);
+    } else if (pageWidth >= 1024 && errorMessage) {
+      // 웹 에러 모달
+      setWebError(true);
+    } else if (!errorMessage && !defaultBtnColor) {
+      // ajax 호출
+      handleFindLoginUser();
+    }
+  };
+
+  const handleFindModalClose = () => {
+    setWebError(false);
+    setWebSuccess(false);
+
+    if (errorMessage) {
+      setErrorMessage("");
+    }
+    if (resError) {
+      setResError(false);
+    }
+
+    if (resMessage) {
+      setResMessage("");
+      history.push("/");
+    }
+  };
+
+  const handleClickLogin = async () => {
+    // 에러
+    await checkEmptyInputOrFaultPassword();
+    await checkPageWidthErrorConcepts();
+  };
+
   return (
     <div id="loginPage">
       <div id="login__logo">
-        <p id="logo__title">weSeason</p>
+        {resPage ? (
+          <p id="login__title">로그인</p>
+        ) : (
+          <p id="logo__title">weSeason</p>
+        )}
       </div>
-      <div id="login__input-items">
-        <div className="login__input-contain">
-          <div className="login__input-title">이메일</div>
-          <input
-            type="text"
-            className="login__input-form"
-            placeholder="이메일을 입력해주세요"
-          />
+      <div id="login__contants">
+        <div id="login__input-items">
+          <div className="login__input-contain">
+            <div
+              className={
+                !email
+                  ? "login__input-title-basic"
+                  : "login__input-title-extend"
+              }
+            >
+              이메일
+            </div>
+            <input
+              type="text"
+              name="email"
+              className={
+                !password
+                  ? "login__input-form-basic"
+                  : "login__input-form-extend"
+              }
+              placeholder="이메일을 입력해주세요"
+              onChange={handleChangeLoginData}
+            />
+          </div>
+          <div className="login__input-contain">
+            <div
+              className={
+                !password
+                  ? "login__input-title-basic"
+                  : "login__input-title-extend"
+              }
+            >
+              비밀번호
+            </div>
+            <input
+              type="password"
+              name="password"
+              className={
+                !email ? "login__input-form-basic" : "login__input-form-extend"
+              }
+              placeholder="비밀번호(6자리 이상) 입력해주세요"
+              onChange={handleChangeLoginData}
+            />
+          </div>
         </div>
-        <div className="login__input-contain">
-          <div className="login__input-title">비밀번호</div>
-          <input
-            type="password"
-            className="login__input-form"
-            placeholder="비밀번호(6자리 이상) 입력해주세요"
-          />
+        <button
+          id={
+            defaultBtnColor
+              ? "login__login-Btn-basic"
+              : "login__login-Btn-extend"
+          }
+          onClick={handleClickLogin}
+        >
+          로그인
+        </button>
+        {resError ? <div id="login__errorView">{errorMessage}</div> : null}
+        <div id="login__oauth-contain">
+          <button id="login__oauth-btn--google">구글 로그인</button>
+          <button id="login__oauth-btn--github">깃허브 로그인</button>
         </div>
+        <Link to="/signup">계정이 없으신가요?</Link>
       </div>
-      <button id="login__login-Btn">로그인</button>
-      <div id="login__oauth-contain">
-        <button id="login__oauth-btn--google">구글 로그인</button>
-        <button id="login__oauth-btn--github">깃허브 로그인</button>
-      </div>
-      <Link to="/signup" className="login__link">
-        계정이 없으신가요?
-      </Link>
+      {webError ? (
+        <OneBtnModal
+          message={errorMessage}
+          info=""
+          handleFindModalClose={handleFindModalClose}
+        />
+      ) : null}
+      {webSuccess ? (
+        <OneBtnModal
+          message={errorMessage}
+          info={resMessage}
+          handleFindModalClose={handleFindModalClose}
+        />
+      ) : null}
     </div>
   );
 };
 
-export default Login;
+const mapStateToProps = (state: any) => {
+  return { pageWidth: state.pageWidth.width };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    modifyAccessToken: (token: string) => dispatch(setAccessToken(token)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
