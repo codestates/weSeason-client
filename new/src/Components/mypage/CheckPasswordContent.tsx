@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { checkPassword } from "../../api";
+import { checkPassword } from "../../api/auth";
 import { RootState } from "../../reducers";
 import {
   clickClose,

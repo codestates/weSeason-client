@@ -23,7 +23,6 @@ interface InfoDataType {
   placeholder: string;
   id: number;
 }
-
 const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
   const name = userInfo.name;
   const nickName = userInfo.nickName;
@@ -40,7 +39,6 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
 
   const history = useHistory();
   const infoForm: InfoDataType[] = infoFormData;
-
   useEffect(() => {
     if (
       name &&

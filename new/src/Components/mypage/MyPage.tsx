@@ -17,7 +17,7 @@ import ErrorContent from "./ErrorContent";
 import CheckPasswordContent from "./CheckPasswordContent";
 import AskWithdrawalContent from "./AskWithdrawalContent";
 import { useEffect, useRef } from "react";
-import { getUserInfo, updateUserInfo } from "../../api";
+import { getUserInfo, updateUserInfo } from "../../api/user";
 
 export default function Mypage() {
   const dispatch = useDispatch();
@@ -38,6 +38,7 @@ export default function Mypage() {
   } = useSelector((state: RootState) => state.mypageReducer);
   const nicknameInput = useRef<HTMLInputElement>(null!);
   const passwordInput = useRef<HTMLInputElement>(null!);
+
   useEffect(() => {
     if (accessToken) {
       (async () => {
@@ -58,9 +59,12 @@ export default function Mypage() {
       passwordInput.current.focus();
     }
   }, [isPasswordChecked]);
+
   return (
     <div className="mypage">
-      <h1 className="mypage__title">{!isEditPage ?"마이페이지":'내 정보 수정하기'}</h1>
+      <h1 className="mypage__title">
+        {!isEditPage ? "마이페이지" : "내 정보 수정하기"}
+      </h1>
       <section className="mypage__box">
         {!isEditPage && (
           <button

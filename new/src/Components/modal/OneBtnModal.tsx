@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useState } from "react";
 import "./OneBtnModal.css";
 
 const OneBtnModal = ({ message, info, handleFindModalClose }: any) => {

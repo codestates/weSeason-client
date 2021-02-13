@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import { checkIsLogined } from "./api";
+import { checkIsLogined } from "./api/auth";
 import Login from "./Components/login/Login";
 import Mypage from "./Components/mypage/MyPage";
 import SignUp from "./Components/signup/SignUp";
@@ -9,13 +9,8 @@ import { setAccessToken } from "./reducers/appReducer";
 import { changeCurrentPageWidth } from "../src/reducers/pageWidthReducer";
 import { connect } from "react-redux";
 
-function App({ modifyCilentWidth }: any) {
+function App() {
   const dispatch = useDispatch();
-  let searchPageWidthLoop = () => {
-    modifyCilentWidth(document.documentElement.clientWidth);
-  };
-
-  let searchPageWidth = window.setInterval(searchPageWidthLoop, 400);
 
   useEffect(() => {
     (async () => {

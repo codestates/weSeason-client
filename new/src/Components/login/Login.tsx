@@ -197,7 +197,7 @@ const Login = ({ pageWidth, modifyAccessToken }: any) => {
           <button id="login__oauth-btn--google">구글 로그인</button>
           <button id="login__oauth-btn--github">깃허브 로그인</button>
         </div>
-        <Link to="/signup">계정이 없으신가요?</Link>
+        <Link to="/signup" className="login__link">계정이 없으신가요?</Link>
       </div>
       {webError ? (
         <OneBtnModal
