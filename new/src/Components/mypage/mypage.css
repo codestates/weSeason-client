@@ -1,0 +1,65 @@
+.mypage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #619fd0;
+}
+.mypage__title {
+  font-family: jalnan;
+  font-size: 40px;
+  color: white;
+  font-weight: normal;
+}
+.mypage__box {
+  background-color: white;
+  width: 748px;
+  height: 565px;
+  border-radius: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+.mypage__editbtn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: #808080;
+  font-size: 20px;
+  outline: none;
+  cursor: pointer;
+}
+.mypage__form {
+  height: 90%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.mypage__row {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  margin: 28px;
+  border-bottom: 2px solid #c0c0c0;
+  position: relative;
+}
+.mypage__row label {
+  font-size: 23px;
+  width: 30%;
+}
+.mypage__row input {
+  border: none;
+  font-size: 23px;
+}
+.mypage__row input:read-only {
+  outline: none;
+}
+.mypage__row input[type="checkbox"] {
+  position: absolute;
+  left: -30px;
+  height: 20px;
+  width: 20px;
+}

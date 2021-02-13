@@ -1,3 +1,4 @@
+import "./mypage.css";
 import {
   clickEdit,
   clickNicknameCheckbox,
@@ -33,10 +34,8 @@ export default function Mypage() {
     nickname,
     password,
     passwordCheck,
+    userinfo,
   } = useSelector((state: RootState) => state.mypageReducer);
-  const userinfo = useSelector(
-    (state: RootState) => state.mypageReducer.userinfo
-  );
   const nicknameInput = useRef<HTMLInputElement>(null!);
   const passwordInput = useRef<HTMLInputElement>(null!);
   useEffect(() => {
@@ -61,7 +60,7 @@ export default function Mypage() {
   }, [isPasswordChecked]);
   return (
     <div className="mypage">
-      <h1 className="mypage__title">마이페이지</h1>
+      <h1 className="mypage__title">{!isEditPage ?"마이페이지":'내 정보 수정하기'}</h1>
       <section className="mypage__box">
         {!isEditPage && (
           <button
