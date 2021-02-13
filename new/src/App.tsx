@@ -1,8 +1,16 @@
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Login from "./Components/login/Login";
 import SignUp from "./Components/signup/SignUp";
+import { changeCurrentPageWidth } from "../src/reducers/pageWidthReducer";
+import { connect } from "react-redux";
 
-function App() {
+function App({ modifyCilentWidth }: any) {
+  let searchPageWidthLoop = () => {
+    modifyCilentWidth(document.documentElement.clientWidth);
+  };
+
+  let searchPageWidth = window.setInterval(searchPageWidthLoop, 400);
+
   return (
     <BrowserRouter>
       <div id="router">
@@ -33,4 +41,11 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    modifyCilentWidth: (width: number) =>
+      dispatch(changeCurrentPageWidth(width)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);
