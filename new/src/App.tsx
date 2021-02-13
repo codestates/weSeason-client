@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import { getAccessToken } from "./api";
+import { checkIsLogined } from "./api";
 import Login from "./Components/login/Login";
 import Mypage from "./Components/mypage/MyPage";
 import SignUp from "./Components/signup/SignUp";
@@ -12,10 +11,10 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
-      const accessToken = await getAccessToken();
+      const accessToken = await checkIsLogined();
       dispatch(setAccessToken(accessToken));
     })();
-  }, []);
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <nav>

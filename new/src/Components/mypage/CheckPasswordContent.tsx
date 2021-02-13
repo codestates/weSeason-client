@@ -30,13 +30,11 @@ export default function CheckPasswordContent() {
         <button
           className="modal__button"
           onClick={async () => {
-            try {
-              await checkPassword(password, accessToken);
+            const message = await checkPassword(password, accessToken);
+            if (message === "OK") {
               dispatch(goToEditPage());
-            } catch (error) {
-              if (error.response.status === 400) {
-                dispatch(setError("비밀번호를 재확인해주세요."));
-              }
+            } else {
+              dispatch(setError("비밀번호를 재확인해주세요."));
             }
           }}
         >

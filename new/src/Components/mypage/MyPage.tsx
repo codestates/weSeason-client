@@ -1,31 +1,54 @@
-import { clickEdit, clickWithdrawal } from "../../reducers/mypageReducer";
+import {
+  clickEdit,
+  clickNicknameCheckbox,
+  clickPasswordCheckbox,
+  clickWithdrawal,
+  goToMyPage,
+  setNickname,
+  setPassword,
+  setPasswordCheck,
+  setUserinfo,
+} from "../../reducers/mypageReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 import Modal from "./Modal";
 import ErrorContent from "./ErrorContent";
 import CheckPasswordContent from "./CheckPasswordContent";
 import AskWithdrawalContent from "./AskWithdrawalContent";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { getUserInfo, updateUserInfo } from "../../api";
 
 export default function Mypage() {
   const dispatch = useDispatch();
-  const isEditClick = useSelector(
-    (state: RootState) => state.mypageReducer.isEditClick
+  const accessToken = useSelector(
+    (state: RootState) => state.appReducer.accessToken
   );
-  const isWithdrawalClick = useSelector(
-    (state: RootState) => state.mypageReducer.isWithdrawalClick
+  const {
+    isWithdrawalClick,
+    error,
+    isEditClick,
+    isEditPage,
+    isNicknameChecked,
+    isPasswordChecked,
+    nickname,
+    password,
+    passwordCheck,
+  } = useSelector((state: RootState) => state.mypageReducer);
+  const userinfo = useSelector(
+    (state: RootState) => state.mypageReducer.userinfo
   );
-  const isEditPage = useSelector(
-    (state: RootState) => state.mypageReducer.isEditPage
-  );
-  const error = useSelector((state: RootState) => state.mypageReducer.error);
-  const [isNicknameChecked, setIsNicknameChecked] = useState(false);
-  const [isPasswordChecked, setIsPasswordChecked] = useState(false);
-  const [nickname, setNickname] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
   const nicknameInput = useRef<HTMLInputElement>(null!);
   const passwordInput = useRef<HTMLInputElement>(null!);
+  useEffect(() => {
+    if (accessToken) {
+      (async () => {
+        const { name, nickname, email } = await getUserInfo(accessToken);
+        dispatch(
+          setUserinfo({ name, nickname, email, password: "비밀번호 ㅋㅋㅋ" })
+        );
+      })();
+    }
+  }, [accessToken, dispatch]);
   useEffect(() => {
     if (isNicknameChecked) {
       nicknameInput.current.focus();
@@ -40,25 +63,27 @@ export default function Mypage() {
     <div className="mypage">
       <h1 className="mypage__title">마이페이지</h1>
       <section className="mypage__box">
-        <button
-          className="mypage__editbtn"
-          onClick={() => {
-            dispatch(clickEdit());
-          }}
-        >
-          edit
-        </button>
+        {!isEditPage && (
+          <button
+            className="mypage__editbtn"
+            onClick={() => {
+              dispatch(clickEdit());
+            }}
+          >
+            edit
+          </button>
+        )}
         <form className="mypage__form">
           <div className="mypage__row">
             <label htmlFor="name">이름</label>
-            <input type="text" id="name" value="soSim" readOnly />
+            <input type="text" id="name" value={userinfo.name} readOnly />
           </div>
           <div className="mypage__row">
             {isEditPage && (
               <input
                 type="checkbox"
-                onChange={(e) => {
-                  setIsNicknameChecked(e.target.checked);
+                onChange={() => {
+                  dispatch(clickNicknameCheckbox());
                 }}
               />
             )}
@@ -67,32 +92,23 @@ export default function Mypage() {
               ref={nicknameInput}
               type="text"
               id="nickname"
-              value={nickname}
+              value={!isNicknameChecked ? userinfo.nickname : nickname}
               readOnly={!isNicknameChecked}
               onChange={(e) => {
-                setNickname(e.target.value);
+                dispatch(setNickname(e.target.value));
               }}
             />
           </div>
           <div className="mypage__row">
-            <label htmlFor="id">아이디</label>
-            <input type="text" id="id" value="weSeason" readOnly />
-          </div>
-          <div className="mypage__row">
             <label htmlFor="email">이메일</label>
-            <input
-              type="email"
-              id="email"
-              value="weSeson@weseason.com"
-              readOnly
-            />
+            <input type="email" id="email" value={userinfo.email} readOnly />
           </div>
           <div className="mypage__row">
             {isEditPage && (
               <input
                 type="checkbox"
-                onChange={(e) => {
-                  setIsPasswordChecked(e.target.checked);
+                onChange={() => {
+                  dispatch(clickPasswordCheckbox());
                 }}
               />
             )}
@@ -101,10 +117,10 @@ export default function Mypage() {
               ref={passwordInput}
               type="password"
               id="password"
-              value={password}
+              value={!isPasswordChecked ? userinfo.password : password}
               readOnly={!isPasswordChecked}
               onChange={(e) => {
-                setPassword(e.target.value);
+                dispatch(setPassword(e.target.value));
               }}
             />
           </div>
@@ -116,14 +132,29 @@ export default function Mypage() {
                 id="password-check"
                 value={passwordCheck}
                 onChange={(e) => {
-                  setPasswordCheck(e.target.value);
+                  dispatch(setPasswordCheck(e.target.value));
                 }}
               />
             </div>
           )}
         </form>
       </section>
-      {isEditPage && <button onClick={() => {}}>submit</button>}
+      {isEditPage && (
+        <button
+          disabled={
+            (!isNicknameChecked && !isPasswordChecked) ||
+            (isNicknameChecked && !nickname) ||
+            (isPasswordChecked && (!password || !passwordCheck)) ||
+            password !== passwordCheck
+          }
+          onClick={async () => {
+            await updateUserInfo(nickname, password, accessToken);
+            dispatch(goToMyPage());
+          }}
+        >
+          submit
+        </button>
+      )}
       {!isEditPage && (
         <button
           onClick={() => {

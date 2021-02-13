@@ -5,7 +5,6 @@ import { clickClose } from "../../reducers/mypageReducer";
 export default function ErrorContent() {
   const error = useSelector((state: RootState) => state.mypageReducer.error);
   const dispatch = useDispatch();
-
   return (
     <>
       <p className="modal__info">{error}</p>
