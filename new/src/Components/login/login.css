@@ -17,11 +17,9 @@
   font-family: neoM;
   src: url("../../fonts/AppleSDGothicNeoM.ttf");
 }
-
-nav {
+/* nav {
   display: none;
-}
-
+} */
 #loginPage {
   width: 100vw;
   height: 100vh;
@@ -173,7 +171,7 @@ nav {
     font-size: 13px;
   }
 
-  a:hover {
+  .login__link:hover {
     text-decoration: underline;
     color: black;
   }
