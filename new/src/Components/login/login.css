@@ -1,25 +1,3 @@
-@font-face {
-  font-family: jalnan;
-  src: url("../../fonts/Jalnan.ttf");
-}
-
-@font-face {
-  font-family: neoL;
-  src: url("../../fonts/AppleSDGothicNeoL.ttf");
-}
-
-@font-face {
-  font-family: neoB;
-  src: url("../../fonts/AppleSDGothicNeoB.ttf");
-}
-
-@font-face {
-  font-family: neoM;
-  src: url("../../fonts/AppleSDGothicNeoM.ttf");
-}
-/* nav {
-  display: none;
-} */
 #loginPage {
   width: 100vw;
   height: 100vh;

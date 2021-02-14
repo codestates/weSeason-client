@@ -55,7 +55,9 @@ const mypageSlice = createSlice({
       state.isEditPage = false;
       state.isPasswordChecked = false;
       state.isNicknameChecked = false;
-      state.userinfo.nickname = state.nickname;
+      state.nickname = "";
+      state.password = "";
+      state.passwordCheck = "";
     },
     clickWithdrawal(state) {
       state.isWithdrawalClick = true;

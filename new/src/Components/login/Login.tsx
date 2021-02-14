@@ -6,7 +6,6 @@ import { API_URL, REDIRECT_URL } from "../../const";
 import OneBtnModal from "../modal/OneBtnModal";
 import "./login.css";
 import { setAccessToken } from "../../reducers/appReducer";
-// import { isAssertionExpression } from "typescript";
 
 type LoginProps = {
   pageWidth: number;
@@ -79,7 +78,9 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
           email,
           password,
         },
-        { withCredentials: true }
+        {
+          withCredentials: true,
+        }
       );
       const accessToken = data.data.data.accessToken;
 

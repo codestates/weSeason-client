@@ -1,10 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { RootState } from "../../reducers";
 import { clickClose } from "../../reducers/mypageReducer";
-
-export default function ErrorContent() {
+type ErrorContentProps = {
+  goToHome?: boolean;
+};
+export default function ErrorContent({ goToHome }: ErrorContentProps) {
   const error = useSelector((state: RootState) => state.mypageReducer.error);
   const dispatch = useDispatch();
+  const history = useHistory();
+
   return (
     <>
       <p className="modal__info">{error}</p>
@@ -13,6 +18,9 @@ export default function ErrorContent() {
           className="modal__button"
           onClick={() => {
             dispatch(clickClose());
+            if (goToHome) {
+              history.push("/");
+            }
           }}
         >
           X

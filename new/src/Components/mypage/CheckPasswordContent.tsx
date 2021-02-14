@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { checkPassword } from "../../api";
+import { checkPassword } from "../../api/auth";
 import { RootState } from "../../reducers";
 import {
   clickClose,
@@ -14,12 +14,16 @@ export default function CheckPasswordContent() {
   );
   const dispatch = useDispatch();
   const [password, setPassword] = useState("");
-
+  const passwordInput = useRef<HTMLInputElement>(null!);
+  useEffect(() => {
+    passwordInput.current.focus();
+  }, []);
   return (
     <>
       <p className="modal__info">본인확인을 위해 비밀번호를 입력해 주세요.</p>
       <input
         className="modal__input"
+        ref={passwordInput}
         type="password"
         value={password}
         onChange={(e) => {
