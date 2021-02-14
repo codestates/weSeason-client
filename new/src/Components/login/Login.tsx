@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { API_URL } from "../../const";
+import { API_URL, REDIRECT_URL } from "../../const";
 import OneBtnModal from "../modal/OneBtnModal";
 import "./login.css";
 import { setAccessToken } from "../../reducers/appReducer";
@@ -165,9 +165,7 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
               type="text"
               name="email"
               className={
-                !password
-                  ? "login__input-form-basic"
-                  : "login__input-form-extend"
+                !email ? "login__input-form-basic" : "login__input-form-extend"
               }
               placeholder="이메일을 입력해주세요"
               onChange={handleChangeLoginData}
@@ -187,7 +185,9 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
               type="password"
               name="password"
               className={
-                !email ? "login__input-form-basic" : "login__input-form-extend"
+                !password
+                  ? "login__input-form-basic"
+                  : "login__input-form-extend"
               }
               placeholder="비밀번호(6자리 이상) 입력해주세요"
               onChange={handleChangeLoginData}
@@ -206,10 +206,20 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
         </button>
         {resError ? <div id="login__errorView">{errorMessage}</div> : null}
         <div id="login__oauth-contain">
-          <button id="login__oauth-btn--google">구글 로그인</button>
-          <button id="login__oauth-btn--github">깃허브 로그인</button>
+          <button id="login__oauth-btn--google">
+            <a
+              href={`https://accounts.google.com/o/oauth2/v2/auth?client_id=753726601122-kv6c6c3gihku2mv2dsqvi4fldv5mnpsh.apps.googleusercontent.com&redirect_uri=${REDIRECT_URL}/auth/google&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile`}
+            >
+              구글 로그인
+            </a>
+          </button>
+          <button id="login__oauth-btn--github">
+            <a href="https://github.com/login/oauth/authorize?client_id=8de2fdaa38d52d7dfe8c">
+              깃허브 로그인
+            </a>
+          </button>
         </div>
-        <Link to="/signup" className="login__link">
+        <Link id="login__link" to="/signup">
           계정이 없으신가요?
         </Link>
       </div>

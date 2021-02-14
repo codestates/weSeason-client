@@ -138,13 +138,25 @@
     margin-right: 10px;
   }
 
+  #login__oauth-btn--google a {
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+  }
+
   #login__oauth-btn--github {
     width: 145px;
     height: 45px;
     border-radius: 10px;
   }
 
-  .login__link {
+  #login__oauth-btn--github a {
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+  }
+
+  #login__link {
     color: white;
     font-size: 13px;
   }
@@ -253,6 +265,11 @@
     font-size: 17px;
   }
 
+  #login__oauth-btn--google a {
+    text-decoration: none;
+    color: white;
+  }
+
   #login__oauth-btn--github {
     width: 180px;
     height: 60px;
@@ -260,9 +277,15 @@
     font-size: 17px;
   }
 
-  .login__link {
+  #login__oauth-btn--github a {
+    text-decoration: none;
+    color: white;
+  }
+
+  #login__link {
     margin-top: 40px;
     font-size: 15px;
+    color: gray;
   }
 
   #login__errorView {
@@ -342,11 +365,21 @@
     margin-right: 15px;
   }
 
+  #login__oauth-btn--google a {
+    text-decoration: none;
+    color: white;
+  }
+
   #login__oauth-btn--github {
     width: 100px;
     height: 40px;
     border-radius: 10px;
     font-size: 12px;
+  }
+
+  #login__oauth-btn--github a {
+    text-decoration: none;
+    color: white;
   }
 
   #login__login-Btn-basic {
@@ -375,13 +408,13 @@
     cursor: pointer;
   }
 
-  .login__link {
+  #login__link {
     margin-top: 30px;
     font-size: 15px;
     color: #5b5b5b;
   }
 
-  .login__link:hover {
+  #login__link:hover {
     color: blue;
   }
 

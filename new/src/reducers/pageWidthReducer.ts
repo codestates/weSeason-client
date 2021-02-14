@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  width: document.documentElement.clientWidth,
+  width: window.innerWidth,
 };
 
 const pageWidthSlice = createSlice({

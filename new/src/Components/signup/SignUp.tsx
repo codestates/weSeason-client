@@ -107,7 +107,7 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
         setResMessage("확인을 누르면 로그인 페이지로 이동합니다");
         setWebJoin(true);
       } else {
-        history.push("/signin");
+        history.push("/login");
       }
     } catch {
       setErrorMessage("이미 존재하는 이메일입니다");
