@@ -7,10 +7,17 @@ type checkIsLoginedRes = {
   };
 };
 export const checkIsLogined = async () => {
-  const { data } = await axios.get<checkIsLoginedRes>(`${API_URL}/auth/check`, {
-    withCredentials: true,
-  });
-  return data.data.accessToken;
+  try {
+    const { data } = await axios.get<checkIsLoginedRes>(
+      `${API_URL}/auth/check`,
+      {
+        withCredentials: true,
+      }
+    );
+    return data.data.accessToken;
+  } catch (error) {
+    return "";
+  }
 };
 
 type checkPasswordRes = {

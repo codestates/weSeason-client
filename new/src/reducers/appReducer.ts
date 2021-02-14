@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   accessToken: "",
+  init: false,
 };
 
 const appSlice = createSlice({
@@ -10,6 +11,7 @@ const appSlice = createSlice({
   reducers: {
     setAccessToken(state, { payload }: PayloadAction<string>) {
       state.accessToken = payload;
+      state.init = true;
     },
   },
 });

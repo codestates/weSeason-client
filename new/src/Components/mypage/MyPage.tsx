@@ -40,6 +40,11 @@ export default function Mypage() {
   const nicknameInput = useRef<HTMLInputElement>(null!);
   const passwordInput = useRef<HTMLInputElement>(null!);
   useEffect(() => {
+    if (!accessToken) {
+      dispatch(setError("로그인을 해주세요."));
+    }
+  }, [accessToken, dispatch]);
+  useEffect(() => {
     if (accessToken && !isEditPage) {
       (async () => {
         const { name, nickname, email } = await getUserInfo(accessToken);
@@ -241,6 +246,11 @@ export default function Mypage() {
       {isEditPage && error && (
         <Modal>
           <ErrorContent />
+        </Modal>
+      )}
+      {error && (
+        <Modal>
+          <ErrorContent goToHome />
         </Modal>
       )}
     </div>
