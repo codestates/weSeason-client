@@ -17,3 +17,10 @@
   font-family: neoM;
   src: url("./fonts/AppleSDGothicNeoM.ttf");
 }
+body {
+  margin: 0;
+}
+nav {
+  position: absolute;
+  z-index: 1;
+}

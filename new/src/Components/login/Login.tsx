@@ -6,7 +6,6 @@ import { API_URL } from "../../const";
 import OneBtnModal from "../modal/OneBtnModal";
 import "./login.css";
 import { setAccessToken } from "../../reducers/appReducer";
-import { isAssertionExpression } from "typescript";
 
 type LoginProps = {
   pageWidth: number;
@@ -73,10 +72,16 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
 
   const handleFindLoginUser = async () => {
     try {
-      const data = await axios.post(`${API_URL}/auth/local`, {
-        email,
-        password,
-      });
+      const data = await axios.post(
+        `${API_URL}/auth/local`,
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       const accessToken = data.data.data.accessToken;
 
       modifyAccessToken(accessToken);
@@ -204,7 +209,9 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
           <button id="login__oauth-btn--google">구글 로그인</button>
           <button id="login__oauth-btn--github">깃허브 로그인</button>
         </div>
-        <Link to="/signup" className="login__link">계정이 없으신가요?</Link>
+        <Link to="/signup" className="login__link">
+          계정이 없으신가요?
+        </Link>
       </div>
       {webError ? (
         <OneBtnModal

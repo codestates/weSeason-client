@@ -1,8 +1,18 @@
 .mypage {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: #619fd0;
+  height: 100vh;
+  min-height: 700px;
+  position: relative;
+}
+.mypage__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 560px;
 }
 .mypage__title {
   font-family: jalnan;
@@ -12,8 +22,8 @@
 }
 .mypage__box {
   background-color: white;
-  width: 748px;
-  height: 565px;
+  width: 500px;
+  height: 400px;
   border-radius: 36px;
   display: flex;
   justify-content: center;
@@ -22,19 +32,22 @@
 }
 .mypage__editbtn {
   position: absolute;
-  top: 30px;
-  right: 40px;
+  top: 20px;
+  right: 30px;
   background-color: transparent;
   border: none;
   text-decoration: underline;
   color: #808080;
-  font-size: 20px;
+  font-size: 15px;
   outline: none;
   cursor: pointer;
 }
+.mypage__editbtn::before {
+  content: "edit";
+}
 .mypage__form {
-  height: 90%;
   width: 80%;
+  height: 83%;
   display: flex;
   flex-direction: column;
 }
@@ -42,24 +55,172 @@
   display: flex;
   align-items: center;
   padding: 6px;
-  margin: 28px;
+  margin: 15px;
   border-bottom: 2px solid #c0c0c0;
   position: relative;
 }
-.mypage__row label {
-  font-size: 23px;
+.mypage__row--fill {
+  border-bottom-color: #619fd0;
+}
+.mypage__label {
+  font-family: neoL;
+  font-size: 15px;
   width: 30%;
 }
-.mypage__row input {
+.mypage__label--fill {
+  color: #619fd0;
+}
+.mypage__input {
+  font-family: neoL;
   border: none;
-  font-size: 23px;
-}
-.mypage__row input:read-only {
+  font-size: 15px;
   outline: none;
+  width: 70%;
 }
-.mypage__row input[type="checkbox"] {
+.mypage__checkbox {
+  appearance: none;
+  border: 1px solid #000000;
+  border-radius: 3px;
   position: absolute;
   left: -30px;
   height: 20px;
   width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+.mypage__checkbox:checked::before {
+  content: "✓";
+  font-size: 30px;
+}
+.mypage__submitbtn {
+  position: absolute;
+  bottom: 0px;
+  background-color: #fff;
+  width: 80px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.mypage__submitbtn::before {
+  content: "submit";
+}
+.mypage__submitbtn:disabled {
+  cursor: unset;
+}
+.mypage__withdrawal {
+  font-size: 15px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f3f3f3;
+  border: none;
+  width: 123px;
+  height: 53px;
+  cursor: pointer;
+  outline: none;
+}
+.mypage__withdrawal::before {
+  content: "탈퇴";
+}
+@media screen and (max-width: 375px) {
+  .mypage {
+    background-color: #fff;
+    min-height: auto;
+  }
+  .mypage__container {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+  }
+  .mypage__title {
+    font-family: neoB;
+    font-size: 20px;
+    color: #8b8b8b;
+    margin: 20px 0;
+  }
+  .mypage__box {
+    width: inherit;
+    position: static;
+  }
+  .mypage__editbtn {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    font-family: neoB;
+    font-size: 17px;
+    background-color: #619fd0;
+    color: #fff;
+    text-decoration: none;
+  }
+  .mypage__editbtn::before {
+    content: "내 정보 수정하기";
+  }
+  .mypage__form--mobile {
+    display: none;
+  }
+  .mypage__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2px;
+    margin: 10px;
+    border-bottom: 2px solid #c0c0c0;
+    position: relative;
+  }
+  .mypage__row--fill {
+    border-bottom-color: #619fd0;
+  }
+  .mypage__label {
+    font-family: neoL;
+    font-size: 13px;
+    width: 100%;
+  }
+  .mypage__label--fill {
+    color: #619fd0;
+  }
+  .mypage__input {
+    font-family: neoL;
+    border: none;
+    font-size: 13px;
+    outline: none;
+    width: 100%;
+  }
+  .mypage__checkbox {
+    display: none;
+  }
+  .mypage__submitbtn {
+    width: 100%;
+    height: 50px;
+    border-radius: 0;
+    font-family: neoB;
+    font-size: 17px;
+    background-color: #619fd0;
+    color: #fff;
+  }
+  .mypage__submitbtn::before {
+    content: "수정";
+  }
+  .mypage__submitbtn:disabled {
+    background-color: #c4c4c4;
+  }
+  .mypage__withdrawal {
+    font-family: neoL;
+    font-size: 15px;
+    bottom: 60px;
+    right: 10px;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    text-decoration: underline;
+    color: #929292;
+  }
+  .mypage__withdrawal::before {
+    content: "회원탈퇴하기";
+  }
 }

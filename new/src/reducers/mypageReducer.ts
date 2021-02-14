@@ -51,11 +51,22 @@ const mypageSlice = createSlice({
       state.isEditPage = true;
       state.isEditClick = false;
     },
+    goToEditPageMobile(state) {
+      state.isEditPage = true;
+      state.isEditClick = false;
+      state.isNicknameChecked = true;
+      state.isPasswordChecked = true;
+      state.nickname = "";
+      state.password = "";
+      state.passwordCheck = "";
+    },
     goToMyPage(state) {
       state.isEditPage = false;
       state.isPasswordChecked = false;
       state.isNicknameChecked = false;
-      state.userinfo.nickname = state.nickname;
+      state.nickname = "";
+      state.password = "";
+      state.passwordCheck = "";
     },
     clickWithdrawal(state) {
       state.isWithdrawalClick = true;
@@ -72,6 +83,7 @@ const mypageSlice = createSlice({
 });
 
 export const {
+  goToEditPageMobile,
   setNickname,
   setPassword,
   setPasswordCheck,

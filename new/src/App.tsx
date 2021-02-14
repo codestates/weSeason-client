@@ -8,8 +8,9 @@ import SignUp from "./Components/signup/SignUp";
 import { setAccessToken } from "./reducers/appReducer";
 import { changeCurrentPageWidth } from "../src/reducers/pageWidthReducer";
 import { connect } from "react-redux";
+import { goToMyPage } from "./reducers/mypageReducer";
 
-function App() {
+function App({ modifyCilentWidth }: any) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +41,14 @@ function App() {
             <Link to="/signup">회원가입</Link>
           </li>
           <li>
-            <Link to="/mypage">mypage</Link>
+            <Link
+              to="/mypage"
+              onClick={() => {
+                dispatch(goToMyPage());
+              }}
+            >
+              mypage
+            </Link>
           </li>
         </ul>
       </nav>
