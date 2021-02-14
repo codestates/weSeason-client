@@ -9,6 +9,7 @@ import { setAccessToken } from "./reducers/appReducer";
 import { changeCurrentPageWidth } from "../src/reducers/pageWidthReducer";
 import { connect } from "react-redux";
 import { goToMyPage } from "./reducers/mypageReducer";
+import Main from "./Components/main/Main";
 
 function App({ modifyCilentWidth }: any) {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function App({ modifyCilentWidth }: any) {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">메인</Link>
           </li>
           <li>
             <Link to="/login">로그인</Link>
@@ -47,7 +48,7 @@ function App({ modifyCilentWidth }: any) {
                 dispatch(goToMyPage());
               }}
             >
-              mypage
+              마이페이지
             </Link>
           </li>
         </ul>
@@ -62,7 +63,9 @@ function App({ modifyCilentWidth }: any) {
         <Route path="/signup">
           <SignUp />
         </Route>
-        <Route path="/">{/* <Home /> */}</Route>
+        <Route path="/">
+          <Main />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
