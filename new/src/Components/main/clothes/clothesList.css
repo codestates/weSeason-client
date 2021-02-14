@@ -1,0 +1,61 @@
+#clothesList__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#clothesList__left {
+  background-color: #619fd0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#clothesList__data {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media all and (min-width: 1024px) {
+  #clothesList__left {
+    width: 64px;
+    height: 51px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+
+  #clothesList__icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  #clothesList__data {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 51px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .clothesList__data-cloth {
+    font-family: neoL;
+    color: #4f4f4f;
+    font-size: 15px;
+    padding: 7px;
+    margin: 0;
+    transition: width 2s, height 2s, background-color 2s, transform 1s;
+  }
+
+  .clothesList__data-cloth:hover {
+    color: #619fd0;
+    transform: translateY(-10px);
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media all and (max-width: 768px) {
+}

@@ -47,7 +47,8 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
       nickName &&
       email &&
       password &&
-      password.length === passwordCheck.length
+      password.length === passwordCheck.length &&
+      password.length > 6
     ) {
       setDefaultBtnColor(false);
     } else {
@@ -134,7 +135,6 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
       setResError(true);
     } else if (pageWidth >= 1024 && errorMessage) {
       // 웹 에러 모달
-      console.log(errorMessage, "에러메세지");
       setWebError(true);
     } else if (!errorMessage && !defaultBtnColor) {
       // ajax 호출
