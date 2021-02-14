@@ -59,7 +59,6 @@ export default function Mypage() {
       passwordInput.current.focus();
     }
   }, [isPasswordChecked]);
-  console.log("hi");
   return (
     <div className="mypage">
       <div className="mypage__container">
@@ -75,27 +74,42 @@ export default function Mypage() {
               }}
             ></button>
           )}
+          <section className="mypage__mobile-profile">
+            <div className="mypage__pic"></div>
+            <div className="mypage__info">
+              <p className="mypage__nick">{userinfo.nickname}</p>
+              <p className="mypage__email">{userinfo.email}</p>
+            </div>
+          </section>
           <form
-            className={`mypage__form ${!isEditPage && "mypage__form--mobile"}`}
+            className={`mypage__form ${
+              !isEditPage ? "mypage__form--mobile" : ""
+            }`}
           >
-            <div className="mypage__row">
-              <label htmlFor="name" className="mypage__label">
+            <div className="mypage__row mypage__row--disabled">
+              <label
+                htmlFor="name"
+                className="mypage__label mypage__label--disabled"
+              >
                 이름
               </label>
               <input
-                className="mypage__input"
+                className="mypage__input mypage__input--disabled"
                 type="text"
                 id="name"
                 value={userinfo.name}
                 readOnly
               />
             </div>
-            <div className="mypage__row">
-              <label htmlFor="email" className="mypage__label">
+            <div className="mypage__row mypage__row--disabled">
+              <label
+                htmlFor="email"
+                className="mypage__label mypage__label--disabled"
+              >
                 이메일
               </label>
               <input
-                className="mypage__input"
+                className="mypage__input mypage__input--disabled"
                 type="email"
                 id="email"
                 value={userinfo.email}
@@ -198,7 +212,7 @@ export default function Mypage() {
               password !== passwordCheck
             }
             onClick={async () => {
-              if (password.length < 6) {
+              if (password && password.length < 6) {
                 dispatch(setError("비밀번호는 6자리 이상이어야 합니다."));
               } else {
                 await updateUserInfo(nickname, password, accessToken);

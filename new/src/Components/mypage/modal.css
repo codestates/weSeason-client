@@ -76,3 +76,24 @@
   cursor: pointer;
   outline: none;
 }
+@media screen and (max-width: 375px) {
+  .modal__content {
+    margin-top: -50%;
+    width: 200px;
+    height: 100px;
+  }
+  .modal__info {
+    font-family: neoL;
+    font-size: 10px;
+    color: #619fd0;
+  }
+  .modal__input {
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: 1px solid #619fd0;
+    width: 70%;
+    height: 20px;
+    font-size: 12px;
+    padding: 0;
+  }
+}

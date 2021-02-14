@@ -5,7 +5,6 @@ import { RootState } from "../../reducers";
 import {
   clickClose,
   goToEditPage,
-  goToEditPageMobile,
   setError,
 } from "../../reducers/mypageReducer";
 
@@ -37,8 +36,7 @@ export default function CheckPasswordContent() {
           onClick={async () => {
             const message = await checkPassword(password, accessToken);
             if (message === "OK") {
-              if (window.innerWidth > 768) dispatch(goToEditPage());
-              else dispatch(goToEditPageMobile());
+              dispatch(goToEditPage());
             } else {
               dispatch(setError("비밀번호를 재확인해주세요."));
             }

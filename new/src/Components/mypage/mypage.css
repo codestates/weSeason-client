@@ -30,6 +30,7 @@
   align-items: flex-end;
   position: relative;
 }
+
 .mypage__editbtn {
   position: absolute;
   top: 20px;
@@ -45,6 +46,9 @@
 .mypage__editbtn::before {
   content: "edit";
 }
+.mypage__mobile-profile {
+  display: none;
+}
 .mypage__form {
   width: 80%;
   height: 83%;
@@ -59,17 +63,12 @@
   border-bottom: 2px solid #c0c0c0;
   position: relative;
 }
-.mypage__row--fill {
-  border-bottom-color: #619fd0;
-}
 .mypage__label {
   font-family: neoL;
   font-size: 15px;
   width: 30%;
 }
-.mypage__label--fill {
-  color: #619fd0;
-}
+
 .mypage__input {
   font-family: neoL;
   border: none;
@@ -145,6 +144,9 @@
   .mypage__box {
     width: inherit;
     position: static;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
   .mypage__editbtn {
     top: auto;
@@ -161,6 +163,37 @@
   .mypage__editbtn::before {
     content: "내 정보 수정하기";
   }
+  .mypage__mobile-profile {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    margin: 20px;
+  }
+  .mypage__pic {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: #f2c94c;
+    margin-right: 20px;
+  }
+  .mypage__nick {
+    font-family: neoB;
+    margin: 0;
+    font-size: 25px;
+    color: #343434;
+    margin: 5px;
+  }
+  .mypage__email {
+    margin: 0;
+    font-family: neoB;
+    font-size: 10px;
+    color: #b0b0b0;
+    margin: 5px;
+  }
+  .mypage__form {
+    border-top: 1px solid #c0c0c0;
+    padding-top: 5px;
+  }
   .mypage__form--mobile {
     display: none;
   }
@@ -168,21 +201,23 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border-bottom: 1px solid #5b5b5b;
     padding: 2px;
-    margin: 10px;
-    border-bottom: 2px solid #c0c0c0;
-    position: relative;
+    margin: 15px;
   }
-  .mypage__row--fill {
-    border-bottom-color: #619fd0;
+  .mypage__row--disabled {
+    border-bottom: 1px solid #b8b8b8;
   }
+
   .mypage__label {
     font-family: neoL;
+    padding-bottom: 5px;
     font-size: 13px;
     width: 100%;
+    color: #696969;
   }
-  .mypage__label--fill {
-    color: #619fd0;
+  .mypage__label--disabled {
+    color: #b8b8b8;
   }
   .mypage__input {
     font-family: neoL;
@@ -190,9 +225,17 @@
     font-size: 13px;
     outline: none;
     width: 100%;
+    color: #575757;
+  }
+  .mypage__input--disabled {
+    color: #b8b8b8;
   }
   .mypage__checkbox {
-    display: none;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
   }
   .mypage__submitbtn {
     width: 100%;
@@ -223,4 +266,10 @@
   .mypage__withdrawal::before {
     content: "회원탈퇴하기";
   }
+}
+.mypage__row--fill {
+  border-bottom-color: #619fd0;
+}
+.mypage__label--fill {
+  color: #619fd0;
 }
