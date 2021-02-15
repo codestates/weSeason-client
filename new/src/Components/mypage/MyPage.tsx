@@ -248,7 +248,7 @@ export default function Mypage() {
           <ErrorContent />
         </Modal>
       )}
-      {error && (
+      {!isEditClick && !isEditPage && error && (
         <Modal>
           <ErrorContent goToHome />
         </Modal>

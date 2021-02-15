@@ -76,15 +76,15 @@
   cursor: pointer;
   outline: none;
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 768px) {
   .modal__content {
-    margin-top: -50%;
-    width: 200px;
-    height: 100px;
+    margin-top: -200px;
+    width: 300px;
+    height: 150px;
   }
   .modal__info {
     font-family: neoL;
-    font-size: 10px;
+    font-size: 15px;
     color: #619fd0;
   }
   .modal__input {
@@ -92,8 +92,23 @@
     border-radius: 0;
     border-bottom: 1px solid #619fd0;
     width: 70%;
+    height: 30px;
+    font-size: 17px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__content {
+    width: 200px;
+    height: 100px;
+  }
+  .modal__info {
+    font-size: 10px;
+  }
+  .modal__input {
+    width: 70%;
     height: 20px;
     font-size: 12px;
-    padding: 0;
   }
 }
