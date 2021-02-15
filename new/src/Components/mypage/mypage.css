@@ -125,7 +125,7 @@
 .mypage__withdrawal::before {
   content: "탈퇴";
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 768px) {
   .mypage {
     background-color: #fff;
     min-height: auto;
@@ -137,7 +137,7 @@
   }
   .mypage__title {
     font-family: neoB;
-    font-size: 20px;
+    font-size: 30px;
     color: #8b8b8b;
     margin: 20px 0;
   }
@@ -153,9 +153,9 @@
     right: auto;
     bottom: 0;
     width: 100%;
-    height: 50px;
+    height: 70px;
     font-family: neoB;
-    font-size: 17px;
+    font-size: 30px;
     background-color: #619fd0;
     color: #fff;
     text-decoration: none;
@@ -171,22 +171,22 @@
   }
   .mypage__pic {
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
     background-color: #f2c94c;
     margin-right: 20px;
   }
   .mypage__nick {
     font-family: neoB;
     margin: 0;
-    font-size: 25px;
+    font-size: 30px;
     color: #343434;
     margin: 5px;
   }
   .mypage__email {
     margin: 0;
     font-family: neoB;
-    font-size: 10px;
+    font-size: 15px;
     color: #b0b0b0;
     margin: 5px;
   }
@@ -212,7 +212,7 @@
   .mypage__label {
     font-family: neoL;
     padding-bottom: 5px;
-    font-size: 13px;
+    font-size: 17px;
     width: 100%;
     color: #696969;
   }
@@ -222,7 +222,7 @@
   .mypage__input {
     font-family: neoL;
     border: none;
-    font-size: 13px;
+    font-size: 17px;
     outline: none;
     width: 100%;
     color: #575757;
@@ -239,10 +239,10 @@
   }
   .mypage__submitbtn {
     width: 100%;
-    height: 50px;
+    height: 70px;
     border-radius: 0;
     font-family: neoB;
-    font-size: 17px;
+    font-size: 30px;
     background-color: #619fd0;
     color: #fff;
   }
@@ -254,8 +254,8 @@
   }
   .mypage__withdrawal {
     font-family: neoL;
-    font-size: 15px;
-    bottom: 60px;
+    font-size: 17px;
+    bottom: 80px;
     right: 10px;
     background-color: transparent;
     width: auto;
@@ -267,6 +267,41 @@
     content: "회원탈퇴하기";
   }
 }
+@media screen and (max-width: 375px) {
+  .mypage__title {
+    font-size: 20px;
+  }
+  .mypage__pic {
+    width: 70px;
+    height: 70px;
+  }
+  .mypage__nick {
+    font-size: 25px;
+  }
+  .mypage__email {
+    font-size: 10px;
+  }
+  .mypage__editbtn {
+    height: 50px;
+    font-size: 17px;
+  }
+  .mypage__label {
+    font-size: 13px;
+  }
+  .mypage__input {
+    font-size: 13px;
+  }
+  .mypage__submitbtn {
+    height: 50px;
+    font-size: 17px;
+  }
+  .mypage__withdrawal {
+    font-size: 15px;
+    bottom: 60px;
+    right: 10px;
+  }
+}
+
 .mypage__row--fill {
   border-bottom-color: #619fd0;
 }
