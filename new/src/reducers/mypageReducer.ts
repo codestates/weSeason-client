@@ -53,8 +53,11 @@ const mypageSlice = createSlice({
     },
     goToMyPage(state) {
       state.isEditPage = false;
+      state.isEditClick = false;
       state.isPasswordChecked = false;
       state.isNicknameChecked = false;
+      state.isWithdrawalClick = false;
+      state.error = "";
       state.nickname = "";
       state.password = "";
       state.passwordCheck = "";
