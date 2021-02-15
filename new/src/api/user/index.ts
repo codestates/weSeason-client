@@ -33,3 +33,8 @@ export const updateUserInfo = async (
     }
   );
 };
+export const deleteUserInfo = async (accessToken: string) => {
+  await axios.delete(`${API_URL}/users`, {
+    headers: { authorization: `Bearer ${accessToken}` },
+  });
+};

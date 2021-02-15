@@ -4,6 +4,7 @@ import {
   clickNicknameCheckbox,
   clickPasswordCheckbox,
   clickWithdrawal,
+  goToEditPage,
   goToMyPage,
   setError,
   setNickname,
@@ -236,7 +237,13 @@ export default function Mypage() {
         ></button>
       )}
       {isEditClick && (
-        <Modal>{error ? <ErrorContent /> : <CheckPasswordContent />}</Modal>
+        <Modal>
+          {error ? (
+            <ErrorContent />
+          ) : (
+            <CheckPasswordContent onSuccess={goToEditPage} />
+          )}
+        </Modal>
       )}
       {isWithdrawalClick && (
         <Modal>

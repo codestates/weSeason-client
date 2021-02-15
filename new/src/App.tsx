@@ -12,6 +12,7 @@ import Main from "./Components/main/Main";
 import { RootState } from "./reducers";
 import "./app.css";
 import Menu from "./Components/menu/Menu";
+import Withdrawl from "./Components/withdrawl/Withdrawl";
 
 function App({ modifyCilentWidth }: any) {
   const dispatch = useDispatch();
@@ -50,6 +51,9 @@ function App({ modifyCilentWidth }: any) {
               </Route>
               <Route path="/signup">
                 <SignUp />
+              </Route>
+              <Route path="/withdrawal">
+                <Withdrawl />
               </Route>
               <Route path="/">
                 <Main />
