@@ -19,9 +19,7 @@ export default function Menu() {
             dispatch(openMenu());
           }
         }}
-      >
-        MENU
-      </button>
+      ></button>
     </div>
   );
 }

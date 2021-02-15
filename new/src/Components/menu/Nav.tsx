@@ -25,7 +25,7 @@ export default function Nav() {
     return () => {};
   }, [dispatch, menuOpen]);
   return (
-    <nav className="menu__nav">
+    <nav className={`menu__nav ${menuOpen ? "menu__nav--open" : ""}`}>
       <ul className={`menu__items ${menuOpen ? "menu__items--open" : ""}`}>
         <li>
           <Link to="/">메인</Link>
