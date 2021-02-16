@@ -82,8 +82,8 @@
   border-radius: 3px;
   position: absolute;
   left: -30px;
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +107,7 @@
 }
 
 .mypage__submitbtn::before {
-  content: "submit";
+  content: "수정하기";
 }
 
 .mypage__submitbtn:disabled {
@@ -320,11 +320,11 @@
   color: #619fd0;
 }
 .mypage__editbtn:hover {
-  color: #f2c94c;
+  color: #000;
 }
 .mypage__submitbtn:hover {
-  color: #f2c94c;
+  color: #000;
 }
 .mypage__withdrawal:hover {
-  color: #f2c94c;
+  color: #000;
 }

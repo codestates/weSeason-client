@@ -20,7 +20,7 @@ export default function Weather() {
   return (
     <section className="weather">
       <h1 className="weather__info">
-        현재 기온🌡 {weatherInfo && Math.floor(weatherInfo[0].temp)}°C
+        현재 기온 🌡 {weatherInfo && Math.floor(weatherInfo[0].temp)}°C
       </h1>
       <WeatherBox />
     </section>

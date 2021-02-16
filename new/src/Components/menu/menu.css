@@ -4,11 +4,15 @@
 }
 .manu__btn {
   border: none;
-  background-color: #e8e8e8;
-  width: 120px;
-  height: 60px;
+  background-image: url("../../images/icon/cloud2_illustration_style2.png");
+  background-repeat: no-repeat;
+  background-position: -190px -70px;
+  background-color: transparent;
+  background-size: 350px;
+  width: 130px;
+  height: 90px;
   font-size: 25px;
-  color: #000000;
+  color: #fff;
   outline: none;
   transition: all 0.5s;
   opacity: 0.8;
@@ -18,7 +22,7 @@
   content: "MENU";
 }
 .manu__btn:hover {
-  background-color: #f2c94c;
+  color: #000;
 }
 .menu__nav {
   overflow: hidden;
@@ -30,9 +34,11 @@
   margin: 5px;
   transform: translateX(110%);
   transition: all 1s;
+  opacity: 0;
 }
 .menu__items--open {
   transform: translateX(0);
+  opacity: 1;
 }
 .menu__items li {
   padding: 5px;
@@ -99,5 +105,5 @@
   }
 }
 .menu__items a:hover {
-  color: #f2c94c;
+  color: #000;
 }

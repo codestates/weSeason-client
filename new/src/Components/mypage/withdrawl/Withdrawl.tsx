@@ -35,7 +35,7 @@ export default function Withdrawl() {
       <h1 className="withdrawal__title">회원탈퇴</h1>
       <Modal>
         {error ? (
-          <ErrorContent goToHome />
+          <ErrorContent />
         ) : (
           <CheckPasswordContent onSuccess={showWithdrawalBtn} goToHome />
         )}
