@@ -14,11 +14,11 @@
   text-shadow: 5px 5px rgb(0, 0, 0, 0.44);
 }
 
-@media all and (min-width: 1024px) {
-}
-
-@media all and (min-width: 768px) and (max-width: 1023px) {
+@media all and (min-width: 768px) {
 }
 
 @media all and (max-width: 768px) {
+  #clothestBox__header {
+    font-size: 27px;
+  }
 }

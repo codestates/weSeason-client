@@ -46,7 +46,7 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
       email &&
       password &&
       password.length === passwordCheck.length &&
-      password.length > 6
+      password.length >= 6
     ) {
       setDefaultBtnColor(false);
     } else {
