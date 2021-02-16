@@ -18,7 +18,7 @@
   content: "MENU";
 }
 .manu__btn:hover {
-  background-color: #f2c94c;
+  background-color: #619fd0;
 }
 .menu__nav {
   overflow: hidden;
@@ -99,5 +99,5 @@
   }
 }
 .menu__items a:hover {
-  color: #f2c94c;
+  color: #619fd0;
 }

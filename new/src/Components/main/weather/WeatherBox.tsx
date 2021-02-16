@@ -20,7 +20,7 @@ export default function WeatherBox() {
         onClick={() => {
           const max = box.current.scrollWidth;
           const current = box.current.scrollLeft + box.current.offsetWidth;
-          let to = box.current.scrollLeft + 450;
+          let to = box.current.scrollLeft + 480;
           if (current === max) {
             to = 0;
           }
@@ -30,7 +30,9 @@ export default function WeatherBox() {
           });
         }}
       >
-        ⟩
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   );
