@@ -14,7 +14,7 @@ import "./app.css";
 import Menu from "./Components/menu/Menu";
 import Withdrawl from "./Components/mypage/withdrawl/Withdrawl";
 
-function App({ modifyCilentWidth }: any) {
+function App({ pageWidth, modifyCilentWidth }: any) {
   const dispatch = useDispatch();
   const init = useSelector((state: RootState) => state.appReducer.init);
 
@@ -23,14 +23,26 @@ function App({ modifyCilentWidth }: any) {
       const accessToken = await checkIsLogined();
       dispatch(setAccessToken(accessToken));
     })();
-
-    const resizeListener = () => {
-      modifyCilentWidth(getWidth());
+    const resizeListener = async () => {
+      let currentWidth = await getWidth();
+      if (
+        (pageWidth < 1024 && currentWidth >= 1024) ||
+        (pageWidth >= 1024 && currentWidth < 1024)
+      ) {
+        console.log(pageWidth, currentWidth, "테스트");
+        modifyCilentWidth(getWidth());
+      }
     };
     window.addEventListener("resize", resizeListener);
-  }, [dispatch, modifyCilentWidth]);
+
+    return () => {
+      // remove resize listener
+      window.removeEventListener("resize", resizeListener);
+    };
+  });
 
   const getWidth = () => window.innerWidth;
+
   return (
     <>
       {!init ? (
@@ -65,6 +77,9 @@ function App({ modifyCilentWidth }: any) {
     </>
   );
 }
+const mapStateToProps = (state: any) => {
+  return { pageWidth: state.pageWidth.width };
+};
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
@@ -73,4 +88,4 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
