@@ -1,0 +1,113 @@
+.weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.weather__info {
+  margin: 0;
+  margin-bottom: 40px;
+  font-family: neoEB;
+  font-size: 25px;
+  text-shadow: 0px 7px 4px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+}
+.weather__box-container {
+  position: relative;
+}
+.weather__box {
+  border-radius: 20px;
+  background: rgba(106, 106, 106, 0.44);
+  width: 600px;
+  height: 170px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 25%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.weather__box::-webkit-scrollbar {
+  height: 2vw;
+}
+.weather__box::-webkit-scrollbar-thumb {
+  background: rgba(106, 106, 106, 0.44);
+  border-radius: 10px;
+}
+.weather__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+.weather__item:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.weather__time {
+  font-family: neoUL;
+  color: #ffffff;
+  font-size: 18px;
+  margin: 0;
+  margin-top: 10px;
+}
+.weather__icon {
+  margin: -10px;
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(5px 8px 5px rgba(0, 0, 0, 0.25));
+}
+.weather__temp {
+  font-family: neoUL;
+  color: #ffffff;
+  font-size: 25px;
+  margin: 0;
+}
+.weather__nextbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 40px;
+  outline: none;
+  border: none;
+  background-color: #687492;
+  width: 40px;
+  height: 45px;
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  color: #ffffff;
+  transform: translateY(-50%);
+}
+.weather__nextbtn:hover {
+  color: #f2c94c;
+}
+@media screen and (max-width: 768px) {
+  .weather__info {
+    margin-bottom: 3vw;
+    font-size: 4vw;
+  }
+  .weather__nextbtn {
+    display: none;
+  }
+  .weather__box {
+    border-radius: 3vw;
+    width: 80vw;
+    height: 20vw;
+    overflow-x: scroll;
+  }
+  .weather__time {
+    margin-top: 2vw;
+    font-size: 3vw;
+  }
+  .weather__icon {
+    margin: -2vw;
+    width: 10vw;
+    height: 10vw;
+  }
+  .weather__temp {
+    font-size: 4vw;
+  }
+}

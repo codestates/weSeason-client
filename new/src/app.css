@@ -1,0 +1,9 @@
+.app__header {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+}

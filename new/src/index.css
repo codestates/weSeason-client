@@ -17,10 +17,14 @@
   font-family: neoM;
   src: url("./fonts/AppleSDGothicNeoM.ttf");
 }
+@font-face {
+  font-family: neoEB;
+  src: url("./fonts/AppleSDGothicNeoEB.ttf");
+}
+@font-face {
+  font-family: neoUL;
+  src: url("./fonts/AppleSDGothicNeoUL.ttf");
+}
 body {
   margin: 0;
-}
-nav {
-  position: absolute;
-  z-index: 1;
 }

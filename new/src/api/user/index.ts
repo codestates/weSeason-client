@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "../../const";
 
-type getUserInfoRes = {
+type GetUserInfoRes = {
   data: {
     userInfo: {
       email: string;
@@ -11,7 +11,7 @@ type getUserInfoRes = {
   };
 };
 export const getUserInfo = async (accessToken: string) => {
-  const { data } = await axios.get<getUserInfoRes>(`${API_URL}/users`, {
+  const { data } = await axios.get<GetUserInfoRes>(`${API_URL}/users`, {
     headers: { authorization: `Bearer ${accessToken}` },
   });
   return data.data.userInfo;
@@ -32,4 +32,9 @@ export const updateUserInfo = async (
       headers: { authorization: `Bearer ${accessToken}` },
     }
   );
+};
+export const deleteUserInfo = async (accessToken: string) => {
+  await axios.delete(`${API_URL}/users`, {
+    headers: { authorization: `Bearer ${accessToken}` },
+  });
 };

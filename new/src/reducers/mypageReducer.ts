@@ -9,14 +9,15 @@ type Userinfo = {
 const initialState = {
   isEditPage: false,
   isEditClick: false,
+  isWithdrawalClick: false,
   error: "",
   userinfo: { name: "", nickname: "", email: "", password: "" } as Userinfo,
   isNicknameChecked: false,
   isPasswordChecked: false,
-  isWithdrawalClick: false,
   nickname: "",
   password: "",
   passwordCheck: "",
+  showBtn: false,
 };
 
 const mypageSlice = createSlice({
@@ -53,8 +54,11 @@ const mypageSlice = createSlice({
     },
     goToMyPage(state) {
       state.isEditPage = false;
+      state.isEditClick = false;
       state.isPasswordChecked = false;
       state.isNicknameChecked = false;
+      state.isWithdrawalClick = false;
+      state.error = "";
       state.nickname = "";
       state.password = "";
       state.passwordCheck = "";
@@ -70,10 +74,18 @@ const mypageSlice = createSlice({
       state.isWithdrawalClick = false;
       state.error = "";
     },
+    showWithdrawalBtn(state) {
+      state.showBtn = true;
+    },
+    hideWithdrawalBtn(state) {
+      state.showBtn = false;
+    },
   },
 });
 
 export const {
+  hideWithdrawalBtn,
+  showWithdrawalBtn,
   setNickname,
   setPassword,
   setPasswordCheck,

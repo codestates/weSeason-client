@@ -88,6 +88,7 @@
   justify-content: center;
   align-items: center;
   outline: none;
+  cursor: pointer;
 }
 .mypage__checkbox:checked::before {
   content: "✓";
@@ -104,12 +105,18 @@
   cursor: pointer;
   outline: none;
 }
+
 .mypage__submitbtn::before {
   content: "submit";
 }
+
 .mypage__submitbtn:disabled {
   cursor: unset;
 }
+.mypage__submitbtn:disabled:hover {
+  color: rgba(16, 16, 16, 0.3);
+}
+
 .mypage__withdrawal {
   font-size: 15px;
   position: absolute;
@@ -249,8 +256,12 @@
   .mypage__submitbtn::before {
     content: "수정";
   }
+
   .mypage__submitbtn:disabled {
     background-color: #c4c4c4;
+  }
+  .mypage__submitbtn:disabled:hover {
+    color: #ffff;
   }
   .mypage__withdrawal {
     font-family: neoL;
@@ -307,4 +318,13 @@
 }
 .mypage__label--fill {
   color: #619fd0;
+}
+.mypage__editbtn:hover {
+  color: #f2c94c;
+}
+.mypage__submitbtn:hover {
+  color: #f2c94c;
+}
+.mypage__withdrawal:hover {
+  color: #f2c94c;
 }
