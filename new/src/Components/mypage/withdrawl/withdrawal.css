@@ -28,7 +28,7 @@
   content: "회원 탈퇴하기";
 }
 .withdrawal__btn:hover {
-  color: #f2c94c;
+  color: #000;
 }
 .withdrawal__btn--show {
   visibility: visible;
