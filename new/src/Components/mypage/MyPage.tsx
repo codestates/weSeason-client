@@ -14,12 +14,13 @@ import {
 } from "../../reducers/mypageReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducers";
-import Modal from "./Modal";
-import ErrorContent from "./ErrorContent";
-import CheckPasswordContent from "./CheckPasswordContent";
-import AskWithdrawalContent from "./AskWithdrawalContent";
+
+import AskWithdrawalContent from "./modal/content/AskWithdrawalContent";
 import { useEffect, useRef } from "react";
 import { getUserInfo, updateUserInfo } from "../../api/user";
+import Modal from "./modal/Modal";
+import ErrorContent from "./modal/content/ErrorContent";
+import CheckPasswordContent from "./modal/content/CheckPasswordContent";
 
 export default function Mypage() {
   const dispatch = useDispatch();

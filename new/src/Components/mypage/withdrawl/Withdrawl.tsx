@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { deleteUserInfo } from "../../api/user";
-import { RootState } from "../../reducers";
+import { deleteUserInfo } from "../../../api/user";
+import { RootState } from "../../../reducers";
 import {
   hideWithdrawalBtn,
   setError,
   showWithdrawalBtn,
-} from "../../reducers/mypageReducer";
-import CheckPasswordContent from "../mypage/CheckPasswordContent";
-import ErrorContent from "../mypage/ErrorContent";
-import Modal from "../mypage/Modal";
+} from "../../../reducers/mypageReducer";
+import CheckPasswordContent from "../modal/content/CheckPasswordContent";
+import ErrorContent from "../modal/content/ErrorContent";
+import Modal from "../modal/Modal";
+
 import "./withdrawal.css";
 export default function Withdrawl() {
   const dispatch = useDispatch();

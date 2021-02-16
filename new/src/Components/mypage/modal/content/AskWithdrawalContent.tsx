@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { clickClose } from "../../reducers/mypageReducer";
+import { clickClose } from "../../../../reducers/mypageReducer";
 
 export default function AskWithdrawalContent() {
   const dispatch = useDispatch();
