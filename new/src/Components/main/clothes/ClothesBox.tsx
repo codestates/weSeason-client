@@ -26,7 +26,7 @@ const ClothesBox = ({ temp }: any) => {
   return (
     <div id="clothesBox">
       <div id="clothestBox__header">오늘은?</div>
-      <ClothesItem />
+      <ClothesItem clothes={clothes} />
       <ClothesList clothes={clothes} />
     </div>
   );
