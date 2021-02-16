@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { RootState } from "../../reducers";
-import { clickClose } from "../../reducers/mypageReducer";
+import { RootState } from "../../../../reducers";
+import { clickClose } from "../../../../reducers/mypageReducer";
+
 type ErrorContentProps = {
   goToHome?: boolean;
 };

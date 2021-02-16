@@ -1,14 +1,14 @@
 import axios from "axios";
 import { API_URL } from "../../const";
 
-type checkIsLoginedRes = {
+type CheckIsLoginedRes = {
   data: {
     accessToken: string;
   };
 };
 export const checkIsLogined = async () => {
   try {
-    const { data } = await axios.get<checkIsLoginedRes>(
+    const { data } = await axios.get<CheckIsLoginedRes>(
       `${API_URL}/auth/check`,
       {
         withCredentials: true,
@@ -20,12 +20,12 @@ export const checkIsLogined = async () => {
   }
 };
 
-type checkPasswordRes = {
+type CheckPasswordRes = {
   message: string;
 };
 export const checkPassword = async (password: string, accessToken: string) => {
   try {
-    const { data } = await axios.post<checkPasswordRes>(
+    const { data } = await axios.post<CheckPasswordRes>(
       `${API_URL}/auth/checkpassword`,
       { password },
       {

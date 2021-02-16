@@ -12,7 +12,7 @@ import Main from "./Components/main/Main";
 import { RootState } from "./reducers";
 import "./app.css";
 import Menu from "./Components/menu/Menu";
-import Withdrawl from "./Components/withdrawl/Withdrawl";
+import Withdrawl from "./Components/mypage/withdrawl/Withdrawl";
 
 function App({ modifyCilentWidth }: any) {
   const dispatch = useDispatch();

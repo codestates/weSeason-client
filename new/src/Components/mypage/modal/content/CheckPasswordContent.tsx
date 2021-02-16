@@ -2,9 +2,10 @@ import { ActionCreatorWithoutPayload } from "@reduxjs/toolkit";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { checkPassword } from "../../api/auth";
-import { RootState } from "../../reducers";
-import { clickClose, setError } from "../../reducers/mypageReducer";
+import { checkPassword } from "../../../../api/auth";
+import { RootState } from "../../../../reducers";
+import { clickClose, setError } from "../../../../reducers/mypageReducer";
+
 type CheckPasswordContentProps = {
   onSuccess: ActionCreatorWithoutPayload<string>;
   goToHome?: boolean;
