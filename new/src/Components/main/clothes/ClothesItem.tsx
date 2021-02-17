@@ -38,7 +38,11 @@ const ClothesItem = ({ clothes }: any) => {
         className={`clothesItem__item clothesItem__item--length-${iconLength}`}
         key={idx}
       >
-        <img className="clothesItem__cloud" src={cloud} alt="cloud"></img>
+        <img
+          className={`clothesItem__cloud clothesItem__cloud-${idx}`}
+          src={cloud}
+          alt="cloud"
+        ></img>
         <div
           className={`${cloth.class} clothesItem__cloth-length--${iconLength} clothesItem__cloth-${idx}`}
         ></div>

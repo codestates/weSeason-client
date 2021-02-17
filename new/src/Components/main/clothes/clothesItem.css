@@ -174,6 +174,63 @@
     top: 37%;
     margin-left: 40px;
   }
+
+  /* .clothesItem__cloth-0,
+  .clothesItem__cloth-1,
+  .clothesItem__cloth-2,
+  .clothesItem__cloth-3,
+  .clothesItem__cloth-4,
+  .clothesItem__cloth-5 {
+    animation-duration: 4s;
+    animation-name: clothesItemAni;
+    animation-iteration-count: infinite;
+  } */
+
+  .clothesItem__cloud-0,
+  .clothesItem__cloth-0,
+  .clothesItem__cloud-2,
+  .clothesItem__cloth-2,
+  .clothesItem__cloud-4,
+  .clothesItem__cloth-4 {
+    animation-duration: 4s;
+    animation-name: clothesItemAni-1;
+    animation-iteration-count: infinite;
+  }
+
+  .clothesItem__cloud-1,
+  .clothesItem__cloth-1,
+  .clothesItem__cloud-3,
+  .clothesItem__cloth-3,
+  .clothesItem__cloud-5,
+  .clothesItem__cloth-5 {
+    animation-duration: 4s;
+    animation-name: clothesItemAni-2;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes clothesItemAni-1 {
+    from {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes clothesItemAni-2 {
+    from {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  }
 }
 
 @media all and (max-width: 768px) {
@@ -236,5 +293,51 @@
     align-items: center;
     top: 33%;
     margin-left: 20px;
+  }
+
+  .clothesItem__cloud-0,
+  .clothesItem__cloth-0,
+  .clothesItem__cloud-2,
+  .clothesItem__cloth-2,
+  .clothesItem__cloud-4,
+  .clothesItem__cloth-4 {
+    animation-duration: 4s;
+    animation-name: clothesItemAni-1;
+    animation-iteration-count: infinite;
+  }
+
+  .clothesItem__cloud-1,
+  .clothesItem__cloth-1,
+  .clothesItem__cloud-3,
+  .clothesItem__cloth-3,
+  .clothesItem__cloud-5,
+  .clothesItem__cloth-5 {
+    animation-duration: 4s;
+    animation-name: clothesItemAni-2;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes clothesItemAni-1 {
+    from {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes clothesItemAni-2 {
+    from {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    to {
+      transform: translateY(0px);
+    }
   }
 }

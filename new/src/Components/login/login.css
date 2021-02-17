@@ -231,6 +231,11 @@
     margin-top: 20px;
   }
 
+  #login__login-Btn-basic,
+  #login__login-Btn-extend {
+    margin-top: auto;
+  }
+
   #login__login-Btn-basic {
     width: 100vw;
     height: 80px;
@@ -242,6 +247,7 @@
     cursor: pointer;
     color: white;
     background-color: #c4c4c4;
+    /* margin-top: auto; */
   }
 
   #login__login-Btn-extend {
@@ -255,6 +261,7 @@
     cursor: pointer;
     color: white;
     background-color: #619fd0;
+    /* margin-top: auto; */
   }
 
   #login__oauth-btn--google {
@@ -296,7 +303,7 @@
   }
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 767px) {
   #login__logo {
     margin: 0px;
     position: absolute;

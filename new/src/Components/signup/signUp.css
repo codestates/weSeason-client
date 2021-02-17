@@ -227,7 +227,7 @@
   }
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 767px) {
   #signUp__ment {
     font-family: neoB;
     font-size: 20px;

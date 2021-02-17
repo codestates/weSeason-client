@@ -17,13 +17,11 @@ const ClothesList = ({ clothes }: ClothesListProps) => {
 
   return (
     <>
-      <div id="clothesList">
-        <div id="clothesList__box">
-          <div id="clothesList__left">
-            <img id="clothesList__icon" src={icon} alt="lamp"></img>
-          </div>
-          <div id="clothesList__data">{nameList}</div>
+      <div id="clothesList__box">
+        <div id="clothesList__left">
+          <img id="clothesList__icon" src={icon} alt="lamp"></img>
         </div>
+        <div id="clothesList__data">{nameList}</div>
       </div>
     </>
   );

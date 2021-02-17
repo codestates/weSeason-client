@@ -5,7 +5,7 @@ import "./main.css";
 import Weather from "./weather/Weather";
 
 const Main = () => {
-  const temp: number = 10;
+  const temp: number = 2;
   return (
     <div id="main">
       <Weather />

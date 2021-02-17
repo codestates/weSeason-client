@@ -88,4 +88,21 @@
     color: #619fd0;
     transform: translateY(-10px);
   }
+
+  #clothesList__data {
+    width: 250px;
+    padding-left: 20px;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+
+  #clothesList__data::-webkit-scrollbar {
+    height: 0.5vw;
+  }
+
+  #clothesList__data::-webkit-scrollbar {
+    background: rgba(106, 106, 106, 0.44);
+    border-radius: 10px;
+  }
 }
