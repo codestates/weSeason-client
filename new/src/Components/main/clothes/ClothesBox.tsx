@@ -18,7 +18,6 @@ const ClothesBox = ({ temp }: any) => {
       .then((data) => {
         let cloth = data.data.data.cloth;
         setClothes(cloth);
-        console.log(cloth);
       })
       .catch((err) => console.log(err));
   }, [temp]);

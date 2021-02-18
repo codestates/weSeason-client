@@ -13,8 +13,22 @@ import { RootState } from "./reducers";
 import "./app.css";
 import Menu from "./Components/menu/Menu";
 import Withdrawl from "./Components/mypage/withdrawl/Withdrawl";
+import { userLat, userLon } from "./reducers/locationReducer";
 
-function App({ pageWidth, modifyCilentWidth }: any) {
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
+function App({
+  pageWidth,
+  lat,
+  lon,
+  modifyCilentWidth,
+  modifyLat,
+  modifyLon,
+}: any) {
   const dispatch = useDispatch();
   const init = useSelector((state: RootState) => state.appReducer.init);
 
@@ -29,18 +43,21 @@ function App({ pageWidth, modifyCilentWidth }: any) {
         (pageWidth < 1024 && currentWidth >= 1024) ||
         (pageWidth >= 1024 && currentWidth < 1024)
       ) {
-        console.log(pageWidth, currentWidth, "테스트");
         modifyCilentWidth(getWidth());
       }
     };
     window.addEventListener("resize", resizeListener);
 
+    navigator.geolocation.getCurrentPosition((position) => {
+      modifyLat(position.coords.latitude);
+      modifyLon(position.coords.longitude);
+    });
+
     return () => {
       // remove resize listener
       window.removeEventListener("resize", resizeListener);
     };
-  });
-
+  }, [dispatch, lat, lon, modifyCilentWidth, modifyLat, modifyLon, pageWidth]);
   const getWidth = () => window.innerWidth;
 
   return (
@@ -78,13 +95,19 @@ function App({ pageWidth, modifyCilentWidth }: any) {
   );
 }
 const mapStateToProps = (state: any) => {
-  return { pageWidth: state.pageWidth.width };
+  return {
+    pageWidth: state.pageWidth.width,
+    lat: state.locationReducer.lat,
+    lon: state.locationReducer.lon,
+  };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
     modifyCilentWidth: (width: number) =>
       dispatch(changeCurrentPageWidth(width)),
+    modifyLat: (lat: number) => dispatch(userLat(lat)),
+    modifyLon: (lon: number) => dispatch(userLon(lon)),
   };
 };
 

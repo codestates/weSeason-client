@@ -25,6 +25,11 @@
   font-family: neoUL;
   src: url("./fonts/AppleSDGothicNeoUL.ttf");
 }
+
+@font-face {
+  font-family: neoSB;
+  src: url("./fonts/AppleSDGothicNeoSB.ttf");
+}
 body {
   margin: 0;
 }
