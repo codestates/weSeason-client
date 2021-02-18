@@ -1,6 +1,19 @@
 import axios from "axios";
 import { API_URL } from "../../const";
 
+export const createUserInfo = async (
+  name: string,
+  nickname: string,
+  password: string,
+  email: string
+) => {
+  await axios.post(`${API_URL}/users`, {
+    name,
+    nickname,
+    password,
+    email,
+  });
+};
 type GetUserInfoRes = {
   data: {
     userInfo: {

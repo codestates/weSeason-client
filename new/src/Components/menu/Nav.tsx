@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { RootState } from "../../reducers";
 import { goToMyPage } from "../../reducers/mypageReducer";
 import { closeMenu } from "../../reducers/menuReducer";
-
+import { logout } from "../../api/auth";
+import { setAccessToken } from "../../reducers/appReducer";
 export default function Nav() {
   const dispatch = useDispatch();
   const accessToken = useSelector(
@@ -42,7 +43,17 @@ export default function Nav() {
                 마이페이지
               </Link>
             </li>
-            <li>로그아웃</li>
+            <li>
+              <button
+                className="menu__logout"
+                onClick={async () => {
+                  await logout();
+                  dispatch(setAccessToken(""));
+                }}
+              >
+                로그아웃
+              </button>
+            </li>
           </>
         ) : (
           <>
