@@ -1,3 +1,4 @@
+import { locationReducer } from "./locationReducer";
 import { userInfoReducer } from "./userInfoReducer";
 import { pageWidthReducer } from "./pageWidthReducer";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   appReducer,
   menuReducer,
   weatherReducer,
+  locationReducer,
 });
 
 export const store = configureStore({

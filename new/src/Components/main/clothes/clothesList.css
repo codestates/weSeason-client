@@ -24,6 +24,7 @@
     height: 51px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    cursor: not-allowed;
   }
 
   #clothesList__icon {
@@ -60,6 +61,7 @@
     height: 31px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    cursor: not-allowed;
   }
 
   #clothesList__icon {
