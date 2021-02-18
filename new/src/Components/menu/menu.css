@@ -46,7 +46,17 @@
   font-size: 25px;
   text-shadow: 1px 3px 7px black;
 }
-.menu__items a {
+.menu__logout {
+  font-size: inherit;
+  border: none;
+  background-color: inherit;
+  text-shadow: inherit;
+  cursor: pointer;
+  text-decoration: inherit;
+  padding: 0;
+}
+.menu__items a,
+.menu__logout {
   text-decoration: none;
   color: #fff;
 }
@@ -84,7 +94,8 @@
   .menu__items--open {
     transform: translateY(0);
   }
-  .menu__items li {
+  .menu__items li,
+  .menu__logout {
     color: #fff;
     font-size: 17px;
     text-shadow: none;
@@ -104,6 +115,7 @@
     font-size: 15px;
   }
 }
-.menu__items a:hover {
+.menu__items a:hover,
+.menu__logout:hover {
   color: #000;
 }

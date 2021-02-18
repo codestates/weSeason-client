@@ -5,8 +5,6 @@ import "./main.css";
 import Weather from "./weather/Weather";
 
 const Main = () => {
-  const temp: number = 2;
-
   const [clickModal, setClickModal] = useState<boolean>(false);
 
   const handleClickModal = () => {
@@ -16,7 +14,7 @@ const Main = () => {
   return (
     <div id="main">
       <Weather />
-      <ClothesBox temp={temp} />
+      <ClothesBox />
       <button id="searchVillage__btn" onClick={handleClickModal}>
         동네 검색
       </button>
