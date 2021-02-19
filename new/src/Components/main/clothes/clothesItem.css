@@ -1,6 +1,11 @@
 .clothesItem__cloud {
   position: relative;
   z-index: 1;
+  -webkit-filter: drop-shadow(2px 10px 4px rgba(0, 0, 0, 0.25));
+  -moz-filter: drop-shadow(2px 10px 4px rgba(0, 0, 0, 0.25));
+  -ms-filter: drop-shadow(2px 10px 4px rgba(0, 0, 0, 0.25));
+  -o-filter: drop-shadow(2px 10px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(2px 10px 4px rgba(0, 0, 0, 0.25));
 }
 
 .clothesItem {
@@ -8,12 +13,18 @@
   justify-content: center;
   align-items: center;
 }
+
 .clothesItem__cloth {
   width: 44px;
   height: 44px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  -webkit-filter: drop-shadow(1px 8px 3px rgba(0, 0, 0, 0.25));
+  -moz-filter: drop-shadow(1px 8px 3px rgba(0, 0, 0, 0.25));
+  -ms-filter: drop-shadow(1px 8px 3px rgba(0, 0, 0, 0.25));
+  -o-filter: drop-shadow(1px 8px 3px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(1px 8px 3px rgba(0, 0, 0, 0.25));
 }
 
 .clothesItem__seven-piece-pants {

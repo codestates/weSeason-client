@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { userLat, userLon } from "../../reducers/locationReducer";
 import "./searchVillage.css";
@@ -20,6 +20,7 @@ const SearchVillage = ({
   const [clickLat, setClickLat] = useState<number>(0);
   const [clickLon, setClickLon] = useState<number>(0);
   const [inputValue, setInputValue] = useState<string>("");
+  const [mapReference, setMapReference] = useState<any>(() => createRef());
 
   const handleClickClose = () => {
     handleClickModal();
@@ -28,16 +29,15 @@ const SearchVillage = ({
   const handleClickSearchBtn = () => {
     let infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
-    let container = document.getElementById("searchVillage__map"); //지도를 담을 영역의 DOM 레퍼런스
+    //지도를 담을 영역의 DOM 레퍼런스
     let options = {
       //지도를 생성할 때 필요한 기본 옵션
       center: new window.kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
       level: 3, //지도의 레벨(확대, 축소 정도)
     };
 
-    let map = new window.kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    let map = new window.kakao.maps.Map(mapReference.current, options); //지도 생성 및 객체 리턴
     // 지도를 생성합니다
-    // var map = new kakao.maps.Map(container, options);
 
     // 장소 검색 객체를 생성합니다
     let ps = new kakao.maps.services.Places();
@@ -155,6 +155,8 @@ const SearchVillage = ({
       handleClickSearchBtn();
     } else if (e.keyCode === 27) {
       handleClickClose();
+    } else {
+      console.log(e.keyCode);
     }
   };
 
@@ -182,7 +184,7 @@ const SearchVillage = ({
         <p id="searchVillage__info-ment--head">
           원하시는 장소를 지도에서 클릭하세요.
         </p>
-        <div id="searchVillage__map"></div>
+        <div id="searchVillage__map" ref={mapReference}></div>
         <p id="searchVillage__info-ment--foot">
           ESC를 눌러 창을 닫을 수 있습니다.
         </p>

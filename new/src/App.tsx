@@ -21,6 +21,15 @@ declare global {
   }
 }
 
+type AppProps = {
+  pageWidth: number;
+  lat: number;
+  lon: number;
+  modifyCilentWidth(pageWidth: number): void;
+  modifyLat(lat: number): void;
+  modifyLon(lon: number): void;
+};
+
 function App({
   pageWidth,
   lat,
@@ -28,7 +37,7 @@ function App({
   modifyCilentWidth,
   modifyLat,
   modifyLon,
-}: any) {
+}: AppProps) {
   const dispatch = useDispatch();
   const init = useSelector((state: RootState) => state.appReducer.init);
 
@@ -68,7 +77,7 @@ function App({
       ) : (
         <BrowserRouter>
           <header className="app__header">
-            <div>LOGO</div>
+            <div>weSeason</div>
             <Menu />
           </header>
           <main className="app__main">

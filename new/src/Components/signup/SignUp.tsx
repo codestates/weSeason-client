@@ -22,6 +22,7 @@ type InfoDataType = {
   placeholder: string;
   id: number;
 };
+
 const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
   const name = userInfo.name;
   const nickName = userInfo.nickName;
