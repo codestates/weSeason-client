@@ -48,7 +48,7 @@ export default function CheckPasswordContent({
             }
           }}
         >
-          O
+          확인
         </button>
         <button
           className="modal__button"
@@ -59,7 +59,7 @@ export default function CheckPasswordContent({
             }
           }}
         >
-          X
+          닫기
         </button>
       </div>
     </>

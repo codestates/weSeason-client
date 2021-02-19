@@ -19,8 +19,8 @@ const Weather = ({ lat, lon }: WeatherProps) => {
   useEffect(() => {
     (async () => {
       const data = await getWeater(lat, lon);
-      console.log(lat, lon);
-      console.log(data);
+      // console.log(lat, lon);
+      // console.log(data);
       dispatch(setWeather(data));
     })();
   }, [dispatch, lat, lon]);

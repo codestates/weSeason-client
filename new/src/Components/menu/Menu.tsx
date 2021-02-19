@@ -13,7 +13,7 @@ export default function Menu() {
     <div className="menu">
       <Nav />
       <button
-        className="manu__btn"
+        className="menu__btn"
         onClick={() => {
           if (!menuOpen) {
             dispatch(openMenu());

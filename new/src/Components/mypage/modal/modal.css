@@ -1,5 +1,5 @@
 .modal {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -10,6 +10,18 @@
   justify-content: center;
   align-items: center;
   opacity: 0;
+  z-index: 1;
+  /* position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
 }
 .modal--init {
   transition: opacity 0.5s;
@@ -17,8 +29,8 @@
 }
 .modal__content {
   background-color: #fff;
-  width: 350px;
-  height: 150px;
+  width: 370px;
+  height: 180px;
   border-radius: 14px;
   display: flex;
   flex-direction: column;
@@ -61,26 +73,28 @@
   padding: 0 10px;
 }
 .modal__button-container {
-  margin-top: 10px;
-  width: 100px;
+  margin-top: 20px;
+  width: 166px;
   display: flex;
   justify-content: space-around;
 }
 .modal__button {
-  width: 35px;
-  height: 25px;
+  width: 60px;
+  height: 40px;
   border-radius: 8px;
   border: none;
   background-color: #619fd0;
   color: #fff;
   cursor: pointer;
   outline: none;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 @media screen and (max-width: 768px) {
   .modal__content {
     margin-top: -200px;
     width: 300px;
-    height: 150px;
+    height: 200px;
   }
   .modal__info {
     font-family: neoL;
@@ -100,8 +114,8 @@
 
 @media screen and (max-width: 375px) {
   .modal__content {
-    width: 200px;
-    height: 100px;
+    width: 220px;
+    height: 150px;
   }
   .modal__info {
     font-size: 10px;
@@ -111,7 +125,14 @@
     height: 20px;
     font-size: 12px;
   }
+
+  .modal__button {
+    width: 40px;
+    height: 25px;
+    font-size: 10px;
+    margin: 0;
+  }
 }
 .modal__button:hover {
-  color: #000;
+  background-color: #48769b;
 }
