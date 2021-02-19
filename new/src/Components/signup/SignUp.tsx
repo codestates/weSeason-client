@@ -4,8 +4,6 @@ import UserInfo from "./UserInfo";
 import "./signUp.css";
 import { infoFormData } from "./infoData";
 import { connect } from "react-redux";
-import axios from "axios";
-import { API_URL } from "../../const";
 import {
   changeName,
   changeNickName,
@@ -15,6 +13,7 @@ import {
 } from "../../reducers/userInfoReducer";
 import { changeCurrentPageWidth } from "../../reducers/pageWidthReducer";
 import OneBtnModal from "../modal/OneBtnModal";
+import { createUserInfo } from "../../api/user";
 
 type InfoDataType = {
   title: string;
@@ -94,16 +93,10 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
 
   const joinUserOrCheckEqualUser = async () => {
     try {
-      await axios.post(`${API_URL}/users`, {
-        name,
-        nickname: nickName,
-        password,
-        email,
-      });
+      await createUserInfo(name, nickName, password, email);
       // 성공할 경우 모달 or 모바일 안내
       // 스테이트 초기화
       formatUserInfo();
-
       if (pageWidth >= 1024) {
         setErrorMessage("회원가입 완료");
         setResMessage("확인을 누르면 로그인 페이지로 이동합니다");

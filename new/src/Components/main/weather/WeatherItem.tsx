@@ -1,8 +1,16 @@
+import { useDispatch } from "react-redux";
+import { setTemp } from "../../../reducers/weatherReducer";
 import { WeatherInfo } from "./../../../api/weather";
 
 export default function WeatherItem(w: WeatherInfo) {
+  const dispatch = useDispatch();
   return (
-    <li className="weather__item">
+    <li
+      className="weather__item"
+      onClick={() => {
+        dispatch(setTemp(Math.floor(w.temp)));
+      }}
+    >
       <p className="weather__time">{getTime(w.dt)}시</p>
       <img
         className="weather__icon"

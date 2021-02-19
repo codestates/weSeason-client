@@ -1,12 +1,11 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { API_URL, REDIRECT_URL } from "../../const";
+import { REDIRECT_URL } from "../../const";
 import OneBtnModal from "../modal/OneBtnModal";
 import "./login.css";
 import { setAccessToken } from "../../reducers/appReducer";
-
+import { loginLocal } from "../../api/auth";
 type LoginProps = {
   pageWidth: number;
   modifyAccessToken(token: string): void;
@@ -72,20 +71,8 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
 
   const handleFindLoginUser = async () => {
     try {
-      const data = await axios.post(
-        `${API_URL}/auth/local`,
-        {
-          email,
-          password,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-      const accessToken = data.data.data.accessToken;
-
-      modifyAccessToken(accessToken);
-
+      const data = await loginLocal(email, password);
+      modifyAccessToken(data);
       if (pageWidth > 1024) {
         setErrorMessage("로그인 성공");
         setResMessage("메인 페이지로 이동합니다");
@@ -95,7 +82,6 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
       }
     } catch {
       setErrorMessage("일치하는 정보가 확인되지 않습니다");
-
       if (pageWidth > 1024) {
         setWebSuccess(false);
         setWebError(true);

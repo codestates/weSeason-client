@@ -58,6 +58,7 @@ function App({
     window.addEventListener("resize", resizeListener);
 
     navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
       modifyLat(position.coords.latitude);
       modifyLon(position.coords.longitude);
     });
@@ -66,7 +67,7 @@ function App({
       // remove resize listener
       window.removeEventListener("resize", resizeListener);
     };
-  }, [dispatch, lat, lon, modifyCilentWidth, modifyLat, modifyLon, pageWidth]);
+  }, [dispatch, modifyCilentWidth, modifyLat, modifyLon, pageWidth]);
   const getWidth = () => window.innerWidth;
 
   return (
