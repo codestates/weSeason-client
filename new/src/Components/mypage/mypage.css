@@ -28,7 +28,6 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /* align-items: center; */
   position: relative;
 }
 
@@ -123,12 +122,14 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: #f3f3f3;
+  background-color: #8b8b8b;
+  color: #e1e1e1;
   border: none;
   width: 123px;
   height: 53px;
   cursor: pointer;
   outline: none;
+  border-radius: 10px;
 }
 .mypage__withdrawal::before {
   content: "탈퇴";
@@ -143,6 +144,7 @@
     height: 100%;
     width: 100%;
   }
+
   .mypage__title {
     font-family: neoB;
     font-size: 30px;
@@ -230,10 +232,12 @@
   .mypage__input {
     font-family: neoL;
     border: none;
-    font-size: 17px;
+    font-size: 25px;
     outline: none;
     width: 100%;
     color: #575757;
+    margin-top: 8px;
+    padding-bottom: 5px;
   }
   .mypage__input--disabled {
     color: #b8b8b8;
@@ -298,10 +302,11 @@
     font-size: 17px;
   }
   .mypage__label {
-    font-size: 13px;
+    font-size: 12px;
   }
   .mypage__input {
-    font-size: 13px;
+    font-size: 17px;
+    padding-bottom: 5px;
   }
   .mypage__submitbtn {
     height: 50px;

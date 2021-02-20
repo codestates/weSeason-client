@@ -2,7 +2,7 @@ import React, { createRef, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { userLat, userLon } from "../../reducers/locationReducer";
 import "./searchVillage.css";
-const { kakao, event } = window;
+const { kakao } = window;
 
 declare global {
   interface Window {
@@ -65,7 +65,7 @@ const SearchVillage = ({
     // 지도에 마커를 표시하는 함수입니다
     function displayMarker(place: any) {
       // 마커를 생성하고 지도에 표시합니다
-      var marker = new kakao.maps.Marker({
+      let marker = new kakao.maps.Marker({
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x),
       });
@@ -78,6 +78,8 @@ const SearchVillage = ({
             place.place_name +
             "</div>"
         );
+        setClickLat(place.y);
+        setClickLon(place.x);
         infowindow.open(map, marker);
       });
     }
@@ -103,6 +105,7 @@ const SearchVillage = ({
 
         let newLat = latlng.getLat();
         let newLon = latlng.getLng();
+        console.log(newLat, newLon, "테스트!@!");
         setClickLat(newLat);
         setClickLon(newLon);
       }
@@ -114,14 +117,60 @@ const SearchVillage = ({
   };
 
   useEffect(() => {
-    let container = document.getElementById("searchVillage__map"); //지도를 담을 영역의 DOM 레퍼런스
     let options = {
       //지도를 생성할 때 필요한 기본 옵션
       center: new window.kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
       level: 3, //지도의 레벨(확대, 축소 정도)
     };
 
-    let map = new window.kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    let map = new window.kakao.maps.Map(mapReference.current, options); //지도 생성 및 객체 리턴
+
+    if (navigator.geolocation) {
+      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+      navigator.geolocation.getCurrentPosition(function (position) {
+        let newLat = position.coords.latitude; // 위도
+        let newLon = position.coords.longitude; // 경도
+
+        let locPosition = new kakao.maps.LatLng(newLat, newLon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+          message =
+            '<div id="searchVillage__map--message" style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+
+        // 마커와 인포윈도우를 표시합니다
+        displayMarker(locPosition, message);
+      });
+    } else {
+      // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+      let locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+        message = "현재 위치를 확인할 수 없습니다 (위치 동의 확인)";
+
+      displayMarker(locPosition, message);
+    }
+
+    // 지도에 마커와 인포윈도우를 표시하는 함수입니다
+    function displayMarker(locPosition: any, message: any) {
+      // 마커를 생성합니다
+      let marker = new kakao.maps.Marker({
+        map: map,
+        position: locPosition,
+      });
+
+      let iwContent = message, // 인포윈도우에 표시할 내용
+        iwRemoveable = true;
+
+      // 인포윈도우를 생성합니다
+      let infowindow = new kakao.maps.InfoWindow({
+        content: iwContent,
+        removable: iwRemoveable,
+      });
+
+      // 인포윈도우를 마커위에 표시합니다
+      infowindow.open(map, marker);
+
+      // 지도 중심좌표를 접속위치로 변경합니다
+      map.setCenter(locPosition);
+    }
+
     // 지도를 클릭한 위치에 표출할 마커입니다
     let marker = new window.kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다
@@ -148,17 +197,21 @@ const SearchVillage = ({
         setClickLon(newLon);
       }
     );
+    const closeModalESC = (e: any) => {
+      if (e.keyCode === 27) {
+        handleClickClose();
+      }
+    };
+
+    window.addEventListener("keydown", closeModalESC);
+    return () => window.removeEventListener("keydown", closeModalESC);
   }, [lat, lon]);
 
-  const checkEnterKey = (e: any) => {
+  function checkEnterKey(e: any) {
     if (e.keyCode === 13) {
       handleClickSearchBtn();
-    } else if (e.keyCode === 27) {
-      handleClickClose();
-    } else {
-      console.log(e.keyCode);
     }
-  };
+  }
 
   const handleClickMap = () => {
     modifyLat(clickLat);
@@ -185,6 +238,7 @@ const SearchVillage = ({
           원하시는 장소를 지도에서 클릭하세요.
         </p>
         <div id="searchVillage__map" ref={mapReference}></div>
+
         <p id="searchVillage__info-ment--foot">
           ESC를 눌러 창을 닫을 수 있습니다.
         </p>

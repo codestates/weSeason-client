@@ -14,17 +14,28 @@
   cursor: pointer;
 }
 
+#login__oauth-btn--google:hover {
+  background-color: #ce2020;
+}
+
 #login__oauth-btn--github {
   border: none;
   background-color: black;
   color: white;
   cursor: pointer;
 }
+
+#login__oauth-btn--github:hover {
+  background-color: #525252;
+}
 #login__contants {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+#login__link {
+  font-family: neoL;
 }
 
 @media all and (min-width: 1024px) {
@@ -121,6 +132,11 @@
     color: #619fd0;
   }
 
+  #login__login-Btn-basic:hover,
+  #login__login-Btn-extend:hover {
+    background-color: #dadada;
+  }
+
   #login__oauth-contain {
     width: 426px;
     height: 80px;
@@ -158,10 +174,10 @@
 
   #login__link {
     color: white;
-    font-size: 13px;
+    font-size: 14px;
   }
 
-  .login__link:hover {
+  #login__link:hover {
     text-decoration: underline;
     color: black;
   }
@@ -184,8 +200,8 @@
   #login__input-items {
     width: 521px;
     height: 200px;
-    position: absolute;
-    top: 130px;
+    position: relative;
+    top: -14vw;
   }
 
   .login__input-contain {
@@ -247,7 +263,6 @@
     cursor: pointer;
     color: white;
     background-color: #c4c4c4;
-    /* margin-top: auto; */
   }
 
   #login__login-Btn-extend {
@@ -261,7 +276,6 @@
     cursor: pointer;
     color: white;
     background-color: #619fd0;
-    /* margin-top: auto; */
   }
 
   #login__oauth-btn--google {
@@ -299,7 +313,9 @@
     font-family: neoB;
     font-size: 18px;
     color: #f45757;
-    margin-top: 90px;
+  }
+  #login__link:hover {
+    color: #619fd0;
   }
 }
 
@@ -422,7 +438,7 @@
   }
 
   #login__link:hover {
-    color: blue;
+    color: #619fd0;
   }
 
   #login__errorView {

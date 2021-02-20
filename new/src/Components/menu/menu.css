@@ -3,6 +3,7 @@
   align-items: center;
   height: 100px;
 }
+
 .menu__btn {
   border: none;
   background-image: url("../../images/icon/webMenu.png");
@@ -13,10 +14,9 @@
   width: 100px;
   height: 100px;
   font-size: 20px;
-  color: gray;
+  color: #5a5a5a;
   outline: none;
   transition: all 0.5s;
-  /* opacity: 0.8; */
   cursor: pointer;
   -webkit-filter: drop-shadow(2px 10px 4px rgba(0, 0, 0, 0.25));
   -moz-filter: drop-shadow(2px 10px 4px rgba(0, 0, 0, 0.25));
@@ -28,7 +28,7 @@
   content: "MENU";
 }
 .menu__btn:hover {
-  color: #000;
+  color: #619fd0;
 }
 .menu__nav {
   overflow: hidden;
@@ -63,18 +63,16 @@
   text-decoration: none;
 }
 
-.menu__items a:hover {
-  color: #000;
+.menu__items a:-webkit-any-link:hover,
+.menu__logout:hover {
+  color: #d8d8d8;
 }
 
 .menu__logout {
-  font-size: inherit;
   border: none;
   background-color: inherit;
   text-shadow: inherit;
   cursor: pointer;
-  text-decoration: inherit;
-  padding: 0;
 }
 
 .menu__items a,
@@ -91,10 +89,6 @@
   }
   .menu__btn {
     background-image: url("../../images/icon/hambuger-menu.png");
-    /* background: linear-gradient(#000 50%, transparent 50%);
-    background-size: 100% 10px;
-    width: 40px;
-    height: 35px; */
     width: 40px;
     height: 40px;
     margin-right: 25px;
@@ -107,6 +101,7 @@
     -o-filter: drop-shadow(0px 0px 0px);
     filter: drop-shadow(0px 0px 0px);
   }
+
   .menu__btn::before {
     content: "";
   }
@@ -154,9 +149,3 @@
     font-size: 15px;
   }
 }
-
-.menu__items a:hover,
-.menu__logout:hover {
-  color: #000;
-}
-
