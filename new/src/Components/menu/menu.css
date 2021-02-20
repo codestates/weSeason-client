@@ -132,7 +132,8 @@
     text-shadow: none;
   }
 
-  .menu__items a:-webkit-any-link {
+  .menu__items a:-webkit-any-link,
+  .menu__logout {
     font-size: 17px;
   }
 }
