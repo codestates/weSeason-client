@@ -118,6 +118,11 @@
     margin-top: 73px;
   }
 
+  #signUp__joinBtn-basic:hover,
+  #signUp__joinBtn-extend:hover {
+    background-color: #dadada;
+  }
+
   #signUp__joinBtn-basic:hover {
     color: black;
   }

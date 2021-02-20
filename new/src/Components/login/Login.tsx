@@ -21,7 +21,6 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
   const [defaultBtnColor, setDefaultBtnColor] = useState<boolean>(true);
   const [resMessage, setResMessage] = useState<string>("");
   const [webSuccess, setWebSuccess] = useState<boolean>(false);
-
   const history = useHistory();
 
   useEffect(() => {

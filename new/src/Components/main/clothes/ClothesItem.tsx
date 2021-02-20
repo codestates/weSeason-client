@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { iconList } from "./iconList";
 import cloud from "../../../images/icon/cloud.png";
 import "./clothesItem.css";
+import { connect } from "react-redux";
 
-const ClothesItem = ({ clothes }: any) => {
+const ClothesItem = ({ clothes, temp }: any) => {
   const [iconLength, setIconLength] = useState<number>(0);
   const [iconNames, setIconNames] = useState<any[]>([]);
   // const
@@ -51,10 +52,17 @@ const ClothesItem = ({ clothes }: any) => {
   });
 
   return (
-    <div className={`clothesItem clothesItem-length--${iconLength}`}>
-      {clothesItemTag}
-    </div>
+    <>
+      <div className={`clothesItem clothesItem-length--${iconLength}`}>
+        {clothesItemTag}
+      </div>
+      <div id="clothesItem__temp-info">{temp}°C</div>
+    </>
   );
 };
 
-export default ClothesItem;
+const mapStateToProps = (state: any) => {
+  return { temp: state.weatherReducer.temp };
+};
+
+export default connect(mapStateToProps)(ClothesItem);

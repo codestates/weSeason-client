@@ -27,6 +27,17 @@
   filter: drop-shadow(1px 8px 3px rgba(0, 0, 0, 0.25));
 }
 
+#clothesItem__temp-info {
+  font-family: jalnan;
+  font-size: 25px;
+  color: #fff;
+  -webkit-filter: drop-shadow(1px 8px 2px rgba(0, 0, 0, 0.25));
+  -moz-filter: drop-shadow(1px 8px 2px rgba(0, 0, 0, 0.25));
+  -ms-filter: drop-shadow(1px 8px 2px rgba(0, 0, 0, 0.25));
+  -o-filter: drop-shadow(1px 8px 2px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(1px 8px 2px rgba(0, 0, 0, 0.25));
+}
+
 .clothesItem__seven-piece-pants {
   background-image: url("../../../images/icon/clothes-icons/7부바지.png");
 }
@@ -129,7 +140,7 @@
 @media all and (min-width: 768px) {
   .clothesItem {
     margin-top: 30px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     flex-wrap: wrap;
   }
 
@@ -152,6 +163,7 @@
     height: 266px;
   }
 
+  .clothesItem__item--length-1,
   .clothesItem__item--length-2,
   .clothesItem__item--length-3,
   .clothesItem__item--length-4,
@@ -166,6 +178,7 @@
     height: 128px;
   }
 
+  .clothesItem__cloth-length--1,
   .clothesItem__cloth-length--2,
   .clothesItem__cloth-length--3,
   .clothesItem__item--length-4 > .clothesItem__cloth-0,
@@ -208,6 +221,15 @@
     animation-iteration-count: infinite;
   }
 
+  @keyframes clothesItemAni-first-render {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
   @keyframes clothesItemAni-1 {
     from {
       transform: translateY(-10px);
@@ -231,12 +253,15 @@
       transform: translateY(0px);
     }
   }
+
+  #clothesItem__temp-info {
+    margin-bottom: 30px;
+  }
 }
 
 @media all and (max-width: 768px) {
   .clothesItem {
     margin-top: 30px;
-    margin-bottom: 40px;
     flex-wrap: wrap;
   }
 
@@ -259,6 +284,7 @@
     height: 170px;
   }
 
+  .clothesItem__item--length-1,
   .clothesItem__item--length-2,
   .clothesItem__item--length-3,
   .clothesItem__item--length-4,
@@ -273,6 +299,7 @@
     height: 80px;
   }
 
+  .clothesItem__cloth-length--1,
   .clothesItem__cloth-length--2,
   .clothesItem__cloth-length--3,
   .clothesItem__item--length-4 > .clothesItem__cloth-0,
@@ -339,5 +366,10 @@
     to {
       transform: translateY(0px);
     }
+  }
+
+  #clothesItem__temp-info {
+    font-size: 20px;
+    margin-bottom: 20px;
   }
 }
