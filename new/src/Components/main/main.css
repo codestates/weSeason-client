@@ -1,9 +1,18 @@
 #main {
   height: 100vh;
+  min-height: 80vh;
   background-image: url("../../images/background/first-main.jpeg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main__contain {
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

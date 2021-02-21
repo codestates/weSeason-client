@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 import { checkIsLogined } from "./api/auth";
 import Login from "./Components/login/Login";
 import Mypage from "./Components/mypage/MyPage";
@@ -23,21 +23,12 @@ declare global {
 
 type AppProps = {
   pageWidth: number;
-  lat: number;
-  lon: number;
   modifyCilentWidth(pageWidth: number): void;
   modifyLat(lat: number): void;
   modifyLon(lon: number): void;
 };
 
-function App({
-  pageWidth,
-  lat,
-  lon,
-  modifyCilentWidth,
-  modifyLat,
-  modifyLon,
-}: AppProps) {
+function App({ pageWidth, modifyCilentWidth, modifyLat, modifyLon }: AppProps) {
   const dispatch = useDispatch();
   const init = useSelector((state: RootState) => state.appReducer.init);
 
