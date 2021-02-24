@@ -1,7 +1,7 @@
 #main {
-  height: 100vh;
-  min-height: 80vh;
-  background-image: url("../../images/background/first-main.jpeg");
+  /* height: 100vh; */
+  min-height: 887px;
+  background-image: url('../../images/background/first-main.jpeg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 }
 
 #main__contain {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

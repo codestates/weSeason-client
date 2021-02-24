@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { getClothesByTemp } from "../../../api/clothes";
-import ClothesItem from "./ClothesItem";
-import ClothesList from "./ClothesList";
-import "./clothesBox.css";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../reducers";
+import React, { useState, useEffect } from 'react';
+import { getClothesByTemp } from '../../../api/clothes';
+import ClothesItem from './ClothesItem';
+import ClothesList from './ClothesList';
+import './clothesBox.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../reducers';
 
 const ClothesBox = () => {
   const [clothes, setClothes] = useState<string[]>([]);
@@ -12,7 +12,7 @@ const ClothesBox = () => {
   useEffect(() => {
     (async () => {
       try {
-        if (temp) {
+        if (temp !== null) {
           const data = await getClothesByTemp(temp);
           setClothes(data);
         }
@@ -23,8 +23,8 @@ const ClothesBox = () => {
   }, [temp]);
 
   return (
-    <div id="clothesBox">
-      <div id="clothestBox__header">오늘은?</div>
+    <div id='clothesBox'>
+      <div id='clothestBox__header'>오늘은?</div>
       <ClothesItem clothes={clothes} />
       <ClothesList clothes={clothes} />
     </div>

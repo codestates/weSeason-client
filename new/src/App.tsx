@@ -1,19 +1,19 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
-import { checkIsLogined } from "./api/auth";
-import Login from "./Components/login/Login";
-import Mypage from "./Components/mypage/MyPage";
-import SignUp from "./Components/signup/SignUp";
-import { setAccessToken } from "./reducers/appReducer";
-import { changeCurrentPageWidth } from "../src/reducers/pageWidthReducer";
-import { connect } from "react-redux";
-import Main from "./Components/main/Main";
-import { RootState } from "./reducers";
-import "./app.css";
-import Menu from "./Components/menu/Menu";
-import Withdrawl from "./Components/mypage/withdrawl/Withdrawl";
-import { userLat, userLon } from "./reducers/locationReducer";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
+import { checkIsLogined } from './api/auth';
+import Login from './Components/login/Login';
+import Mypage from './Components/mypage/MyPage';
+import SignUp from './Components/signup/SignUp';
+import { setAccessToken } from './reducers/appReducer';
+import { changeCurrentPageWidth } from '../src/reducers/pageWidthReducer';
+import { connect } from 'react-redux';
+import Main from './Components/main/Main';
+import { RootState } from './reducers';
+import './app.css';
+import Menu from './Components/menu/Menu';
+import Withdrawl from './Components/mypage/withdrawl/Withdrawl';
+import { userLat, userLon } from './reducers/locationReducer';
 
 declare global {
   interface Window {
@@ -46,17 +46,16 @@ function App({ pageWidth, modifyCilentWidth, modifyLat, modifyLon }: AppProps) {
         modifyCilentWidth(getWidth());
       }
     };
-    window.addEventListener("resize", resizeListener);
+    window.addEventListener('resize', resizeListener);
 
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
       modifyLat(position.coords.latitude);
       modifyLon(position.coords.longitude);
     });
 
     return () => {
       // remove resize listener
-      window.removeEventListener("resize", resizeListener);
+      window.removeEventListener('resize', resizeListener);
     };
   }, [dispatch, modifyCilentWidth, modifyLat, modifyLon, pageWidth]);
   const getWidth = () => window.innerWidth;
@@ -64,28 +63,28 @@ function App({ pageWidth, modifyCilentWidth, modifyLat, modifyLon }: AppProps) {
   return (
     <>
       {!init ? (
-        "loading"
+        'loading'
       ) : (
         <BrowserRouter>
-          <header className="app__header">
-            <div>weSeason</div>
+          <header className='app__header'>
+            <div id='app__logo'>weSeason</div>
             <Menu />
           </header>
-          <main className="app__main">
+          <main className='app__main'>
             <Switch>
-              <Route path="/mypage">
+              <Route path='/mypage'>
                 <Mypage />
               </Route>
-              <Route path="/login">
+              <Route path='/login'>
                 <Login />
               </Route>
-              <Route path="/signup">
+              <Route path='/signup'>
                 <SignUp />
               </Route>
-              <Route path="/withdrawal">
+              <Route path='/withdrawal'>
                 <Withdrawl />
               </Route>
-              <Route path="/">
+              <Route path='/'>
                 <Main />
               </Route>
             </Switch>
