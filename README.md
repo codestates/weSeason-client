@@ -22,6 +22,13 @@
   시시각각 변화하는 기온과 내 위치! 오늘은 뭘 입을까?<br><br>기온에 맞는 옷차림을 추천해드립니다!!
 </h3>
 
+<p>2021.2.24 v2.0.0 업그레이드 🌤</p>
+
+* 기존 스택 변경 (js, react > ts, react, redux..)
+* 더욱 깔끔하고 편리한 UI / UX
+* 모바일 태블릿 환경 모두 이용 가능
+
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/68503014/106512241-af50ee00-6514-11eb-94db-9d842070a0ae.jpeg" alt="text" width="900" />
 </p>
