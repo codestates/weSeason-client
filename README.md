@@ -1,11 +1,11 @@
 <p align="center">
-<img alt="logo" src="https://user-images.githubusercontent.com/68503014/108992956-43117680-76dd-11eb-8823-387997402570.png" width="500px"/>
+<img alt="logo" src="https://user-images.githubusercontent.com/68503014/108997592-1d876b80-76e3-11eb-81f7-098c58b186e0.png" width="500px"/>
 </p>
 <h2 align="center">기온 별 옷차림 추천 사이트<br><a href="https://www.weseason4.com">weSeason</a>입니다!</h2>
 
 
 <p align="center">
-<img alt="Version" src="https://img.shields.io/badge/version-2.0.0-blue.svg?cacheSeconds=2592000" />
+<img alt="Version" src="https://img.shields.io/badge/version-v2.0.0-blue.svg?cacheSeconds=2592000" />
 
 <img alt="Launched?" src="https://img.shields.io/badge/Maintained%3F-yes!-green.svg" />
 <img alt="node-v12.19.0" src="https://img.shields.io/badge/node-v12.20.0-3f72af" />
@@ -43,7 +43,7 @@
 -----
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106665007-235cc600-65e9-11eb-9982-2c1f4a89717a.jpeg" alt="text" width="900" />
+  <img src="https://user-images.githubusercontent.com/68503014/108997413-e913af80-76e2-11eb-9080-15971e6878ba.jpeg" alt="text" width="900" />
 </p>
 
 ## Member Info
