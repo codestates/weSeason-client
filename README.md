@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="logo" src="https://user-images.githubusercontent.com/68503014/106308629-511dd400-62a4-11eb-9eaf-1ed1d62fa00b.png" width="500px"/>
+<img alt="logo" src="https://user-images.githubusercontent.com/68503014/108992956-43117680-76dd-11eb-8823-387997402570.png" width="500px"/>
 </p>
 <h2 align="center">기온 별 옷차림 추천 사이트<br><a href="https://www.weseason4.com">weSeason</a>입니다!</h2>
 
