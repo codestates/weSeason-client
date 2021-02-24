@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   lat: 37.55519305862982,
@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const locationSlice = createSlice({
-  name: "locationReducer",
+  name: 'locationReducer',
   initialState,
   reducers: {
     userLat(state, action) {

@@ -1,7 +1,7 @@
-import React, { createRef, useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { userLat, userLon } from "../../reducers/locationReducer";
-import "./searchVillage.css";
+import React, { createRef, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { userLat, userLon } from '../../reducers/locationReducer';
+import './searchVillage.css';
 const { kakao } = window;
 
 declare global {
@@ -19,7 +19,7 @@ const SearchVillage = ({
 }: any) => {
   const [clickLat, setClickLat] = useState<number>(0);
   const [clickLon, setClickLon] = useState<number>(0);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>('');
   const [mapReference, setMapReference] = useState<any>(() => createRef());
 
   const handleClickClose = () => {
@@ -71,12 +71,12 @@ const SearchVillage = ({
       });
 
       // 마커에 클릭이벤트를 등록합니다
-      kakao.maps.event.addListener(marker, "click", function () {
+      kakao.maps.event.addListener(marker, 'click', function () {
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
         infowindow.setContent(
           '<div style="padding:5px;font-size:12px;">' +
             place.place_name +
-            "</div>"
+            '</div>'
         );
         setClickLat(place.y);
         setClickLon(place.x);
@@ -95,7 +95,7 @@ const SearchVillage = ({
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
     window.kakao.maps.event.addListener(
       map,
-      "click",
+      'click',
       function (mouseEvent: any) {
         // 클릭한 위도, 경도 정보를 가져옵니다
         let latlng = mouseEvent.latLng;
@@ -105,7 +105,7 @@ const SearchVillage = ({
 
         let newLat = latlng.getLat();
         let newLon = latlng.getLng();
-        console.log(newLat, newLon, "테스트!@!");
+
         setClickLat(newLat);
         setClickLon(newLon);
       }
@@ -125,27 +125,27 @@ const SearchVillage = ({
 
     let map = new window.kakao.maps.Map(mapReference.current, options); //지도 생성 및 객체 리턴
 
-    if (navigator.geolocation) {
-      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-      navigator.geolocation.getCurrentPosition(function (position) {
-        let newLat = position.coords.latitude; // 위도
-        let newLon = position.coords.longitude; // 경도
+    // if (navigator.geolocation) {
+    //   // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    //   navigator.geolocation.getCurrentPosition(function (position) {
+    //     let newLat = position.coords.latitude; // 위도
+    //     let newLon = position.coords.longitude; // 경도
 
-        let locPosition = new kakao.maps.LatLng(newLat, newLon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-          message =
-            '<div id="searchVillage__map--message" style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+    let locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+    let message =
+      '<div id="searchVillage__map--message" style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
 
-        // 마커와 인포윈도우를 표시합니다
-        displayMarker(locPosition, message);
-      });
-    } else {
-      // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    //     // 마커와 인포윈도우를 표시합니다
+    displayMarker(locPosition, message);
+    //   });
+    // } else {
+    //   // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
-      let locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
-        message = "현재 위치를 확인할 수 없습니다 (위치 동의 확인)";
+    //   let locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+    //     message = '현재 위치를 확인할 수 없습니다 (위치 동의 확인)';
 
-      displayMarker(locPosition, message);
-    }
+    //   displayMarker(locPosition, message);
+    // }
 
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition: any, message: any) {
@@ -183,7 +183,7 @@ const SearchVillage = ({
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
     window.kakao.maps.event.addListener(
       map,
-      "click",
+      'click',
       function (mouseEvent: any) {
         // 클릭한 위도, 경도 정보를 가져옵니다
         let latlng = mouseEvent.latLng;
@@ -203,9 +203,9 @@ const SearchVillage = ({
       }
     };
 
-    window.addEventListener("keydown", closeModalESC);
-    return () => window.removeEventListener("keydown", closeModalESC);
-  }, [lat, lon]);
+    window.addEventListener('keydown', closeModalESC);
+    return () => window.removeEventListener('keydown', closeModalESC);
+  }, [lat, lon, mapReference]);
 
   function checkEnterKey(e: any) {
     if (e.keyCode === 13) {
@@ -214,40 +214,42 @@ const SearchVillage = ({
   }
 
   const handleClickMap = () => {
-    modifyLat(clickLat);
-    modifyLon(clickLon);
+    if (clickLat !== 0 && clickLon !== 0) {
+      modifyLat(clickLat);
+      modifyLon(clickLon);
+    }
     handleClickClose();
   };
 
   return (
-    <div id="searchVillage-background">
-      <div id="searchVillage__contain">
-        <div className="searchVillage__input-contain">
+    <div id='searchVillage-background'>
+      <div id='searchVillage__contain'>
+        <div className='searchVillage__input-contain'>
           <input
-            id="searchVillage__input"
-            type="text"
-            placeholder="어느 곳을 방문할 예정인가요?"
+            id='searchVillage__input'
+            type='text'
+            placeholder='어느 곳을 방문할 예정인가요?'
             onChange={handleChangeInputValue}
             onKeyUp={checkEnterKey}
           ></input>
-          <button id="searchVillage__btn-search" onClick={handleClickSearchBtn}>
+          <button id='searchVillage__btn-search' onClick={handleClickSearchBtn}>
             검색
           </button>
         </div>
-        <p id="searchVillage__info-ment--head">
+        <p id='searchVillage__info-ment--head'>
           원하시는 장소를 지도에서 클릭하세요.
         </p>
-        <div id="searchVillage__map" ref={mapReference}></div>
+        <div id='searchVillage__map' ref={mapReference}></div>
 
-        <p id="searchVillage__info-ment--foot">
+        <p id='searchVillage__info-ment--foot'>
           ESC를 눌러 창을 닫을 수 있습니다.
         </p>
-        <div id="searchvillage__footer-contain">
-          <button className="searchVillage__btn" onClick={handleClickMap}>
+        <div id='searchvillage__footer-contain'>
+          <button className='searchVillage__btn' onClick={handleClickMap}>
             옷 추천 받기
           </button>
           <button
-            className="searchVillage__btn btn--close"
+            className='searchVillage__btn btn--close'
             onClick={handleClickClose}
           >
             닫기
