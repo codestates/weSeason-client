@@ -30,13 +30,8 @@
 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106512241-af50ee00-6514-11eb-94db-9d842070a0ae.jpeg" alt="text" width="900" />
+  <img src="https://user-images.githubusercontent.com/68503014/109113029-e8305b80-777e-11eb-971a-1a536f8e8e2b.gif" alt="text" width="900" />
 </p>
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106515923-b1697b80-6519-11eb-8477-4a7b57193ef1.gif" alt="text" width="900" />
-</p>
-
 
 
 ## Tech Stacks
