@@ -19,10 +19,11 @@ const Main = ({ accessToken, modifyAccessToken }: any) => {
 
   useEffect(() => {
     let { code } = queryString.parse(location.search);
+    let pathname = location.pathname;
 
     if (code) {
       axios
-        .post(`${API_URL}/auth/google`, { code }, { withCredentials: true })
+        .post(`${API_URL}${pathname}`, { code }, { withCredentials: true })
         .then((data) => {
           modifyAccessToken(data.data.accessToken);
         })
