@@ -23,3 +23,27 @@
   margin-top: 10px;
   border: solid #575757;
 }
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  #app__logo {
+    height: 20px;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
+    border: solid #575757;
+  }
+}
+
+@media all and (max-width: 767px) {
+  #app__logo {
+    height: 10px;
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-top: 20px;
+    border: solid #575757;
+  }
+}

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import {
   changeName,
   changeNickName,
   changeEmail,
   changePassword,
   changePasswordCheck,
-} from "../../reducers/userInfoReducer";
+} from '../../reducers/userInfoReducer';
 
 const UserInfo = ({ title, name, type, placeholder, ...rest }: any) => {
   const [validInput, setValidInput] = useState<boolean>(false);
@@ -14,37 +14,37 @@ const UserInfo = ({ title, name, type, placeholder, ...rest }: any) => {
     const targetName = e.target.name;
     const targetData = e.target.value;
 
-    if (targetName === "name") {
+    if (targetName === 'name') {
       rest.modifyName(targetData);
-      if (targetData !== "") {
+      if (targetData !== '') {
         setValidInput(true);
       } else {
         setValidInput(false);
       }
-    } else if (targetName === "nickName") {
+    } else if (targetName === 'nickName') {
       rest.modifyNickName(targetData);
-      if (targetData !== "") {
+      if (targetData !== '') {
         setValidInput(true);
       } else {
         setValidInput(false);
       }
-    } else if (targetName === "email") {
+    } else if (targetName === 'email') {
       rest.modifyEmail(targetData);
-      if (targetData !== "") {
+      if (targetData !== '') {
         setValidInput(true);
       } else {
         setValidInput(false);
       }
-    } else if (targetName === "password") {
+    } else if (targetName === 'password') {
       rest.modifyPassword(targetData);
-      if (targetData !== "") {
+      if (targetData !== '') {
         setValidInput(true);
       } else {
         setValidInput(false);
       }
     } else {
       rest.modifyPasswordCheck(targetData);
-      if (targetData !== "") {
+      if (targetData !== '') {
         setValidInput(true);
       } else {
         setValidInput(false);
@@ -53,10 +53,10 @@ const UserInfo = ({ title, name, type, placeholder, ...rest }: any) => {
   };
 
   return (
-    <div className="userInfo__contain">
+    <div className='userInfo__contain'>
       <p
         className={
-          validInput ? "userInfo__title-extend" : "userInfo__title-basic"
+          validInput ? 'userInfo__title-extend' : 'userInfo__title-basic'
         }
       >
         {title}
@@ -65,7 +65,7 @@ const UserInfo = ({ title, name, type, placeholder, ...rest }: any) => {
         name={name}
         type={type}
         className={
-          validInput ? "userInfo__input-extend" : "userInfo__input-basic"
+          validInput ? 'userInfo__input-extend' : 'userInfo__input-basic'
         }
         placeholder={placeholder}
         onChange={handleChangeInputValue}
@@ -73,10 +73,6 @@ const UserInfo = ({ title, name, type, placeholder, ...rest }: any) => {
     </div>
   );
 };
-
-// const mapStateToProps = (state: any) => {
-//   return { userInfo: state };
-// };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {

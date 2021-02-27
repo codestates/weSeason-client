@@ -1,15 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+type WidthStateType = {
+  width: number;
+};
+
+const initialState: WidthStateType = {
   width: window.innerWidth,
 };
 
 const pageWidthSlice = createSlice({
-  name: "pageWidthSlice",
+  name: 'pageWidthSlice',
   initialState,
   reducers: {
     changeCurrentPageWidth(state, action) {
-      const clientWidth = action.payload;
+      const clientWidth: number = action.payload;
       state.width = clientWidth;
     },
   },

@@ -1,7 +1,17 @@
-import { useState } from "react";
-import "./OneBtnModal.css";
+import { useState } from 'react';
+import './OneBtnModal.css';
 
-const OneBtnModal = ({ message, info, handleFindModalClose }: any) => {
+type OneBtnModalProps = {
+  message: string;
+  info: string;
+  handleFindModalClose(): void;
+};
+
+const OneBtnModal = ({
+  message,
+  info,
+  handleFindModalClose,
+}: OneBtnModalProps) => {
   const [clickModal, setClickModal] = useState<boolean>(false);
 
   const handleClickModal = () => {
@@ -13,12 +23,12 @@ const OneBtnModal = ({ message, info, handleFindModalClose }: any) => {
   return (
     <>
       {!clickModal ? (
-        <div className="onebtnModal__background">
-          <div className="onebtnModal__contain">
-            <p className="onbtnModal__message">{message}</p>
-            {info ? <p className="onbtnModal__info">{info}</p> : null}
-            <div className="onebtnModal__btn-contain">
-              <button className="onebtnModal__btn" onClick={handleClickModal}>
+        <div className='onebtnModal__background'>
+          <div className='onebtnModal__contain'>
+            <p className='onbtnModal__message'>{message}</p>
+            {info ? <p className='onbtnModal__info'>{info}</p> : null}
+            <div className='onebtnModal__btn-contain'>
+              <button className='onebtnModal__btn' onClick={handleClickModal}>
                 확인
               </button>
             </div>

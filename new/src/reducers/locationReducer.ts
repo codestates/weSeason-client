@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+type LocationType = {
+  lat: number;
+  lon: number;
+};
+
+const initialState: LocationType = {
   lat: 37.55519305862982,
   lon: 126.9707879543135,
 };
@@ -10,11 +15,11 @@ const locationSlice = createSlice({
   initialState,
   reducers: {
     userLat(state, action) {
-      const lat = action.payload;
+      const lat: number = action.payload;
       state.lat = lat;
     },
     userLon(state, action) {
-      const lon = action.payload;
+      const lon: number = action.payload;
       state.lon = lon;
     },
   },

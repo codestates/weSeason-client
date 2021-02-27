@@ -1,12 +1,17 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
-  accessToken: "",
+type TokenType = {
+  accessToken: string;
+  init: boolean;
+};
+
+const initialState: TokenType = {
+  accessToken: '',
   init: false,
 };
 
 const appSlice = createSlice({
-  name: "appReducer",
+  name: 'appReducer',
   initialState,
   reducers: {
     setAccessToken(state, { payload }: PayloadAction<string>) {
