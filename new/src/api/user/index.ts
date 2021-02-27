@@ -1,5 +1,5 @@
-import axios from "axios";
-import { API_URL } from "../../const";
+import axios from 'axios';
+import { API_URL } from '../../const';
 
 export const createUserInfo = async (
   name: string,
@@ -46,6 +46,7 @@ export const updateUserInfo = async (
     }
   );
 };
+
 export const deleteUserInfo = async (accessToken: string) => {
   await axios.delete(`${API_URL}/users`, {
     headers: { authorization: `Bearer ${accessToken}` },

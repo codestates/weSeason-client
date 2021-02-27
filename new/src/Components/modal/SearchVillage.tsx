@@ -10,13 +10,21 @@ declare global {
   }
 }
 
+type SearchVillageProps = {
+  handleClickModal(): void;
+  lat: number;
+  lon: number;
+  modifyLat(lat: number): void;
+  modifyLon(lon: number): void;
+};
+
 const SearchVillage = ({
   handleClickModal,
   lat,
   lon,
   modifyLat,
   modifyLon,
-}: any) => {
+}: SearchVillageProps) => {
   const [clickLat, setClickLat] = useState<number>(0);
   const [clickLon, setClickLon] = useState<number>(0);
   const [inputValue, setInputValue] = useState<string>('');
@@ -124,29 +132,12 @@ const SearchVillage = ({
     };
 
     let map = new window.kakao.maps.Map(mapReference.current, options); //지도 생성 및 객체 리턴
-
-    // if (navigator.geolocation) {
-    //   // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    //   navigator.geolocation.getCurrentPosition(function (position) {
-    //     let newLat = position.coords.latitude; // 위도
-    //     let newLon = position.coords.longitude; // 경도
-
     let locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
     let message =
       '<div id="searchVillage__map--message" style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
 
     //     // 마커와 인포윈도우를 표시합니다
     displayMarker(locPosition, message);
-    //   });
-    // } else {
-    //   // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-    //   let locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
-    //     message = '현재 위치를 확인할 수 없습니다 (위치 동의 확인)';
-
-    //   displayMarker(locPosition, message);
-    // }
-
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition: any, message: any) {
       // 마커를 생성합니다

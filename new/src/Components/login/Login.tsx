@@ -6,6 +6,7 @@ import OneBtnModal from '../modal/OneBtnModal';
 import './login.css';
 import { setAccessToken } from '../../reducers/appReducer';
 import { loginLocal } from '../../api/auth';
+
 type LoginProps = {
   pageWidth: number;
   modifyAccessToken(token: string): void;
@@ -44,8 +45,8 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
   }, [pageWidth, email, password, resError, webError]);
 
   const handleChangeLoginData = (e: any) => {
-    const targetName = e.target.name;
-    const targetValue = e.target.value;
+    const targetName: string = e.target.name;
+    const targetValue: string = e.target.value;
 
     if (targetName === 'email') {
       setEmail(targetValue);
@@ -70,7 +71,7 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
 
   const handleFindLoginUser = async () => {
     try {
-      const data = await loginLocal(email, password);
+      const data: string = await loginLocal(email, password);
       modifyAccessToken(data);
       if (pageWidth > 1024) {
         setErrorMessage('로그인 성공');

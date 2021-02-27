@@ -34,7 +34,7 @@ function App({ pageWidth, modifyCilentWidth, modifyLat, modifyLon }: AppProps) {
 
   useEffect(() => {
     (async () => {
-      const accessToken = await checkIsLogined();
+      const accessToken: string = await checkIsLogined();
       dispatch(setAccessToken(accessToken));
     })();
     const resizeListener = async () => {

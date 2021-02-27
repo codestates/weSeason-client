@@ -10,7 +10,12 @@ import { API_URL } from '../../const';
 import { connect } from 'react-redux';
 import { setAccessToken } from '../../reducers/appReducer';
 
-const Main = ({ accessToken, modifyAccessToken }: any) => {
+type MainProps = {
+  accessToken: string;
+  modifyAccessToken(token: string): void;
+};
+
+const Main = ({ accessToken, modifyAccessToken }: MainProps) => {
   const [clickModal, setClickModal] = useState<boolean>(false);
   const location = useLocation();
   const handleClickModal = () => {
