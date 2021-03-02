@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import UserInfo from "./UserInfo";
-import "./signUp.css";
-import { infoFormData } from "./infoData";
-import { connect } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import UserInfo from './UserInfo';
+import './signUp.css';
+import { infoFormData } from './infoData';
+import { connect } from 'react-redux';
 import {
   changeName,
   changeNickName,
   changeEmail,
   changePassword,
   changePasswordCheck,
-} from "../../reducers/userInfoReducer";
-import { changeCurrentPageWidth } from "../../reducers/pageWidthReducer";
-import OneBtnModal from "../modal/OneBtnModal";
-import { createUserInfo } from "../../api/user";
+} from '../../reducers/userInfoReducer';
+import { changeCurrentPageWidth } from '../../reducers/pageWidthReducer';
+import OneBtnModal from '../modal/OneBtnModal';
+import { createUserInfo } from '../../api/user';
 
 type InfoDataType = {
   title: string;
@@ -30,12 +30,12 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
   const password = userInfo.password;
   const passwordCheck = userInfo.passwordCheck;
 
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [resError, setResError] = useState<boolean>(false);
   const [webError, setWebError] = useState<boolean>(false);
   const [webJoin, setWebJoin] = useState<boolean>(false);
   const [defaultBtnColor, setDefaultBtnColor] = useState<boolean>(true);
-  const [resMessage, setResMessage] = useState<string>("");
+  const [resMessage, setResMessage] = useState<string>('');
 
   const history = useHistory();
   const infoForm: InfoDataType[] = infoFormData;
@@ -80,13 +80,13 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
 
   const checkEmptyOrFaultPassword = () => {
     if (!name || !nickName || !email || !password || !passwordCheck) {
-      setErrorMessage("정보를 모두 입력해주세요");
+      setErrorMessage('정보를 모두 입력해주세요');
     } else if (password.length < 6) {
-      setErrorMessage("6자리 이상의 비밀번호를 입력해주세요");
+      setErrorMessage('6자리 이상의 비밀번호를 입력해주세요');
     } else if (password !== passwordCheck) {
-      setErrorMessage("비밀번호를 재확인 해주세요");
+      setErrorMessage('비밀번호를 재확인 해주세요');
     } else {
-      setErrorMessage("");
+      setErrorMessage('');
       setDefaultBtnColor(true);
     }
   };
@@ -98,14 +98,14 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
       // 스테이트 초기화
       formatUserInfo();
       if (pageWidth >= 1024) {
-        setErrorMessage("회원가입 완료");
-        setResMessage("확인을 누르면 로그인 페이지로 이동합니다");
+        setErrorMessage('회원가입 완료');
+        setResMessage('확인을 누르면 로그인 페이지로 이동합니다');
         setWebJoin(true);
       } else {
-        history.push("/login");
+        history.push('/login');
       }
     } catch {
-      setErrorMessage("이미 존재하는 이메일입니다");
+      setErrorMessage('이미 존재하는 이메일입니다');
       if (pageWidth < 1024) {
         setResError(true);
       } else if (pageWidth >= 1024) {
@@ -115,11 +115,11 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
   };
 
   const formatUserInfo = () => {
-    rest.modifyName("");
-    rest.modifyNickName("");
-    rest.modifyEmail("");
-    rest.modifyPassword("");
-    rest.modifyPasswordCheck("");
+    rest.modifyName('');
+    rest.modifyNickName('');
+    rest.modifyEmail('');
+    rest.modifyPassword('');
+    rest.modifyPasswordCheck('');
   };
 
   const checkPageWidthErrorConcepts = () => {
@@ -141,29 +141,29 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
 
   const handleFindModalClose = () => {
     setWebError(false);
-    if (errorMessage === "이미 존재하는 이메일입니다") {
-      setErrorMessage("");
+    if (errorMessage === '이미 존재하는 이메일입니다') {
+      setErrorMessage('');
     }
     if (resError) {
       setResError(false);
     }
 
     if (resMessage) {
-      setResMessage("");
-      history.push("/login");
+      setResMessage('');
+      history.push('/login');
     }
   };
 
   return (
-    <div id="signUpPage">
-      <h1 id="signUp__ment">회원가입</h1>
-      <div id="signUp__userInfo">
+    <div id='signUpPage'>
+      <h1 id='signUp__ment'>회원가입</h1>
+      <div id='signUp__userInfo'>
         {userInfoListItem}
-        {resError ? <div id="userInfo__errorView">{errorMessage}</div> : null}
+        {resError ? <div id='userInfo__errorView'>{errorMessage}</div> : null}
       </div>
       <button
         id={
-          defaultBtnColor ? "signUp__joinBtn-basic" : "signUp__joinBtn-extend"
+          defaultBtnColor ? 'signUp__joinBtn-basic' : 'signUp__joinBtn-extend'
         }
         onClick={handleClickJoinBtn}
       >
@@ -172,7 +172,7 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
       {webError ? (
         <OneBtnModal
           message={errorMessage}
-          info=""
+          info=''
           handleFindModalClose={handleFindModalClose}
         />
       ) : null}

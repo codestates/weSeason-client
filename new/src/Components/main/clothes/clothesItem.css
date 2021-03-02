@@ -39,102 +39,102 @@
 }
 
 .clothesItem__seven-piece-pants {
-  background-image: url("../../../images/icon/clothes-icons/7부바지.png");
+  background-image: url('../../../images/icon/clothes-icons/7부바지.png');
 }
 
 .clothesItem__long-pants {
-  background-image: url("../../../images/icon/clothes-icons/긴바지.png");
+  background-image: url('../../../images/icon/clothes-icons/긴바지.png');
 }
 .clothesItem__neat {
-  background-image: url("../../../images/icon/clothes-icons/니트.png");
+  background-image: url('../../../images/icon/clothes-icons/니트.png');
 }
 
 .clothesItem__thick-coat {
-  background-image: url("../../../images/icon/clothes-icons/두꺼운코트.png");
+  background-image: url('../../../images/icon/clothes-icons/두꺼운코트.png');
 }
 
 .clothesItem__linen {
-  background-image: url("../../../images/icon/clothes-icons/린넨옷.png");
+  background-image: url('../../../images/icon/clothes-icons/린넨옷.png');
 }
 
 .clothesItem__muffler {
-  background-image: url("../../../images/icon/clothes-icons/목도리.png");
+  background-image: url('../../../images/icon/clothes-icons/목도리.png');
 }
 
 .clothesItem__sleeveless {
-  background-image: url("../../../images/icon/clothes-icons/민소매.png");
+  background-image: url('../../../images/icon/clothes-icons/민소매.png');
 }
 
 .clothesItem__wind-breaker {
-  background-image: url("../../../images/icon/clothes-icons/바람막이.png");
+  background-image: url('../../../images/icon/clothes-icons/바람막이.png');
 }
 
 .clothesItem__shorts {
-  background-image: url("../../../images/icon/clothes-icons/반바지.png");
+  background-image: url('../../../images/icon/clothes-icons/반바지.png');
 }
 
 .clothesItem__short-sleeve {
-  background-image: url("../../../images/icon/clothes-icons/반팔.png");
+  background-image: url('../../../images/icon/clothes-icons/반팔.png');
 }
 
 .clothesItem__within-a-fever {
-  background-image: url("../../../images/icon/clothes-icons/발열내의.png");
+  background-image: url('../../../images/icon/clothes-icons/발열내의.png');
 }
 
 .clothesItem__blouse {
-  background-image: url("../../../images/icon/clothes-icons/블라우스.png");
+  background-image: url('../../../images/icon/clothes-icons/블라우스.png');
 }
 
 .clothesItem__shirts {
-  background-image: url("../../../images/icon/clothes-icons/셔츠.png");
+  background-image: url('../../../images/icon/clothes-icons/셔츠.png');
 }
 
 .clothesItem__thin-jacket {
-  background-image: url("../../../images/icon/clothes-icons/얇은재킷.png");
+  background-image: url('../../../images/icon/clothes-icons/얇은재킷.png');
 }
 
 .clothesItem__one-piece {
-  background-image: url("../../../images/icon/clothes-icons/원피스.png");
+  background-image: url('../../../images/icon/clothes-icons/원피스.png');
 }
 
 .clothesItem__glove {
-  background-image: url("../../../images/icon/clothes-icons/장갑.png");
+  background-image: url('../../../images/icon/clothes-icons/장갑.png');
 }
 
 .clothesItem__jacket {
-  background-image: url("../../../images/icon/clothes-icons/재킷.png");
+  background-image: url('../../../images/icon/clothes-icons/재킷.png');
 }
 
 .clothesItem__short-skirt {
-  background-image: url("../../../images/icon/clothes-icons/짧은치마.png");
+  background-image: url('../../../images/icon/clothes-icons/짧은치마.png');
 }
 
 .clothesItem__jean {
-  background-image: url("../../../images/icon/clothes-icons/청바지.png");
+  background-image: url('../../../images/icon/clothes-icons/청바지.png');
 }
 
 .clothesItem__denim-jacket {
-  background-image: url("../../../images/icon/clothes-icons/청자켓.png");
+  background-image: url('../../../images/icon/clothes-icons/청자켓.png');
 }
 
 .clothesItem__cashmere-coat {
-  background-image: url("../../../images/icon/clothes-icons/캐시미어코트.png");
+  background-image: url('../../../images/icon/clothes-icons/캐시미어코트.png');
 }
 
 .clothesItem__trench-coat {
-  background-image: url("../../../images/icon/clothes-icons/트렌치코트.png");
+  background-image: url('../../../images/icon/clothes-icons/트렌치코트.png');
 }
 
 .clothesItem__padding {
-  background-image: url("../../../images/icon/clothes-icons/패딩.png");
+  background-image: url('../../../images/icon/clothes-icons/패딩.png');
 }
 
 .clothesItem__ait-jacket {
-  background-image: url("../../../images/icon/clothes-icons/항공점퍼.png");
+  background-image: url('../../../images/icon/clothes-icons/항공점퍼.png');
 }
 
 .clothesItem__hood {
-  background-image: url("../../../images/icon/clothes-icons/후드.png");
+  background-image: url('../../../images/icon/clothes-icons/후드.png');
 }
 
 @media all and (min-width: 768px) {
@@ -219,15 +219,6 @@
     animation-duration: 4s;
     animation-name: clothesItemAni-2;
     animation-iteration-count: infinite;
-  }
-
-  @keyframes clothesItemAni-first-render {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
   }
 
   @keyframes clothesItemAni-1 {
