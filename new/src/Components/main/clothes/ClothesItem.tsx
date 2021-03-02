@@ -39,7 +39,6 @@ const ClothesItem = ({ clothes, temp }: ClothesItemProps) => {
     if (validItemList.length >= 6) {
       validItemList = validItemList.slice(0, 5);
     }
-    console.log(validItemList);
     setIconLength(validItemList.length);
     setIconNames(validItemList);
   }, [clothes]);
