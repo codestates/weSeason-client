@@ -1,5 +1,5 @@
-import axios from "axios";
-import { API_URL } from "../../const";
+import axios from 'axios';
+import { API_URL } from '../../const';
 
 type CheckIsLoginedRes = {
   data: {
@@ -16,7 +16,7 @@ export const checkIsLogined = async () => {
     );
     return data.data.accessToken;
   } catch (error) {
-    return "";
+    return '';
   }
 };
 

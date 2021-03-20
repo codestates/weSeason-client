@@ -7,7 +7,7 @@ import Mypage from './Components/mypage/MyPage';
 import SignUp from './Components/signup/SignUp';
 import { setAccessToken } from './reducers/appReducer';
 import { changeCurrentPageWidth } from '../src/reducers/pageWidthReducer';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import Main from './Components/main/Main';
 import { RootState } from './reducers';
 import './app.css';
@@ -21,16 +21,19 @@ declare global {
   }
 }
 
-type AppProps = {
-  pageWidth: number;
-  modifyCilentWidth(pageWidth: number): void;
-  modifyLat(lat: number): void;
-  modifyLon(lon: number): void;
-};
+// type AppProps = {
+//   // pageWidth: number;
+//   // modifyCilentWidth(pageWidth: number): void;
+//   modifyLat(lat: number): void;
+//   modifyLon(lon: number): void;
+// };
 
-function App({ pageWidth, modifyCilentWidth, modifyLat, modifyLon }: AppProps) {
+export default function App() {
   const dispatch = useDispatch();
   const init = useSelector((state: RootState) => state.appReducer.init);
+  const pageWidth: number = useSelector(
+    (state: RootState) => state.pageWidth.width
+  );
 
   useEffect(() => {
     (async () => {
@@ -43,21 +46,21 @@ function App({ pageWidth, modifyCilentWidth, modifyLat, modifyLon }: AppProps) {
         (pageWidth < 1024 && currentWidth >= 1024) ||
         (pageWidth >= 1024 && currentWidth < 1024)
       ) {
-        modifyCilentWidth(getWidth());
+        dispatch(changeCurrentPageWidth(getWidth()));
       }
     };
     window.addEventListener('resize', resizeListener);
 
     navigator.geolocation.getCurrentPosition((position) => {
-      modifyLat(position.coords.latitude);
-      modifyLon(position.coords.longitude);
+      dispatch(userLat(position.coords.latitude));
+      dispatch(userLon(position.coords.longitude));
     });
 
     return () => {
       // remove resize listener
       window.removeEventListener('resize', resizeListener);
     };
-  }, [dispatch, modifyCilentWidth, modifyLat, modifyLon, pageWidth]);
+  }, [dispatch, pageWidth]);
   const getWidth = () => window.innerWidth;
 
   return (
@@ -94,21 +97,3 @@ function App({ pageWidth, modifyCilentWidth, modifyLat, modifyLon }: AppProps) {
     </>
   );
 }
-const mapStateToProps = (state: any) => {
-  return {
-    pageWidth: state.pageWidth.width,
-    lat: state.locationReducer.lat,
-    lon: state.locationReducer.lon,
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    modifyCilentWidth: (width: number) =>
-      dispatch(changeCurrentPageWidth(width)),
-    modifyLat: (lat: number) => dispatch(userLat(lat)),
-    modifyLon: (lon: number) => dispatch(userLon(lon)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);

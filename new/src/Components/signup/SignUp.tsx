@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import UserInfo from './UserInfo';
 import './signUp.css';
 import { infoFormData } from './infoData';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   changeName,
   changeNickName,
@@ -11,9 +11,9 @@ import {
   changePassword,
   changePasswordCheck,
 } from '../../reducers/userInfoReducer';
-import { changeCurrentPageWidth } from '../../reducers/pageWidthReducer';
 import OneBtnModal from '../modal/OneBtnModal';
 import { createUserInfo } from '../../api/user';
+import { RootState } from '../../reducers';
 
 type InfoDataType = {
   title: string;
@@ -23,7 +23,23 @@ type InfoDataType = {
   id: number;
 };
 
-const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
+type UserInfoStateType = {
+  name: string;
+  nickName: string;
+  email: string;
+  password: string;
+  passwordCheck: string;
+};
+
+export default function SignUp() {
+  const pageWidth: number = useSelector(
+    (state: RootState) => state.pageWidth.width
+  );
+  const userInfo: UserInfoStateType = useSelector(
+    (state: RootState) => state.userInfo
+  );
+  const dispatch = useDispatch();
+
   const name = userInfo.name;
   const nickName = userInfo.nickName;
   const email = userInfo.email;
@@ -39,6 +55,7 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
 
   const history = useHistory();
   const infoForm: InfoDataType[] = infoFormData;
+
   useEffect(() => {
     if (
       name &&
@@ -115,11 +132,11 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
   };
 
   const formatUserInfo = () => {
-    rest.modifyName('');
-    rest.modifyNickName('');
-    rest.modifyEmail('');
-    rest.modifyPassword('');
-    rest.modifyPasswordCheck('');
+    dispatch(changeName(''));
+    dispatch(changeNickName(''));
+    dispatch(changeEmail(''));
+    dispatch(changePassword(''));
+    dispatch(changePasswordCheck(''));
   };
 
   const checkPageWidthErrorConcepts = () => {
@@ -185,22 +202,4 @@ const SignUp = ({ userInfo, pageWidth, ...rest }: any) => {
       ) : null}
     </div>
   );
-};
-
-const mapStateToProps = (state: any) => {
-  return { userInfo: state.userInfo, pageWidth: state.pageWidth.width };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    modifyName: (name: string) => dispatch(changeName(name)),
-    modifyNickName: (nickName: string) => dispatch(changeNickName(nickName)),
-    modifyEmail: (email: string) => dispatch(changeEmail(email)),
-    modifyPassword: (pw: string) => dispatch(changePassword(pw)),
-    modifyPasswordCheck: (pw: string) => dispatch(changePasswordCheck(pw)),
-    modifyCilentWidth: (width: number) =>
-      dispatch(changeCurrentPageWidth(width)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+}
