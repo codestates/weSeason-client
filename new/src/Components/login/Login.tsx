@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { REDIRECT_URL } from '../../const';
 import OneBtnModal from '../modal/OneBtnModal';
+import { RootState } from '../../reducers';
 import './login.css';
 import { setAccessToken } from '../../reducers/appReducer';
 import { loginLocal } from '../../api/auth';
 
-type LoginProps = {
-  pageWidth: number;
-  modifyAccessToken(token: string): void;
-};
+export default function Login() {
+  const pageWidth: number = useSelector(
+    (state: RootState) => state.pageWidth.width
+  );
+  const dispatch = useDispatch();
 
-const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
   const [resPage, setResPage] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -72,7 +73,7 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
   const handleFindLoginUser = async () => {
     try {
       const data: string = await loginLocal(email, password);
-      modifyAccessToken(data);
+      dispatch(setAccessToken(data));
       if (pageWidth > 1024) {
         setErrorMessage('로그인 성공');
         setResMessage('메인 페이지로 이동합니다');
@@ -225,16 +226,4 @@ const Login = ({ pageWidth, modifyAccessToken }: LoginProps) => {
       ) : null}
     </div>
   );
-};
-
-const mapStateToProps = (state: any) => {
-  return { pageWidth: state.pageWidth.width };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    modifyAccessToken: (token: string) => dispatch(setAccessToken(token)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+}

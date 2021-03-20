@@ -1,5 +1,6 @@
 import React, { createRef, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../reducers';
 import { userLat, userLon } from '../../reducers/locationReducer';
 import './searchVillage.css';
 const { kakao } = window;
@@ -12,19 +13,19 @@ declare global {
 
 type SearchVillageProps = {
   handleClickModal(): void;
-  lat: number;
-  lon: number;
-  modifyLat(lat: number): void;
-  modifyLon(lon: number): void;
 };
 
-const SearchVillage = ({
+export default function SearchVillage({
   handleClickModal,
-  lat,
-  lon,
-  modifyLat,
-  modifyLon,
-}: SearchVillageProps) => {
+}: SearchVillageProps) {
+  const dispatch = useDispatch();
+  const lat: number = useSelector(
+    (state: RootState) => state.locationReducer.lat
+  );
+  const lon: number = useSelector(
+    (state: RootState) => state.locationReducer.lon
+  );
+
   const [clickLat, setClickLat] = useState<number>(0);
   const [clickLon, setClickLon] = useState<number>(0);
   const [inputValue, setInputValue] = useState<string>('');
@@ -40,11 +41,11 @@ const SearchVillage = ({
     //지도를 담을 영역의 DOM 레퍼런스
     let options = {
       //지도를 생성할 때 필요한 기본 옵션
-      center: new window.kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
+      center: new kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
       level: 3, //지도의 레벨(확대, 축소 정도)
     };
 
-    let map = new window.kakao.maps.Map(mapReference.current, options); //지도 생성 및 객체 리턴
+    let map = new kakao.maps.Map(mapReference.current, options); //지도 생성 및 객체 리턴
     // 지도를 생성합니다
 
     // 장소 검색 객체를 생성합니다
@@ -92,7 +93,7 @@ const SearchVillage = ({
       });
     }
 
-    let marker = new window.kakao.maps.Marker({
+    let marker = new kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다
       position: map.getCenter(),
     });
@@ -101,23 +102,19 @@ const SearchVillage = ({
 
     // 지도에 클릭 이벤트를 등록합니다
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-    window.kakao.maps.event.addListener(
-      map,
-      'click',
-      function (mouseEvent: any) {
-        // 클릭한 위도, 경도 정보를 가져옵니다
-        let latlng = mouseEvent.latLng;
+    kakao.maps.event.addListener(map, 'click', function (mouseEvent: any) {
+      // 클릭한 위도, 경도 정보를 가져옵니다
+      let latlng = mouseEvent.latLng;
 
-        // 마커 위치를 클릭한 위치로 옮깁니다
-        marker.setPosition(latlng);
+      // 마커 위치를 클릭한 위치로 옮깁니다
+      marker.setPosition(latlng);
 
-        let newLat = latlng.getLat();
-        let newLon = latlng.getLng();
+      let newLat = latlng.getLat();
+      let newLon = latlng.getLng();
 
-        setClickLat(newLat);
-        setClickLon(newLon);
-      }
-    );
+      setClickLat(newLat);
+      setClickLon(newLon);
+    });
   };
 
   const handleChangeInputValue = (e: any) => {
@@ -125,18 +122,18 @@ const SearchVillage = ({
   };
 
   useEffect(() => {
+    // console.log(new kakao);
     let options = {
       //지도를 생성할 때 필요한 기본 옵션
-      center: new window.kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
+      center: new kakao.maps.LatLng(lat, lon), //지도의 중심좌표.
       level: 3, //지도의 레벨(확대, 축소 정도)
     };
 
-    let map = new window.kakao.maps.Map(mapReference.current, options); //지도 생성 및 객체 리턴
+    let map = new kakao.maps.Map(mapReference.current, options); //지도 생성 및 객체 리턴
     let locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
     let message =
       '<div id="searchVillage__map--message" style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
 
-    //     // 마커와 인포윈도우를 표시합니다
     displayMarker(locPosition, message);
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition: any, message: any) {
@@ -163,7 +160,7 @@ const SearchVillage = ({
     }
 
     // 지도를 클릭한 위치에 표출할 마커입니다
-    let marker = new window.kakao.maps.Marker({
+    let marker = new kakao.maps.Marker({
       // 지도 중심좌표에 마커를 생성합니다
       position: map.getCenter(),
     });
@@ -172,22 +169,18 @@ const SearchVillage = ({
 
     // 지도에 클릭 이벤트를 등록합니다
     // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-    window.kakao.maps.event.addListener(
-      map,
-      'click',
-      function (mouseEvent: any) {
-        // 클릭한 위도, 경도 정보를 가져옵니다
-        let latlng = mouseEvent.latLng;
+    kakao.maps.event.addListener(map, 'click', function (mouseEvent: any) {
+      // 클릭한 위도, 경도 정보를 가져옵니다
+      let latlng = mouseEvent.latLng;
 
-        // 마커 위치를 클릭한 위치로 옮깁니다
-        marker.setPosition(latlng);
+      // 마커 위치를 클릭한 위치로 옮깁니다
+      marker.setPosition(latlng);
 
-        let newLat = latlng.getLat();
-        let newLon = latlng.getLng();
-        setClickLat(newLat);
-        setClickLon(newLon);
-      }
-    );
+      let newLat = latlng.getLat();
+      let newLon = latlng.getLng();
+      setClickLat(newLat);
+      setClickLon(newLon);
+    });
     const closeModalESC = (e: any) => {
       if (e.keyCode === 27) {
         handleClickClose();
@@ -198,16 +191,16 @@ const SearchVillage = ({
     return () => window.removeEventListener('keydown', closeModalESC);
   }, [lat, lon, mapReference]);
 
-  function checkEnterKey(e: any) {
+  const checkEnterKey = (e: any) => {
     if (e.keyCode === 13) {
       handleClickSearchBtn();
     }
-  }
+  };
 
   const handleClickMap = () => {
     if (clickLat !== 0 && clickLon !== 0) {
-      modifyLat(clickLat);
-      modifyLon(clickLon);
+      dispatch(userLat(clickLat));
+      dispatch(userLon(clickLon));
     }
     handleClickClose();
   };
@@ -249,17 +242,4 @@ const SearchVillage = ({
       </div>
     </div>
   );
-};
-
-const mapStateToProps = (state: any) => {
-  return { lat: state.locationReducer.lat, lon: state.locationReducer.lon };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    modifyLat: (lat: number) => dispatch(userLat(lat)),
-    modifyLon: (lon: number) => dispatch(userLon(lon)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchVillage);
+}

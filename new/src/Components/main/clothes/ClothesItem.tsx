@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { iconList } from './iconList';
 import cloud from '../../../images/icon/cloud.png';
 import './clothesItem.css';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../reducers';
 
 type ClothesItemProps = {
   clothes: string[];
-  temp: number;
 };
 
 type IconNamesType = {
@@ -15,7 +15,11 @@ type IconNamesType = {
   class: string;
 };
 
-const ClothesItem = ({ clothes, temp }: ClothesItemProps) => {
+export default function ClothesItem({ clothes }: ClothesItemProps) {
+  const temp: number | null = useSelector(
+    (state: RootState) => state.weatherReducer.temp
+  );
+
   const [iconLength, setIconLength] = useState<number>(0);
   const [iconNames, setIconNames] = useState<any[]>([]);
 
@@ -39,6 +43,7 @@ const ClothesItem = ({ clothes, temp }: ClothesItemProps) => {
     if (validItemList.length >= 6) {
       validItemList = validItemList.slice(0, 5);
     }
+
     setIconLength(validItemList.length);
     setIconNames(validItemList);
   }, [clothes]);
@@ -69,10 +74,4 @@ const ClothesItem = ({ clothes, temp }: ClothesItemProps) => {
       <div id='clothesItem__temp-info'>{temp}°C</div>
     </>
   );
-};
-
-const mapStateToProps = (state: any) => {
-  return { temp: state.weatherReducer.temp };
-};
-
-export default connect(mapStateToProps)(ClothesItem);
+}

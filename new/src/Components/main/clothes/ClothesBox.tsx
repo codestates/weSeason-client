@@ -8,7 +8,10 @@ import { RootState } from '../../../reducers';
 
 const ClothesBox = () => {
   const [clothes, setClothes] = useState<string[]>([]);
-  const temp = useSelector((state: RootState) => state.weatherReducer.temp);
+  const temp: number | null = useSelector(
+    (state: RootState) => state.weatherReducer.temp
+  );
+
   useEffect(() => {
     (async () => {
       try {
