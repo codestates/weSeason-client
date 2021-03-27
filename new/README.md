@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+<p align="center">
+<img alt="logo" src="https://user-images.githubusercontent.com/68503014/108997592-1d876b80-76e3-11eb-81f7-098c58b186e0.png" width="400px"/>
+</p>
+<h2 align="center">기온 별 옷차림 추천 사이트<br><a href="https://www.weseason4.com">weSeason</a>입니다!</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<p align="center">
+<img alt="Version" src="https://img.shields.io/badge/version-v2.0.0-blue.svg?cacheSeconds=2592000" />
 
-In the project directory, you can run:
+<img alt="Launched?" src="https://img.shields.io/badge/Maintained%3F-yes!-green.svg" />
+<img alt="node-v12.19.0" src="https://img.shields.io/badge/node-v12.20.0-3f72af" />
+<img alt="npm-v6.14.8" src="https://img.shields.io/badge/npm-v6.14.8-aa96da" />
 
-### `npm start`
+<p align="center">
+  Server 레포지토리는 <a href="https://github.com/codestates/weSeason-server">이곳</a>에서 확인할 수 있습니다!
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Service
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<h3 align="center">
+  시시각각 변화하는 기온과 내 위치! 오늘은 뭘 입을까?<br><br>기온에 맞는 옷차림을 추천해드립니다!!
+</h3>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p>2021.2.24 v2.0.0 업그레이드 🌤</p>
 
-### `npm run build`
+* 기존 스택 변경 (js, react > ts, react, redux..)
+* 더욱 깔끔하고 편리한 UI / UX
+* 모바일 태블릿 환경 모두 이용 가능
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/68503014/109113029-e8305b80-777e-11eb-971a-1a536f8e8e2b.gif" alt="text" width="900" />
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Tech Stacks
+-----
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/68503014/108997413-e913af80-76e2-11eb-9080-15971e6878ba.jpeg" alt="text" width="900" />
+</p>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Member Info
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+| TEAM      | Position      | Blog                                      | Github                                           |
+| --------- |--------- | ----------------------------------------- | ------------------------------------------------ |
+| :nerd_face: 박윤철 | FrontEnd|[medium](https://medium.com/a-record-than-a-memory)          | [@mrsimplelife](https://github.com/mrsimplelife) |
+| 🤗 정하랑 | FrontEnd| [Tstory](https://deemmun.tistory.com/)        | [@Hal-ang](https://github.com/Hal-ang)           |
+| :smiley: 채유일 | BackEnd| []() | [@romesway](https://github.com/romesway)           |
+| :drooling_face: 최정호 | BackEnd| [velog](https://velog.io/@jeongho3786)          | [@jeongho3786](https://github.com/jeongho3786) |
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
