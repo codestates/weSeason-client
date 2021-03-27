@@ -50,6 +50,3 @@
 | :smiley: 채유일 | BackEnd| []() | [@romesway](https://github.com/romesway)           |
 | :drooling_face: 최정호 | BackEnd| [velog](https://velog.io/@jeongho3786)          | [@jeongho3786](https://github.com/jeongho3786) |
 
-
-## Main skills
-시연
